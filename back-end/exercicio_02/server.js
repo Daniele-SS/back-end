@@ -29,7 +29,7 @@ entradaDeDados.question('Digite seu nome: ', function(nome){
         let nomeProduto = produto
 
         if(nomeProduto == '' || !isNaN (nomeProduto)){
-            console.log('ERRO: É obrigatório o preenchimento deste dado. Ele não pode ser descrito em números!!')
+            console.log('ERRO: É obrigatório o preenchimento deste dado. Ele não pode ser escrito em números!!')
             entradaDeDados.close()
         }
 
