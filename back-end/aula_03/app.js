@@ -33,9 +33,10 @@ entradaDeDados.question('Digite o nome do Cliente: ', function(nome){
                 entradaDeDados.question('Digite o tempo para realizar o pagamento: ', function(tempo){
                     let tempoPagamento = tempo
 
-                    //let percentual = Number(taxaCompra) / 100
-                    //let montante = Number(capitalProduto) * ((1+Number(taxaCompra)) ** Number(tempoPagamento))
-                    let montante = calcularJurosCompostos(capitalProduto, taxaCompra, tempoPagamento)
+                    //Import da biblioteca que realiza calculos financeiros
+                    let calculos = require('./modulo/calculos')
+
+                    let montante = calculos.calcularJurosCompostos(capitalProduto, taxaCompra, tempoPagamento)
 
                     if(montante){
                         //toFixed serve para filtrar a quantidade de números após a vírgula
@@ -46,58 +47,12 @@ entradaDeDados.question('Digite o nome do Cliente: ', function(nome){
                         entradaDeDados.close()
                     }
 
-                })//Fechamaneto tempoPagamento
+                })//Fechamamento tempoPagamento
 
-            })//Fechamaneto taxaCompra
+            })//Fechamamento taxaCompra
 
-        })//Fechamaneto capitalProduto
+        })//Fechamamento capitalProduto
 
-    })//Fechamaneto nomeProduto
+    })//Fechamamento nomeProduto
 
-})//Fechamaneto nomeCliente
-
-/*Criando uma função para calcular o Valor da compra parcelada
-Metodo tradicional de criar uma função*/
-function calcularJurosCompostos(valorCompra, taxaJuros, tempoPagto){
-    /*Recebe os argumentos da função em variáveis locais
-    As variaveis (valor, taxa e tempo) são númericas por conta da conversão
-    Mas os argumentos (valorCompra, taxaJuros, tempoPagto ainda serão Strings)*/
-    let valor = Number(valorCompra)
-    let taxa = Number(taxaJuros)
-    let tempo = Number(tempoPagto)
-
-    //Validação para entradas vazias ou caracteres inválidos
-    if(valorCompra == '' || isNaN(valorCompra) || tempoPagto == '' || isNaN(tempoPagto)){
-        console.log('ERRO: Valores de compra ou tempo de pagamento estão incorretos')    
-        return false
-        }else{
-            //Chama a função para converter o número em percentual
-            let percentual = calcularPercentual(taxa)
-
-        //Validação para o erro do percentual na função calcularPercentual()
-        //Irá validar se o conteudo fornecido é um número, caso não seja, irá retornar false
-        if(percentual){
-            let montante = valor * ((1+percentual) ** tempo)
-            return Number (montante.toFixed(2))
-        }else{
-            console.log('ERRO: Valor da taxa está incorreto.')
-            return false
-        }
-    }//Fechamento do if valorCompra
-
-}//Fechamento da função calcularJurosCompostos
-
-//Calcula o percentual de um número
-function calcularPercentual(numero){
-    let numeroPercentual = Number(numero)
-    
-
-    //Validação para verificar se é um número válido
-    if(numero == '' || numero <= 0 || isNaN(numero)){
-        return false//Não pode processar
-    }else{
-        //Processamento do calculo percentual
-        let percentual = numeroPercentual / 100
-        return Number(percentual.toFixed(2))
-    }
-}//Fechamento da função calcularPercentual
+})//Fechamamento nomeCliente
