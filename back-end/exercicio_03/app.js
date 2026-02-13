@@ -20,7 +20,7 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
     let primeiroNumero = numeroUm
 
     //Irá validar se o campo foi preenchido e se um número foi fornecido
-    if(numeroUm == '' || isNaN(numeroUm) || numeroUm <= 0){
+    if(numeroUm == '' || isNaN(numeroUm)){
         console.log('ERRO: É necessário digitar um número válido para que possamos realizar o Cálculo Matemático e ele não pode ser escrito com letras.')
         entradaDeDados.close()
     }
@@ -30,7 +30,7 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
         let segundoNumero = numeroDois
 
         //Irá validar se o campo foi preenchido e se um número foi fornecido
-        if(numeroDois == '' || isNaN(numeroDois) || numeroDois <= 0){
+        if(numeroDois == '' || isNaN(numeroDois)){
             console.log('ERRO: É necessário digitar um número válido para que possamos realizar o Cálculo Matemático e ele não pode ser escrito com letras.')
             entradaDeDados.close()
         }
@@ -44,9 +44,10 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
             }
             
             //Import da biblioteca que realiza calculos matematicos
-            let calculosMatematicos = require('./modulo/calculoMatematico')
+            let calculoMatematico = require('./modulo/calculoMatematico')
 
-            calculosMatematicos.calculosMatematicos(numeroUm, numeroDois)
+            let resultadoSoma = calculoMatematico.soma(numeroUm, numeroDois)
+            let resultadoSubtracao = calculoMatematico.subtracao(numeroUm, numeroDois)
 
         })//Fechamento da operacaoMatematica
     })//Fechamento do segundoNumero
