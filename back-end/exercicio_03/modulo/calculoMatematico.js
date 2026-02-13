@@ -5,6 +5,23 @@
  * Versão: 1.0
 ********************************************************************************************************************************/
 
-function calculos (numeroDois, numeroDois){
-    let resultadoOperacao = Number(resultado)
+function SOMA (numeroUm, numeroDois){
+    let resultado = numeroUm + numeroDois
+
+    if(numeroUm == '' || isNaN(numeroUm) || numeroUm <= 0 || numeroDois == '' || isNaN(numeroDois) || numeroDois <= 0){
+        return false
+    }else{
+        console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm) + Number(numeroDois)}`)  
+    }
 }
+
+function subtracao (numeroUm, numeroDois){
+    let resultado = numeroUm - numeroDois
+
+    if(numeroUm == '' || isNaN(numeroUm) || numeroUm <= 0 || numeroDois == '' || isNaN(numeroDois) || numeroDois <= 0){
+        return false
+    }else{
+        console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm)-Number(numeroDois)}`)  
+    }
+}
+

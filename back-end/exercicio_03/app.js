@@ -3,7 +3,7 @@
  * para empresas de todos os ramos de atividades, e precisa que você desenvolva uma aplicação 
  * que possa realizar cálculos matemáticos.
  * Autora: Daniele Silva Santos
- * Data: 13/02/2027
+ * Data: 13/02/2026
  * Versão: 1.0
  ********************************************************************************************/
 
@@ -15,7 +15,7 @@ const entradaDeDados = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
-//Entrada do primeiro número que será digitada pelo o usuário
+//Entrada do primeiro número que será digitada pelo usuário
 entradaDeDados.question('Digite o Primeiro número que será utilizado para o Cálculo Matemático: ', function(numeroUm){
     let primeiroNumero = numeroUm
 
@@ -25,7 +25,7 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
         entradaDeDados.close()
     }
 
-    //Entrada do segundo número que será digitada pelo o usuário
+    //Entrada do segundo número que será digitada pelo usuário
     entradaDeDados.question('Digite o Segundo número que será utilizado para o Cálculo Matemático: ', function(numeroDois){
         let segundoNumero = numeroDois
 
@@ -43,17 +43,10 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
                 console.log('ERRO: É necessário informar a Operação matemática que será executada.')
             }
             
-            let calculos = require('./modulo/calculoMatematico')
+            //Import da biblioteca que realiza calculos matematicos
+            let calculosMatematicos = require('./modulo/calculoMatematico')
 
-            //O resultado da operação matemática será mostrada ao usuário
-            if(calculos){
-                //toFixed serve para filtrar a quantidade de números após a vírgula
-                console.log('O resultado da Operação Matemática é: ' + montante.toFixed(2))
-                entradaDeDados.close()
-            }else{
-                console.log('ERRO: Devido a problemas no Cálculo Matemático, o programa encerrou.')
-                entradaDeDados.close()
-            }
+            calculosMatematicos.calculosMatematicos(numeroUm, numeroDois)
 
         })//Fechamento da operacaoMatematica
     })//Fechamento do segundoNumero
