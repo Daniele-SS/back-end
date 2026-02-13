@@ -15,20 +15,46 @@ const entradaDeDados = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
+//Entrada do primeiro número que será digitada pelo o usuário
+entradaDeDados.question('Digite o Primeiro número que será utilizado para o Cálculo Matemático: ', function(numeroUm){
+    let primeiroNumero = numeroUm
 
-entradaDeDados.question('Digite dois números para podermos realizar os Cálculos Matemáticos: ', function(numero){
-    let numeroDigitado = numero
-
-    if(numero == '' || isNaN(numero)){
-        console.log('ERRO: É necessário digitar todos os dados solicitados.')
+    //Irá validar se o campo foi preenchido e se um número foi fornecido
+    if(numeroUm == '' || isNaN(numeroUm) || numeroUm <= 0){
+        console.log('ERRO: É necessário digitar um número válido para que possamos realizar o Cálculo Matemático e ele não pode ser escrito com letras.')
         entradaDeDados.close()
     }
 
-    entradaDeDados.question('Digite qual Operação Matemática você deseja realizar: ', function(operacao){
-        let operacaoMatematica = operacao
+    //Entrada do segundo número que será digitada pelo o usuário
+    entradaDeDados.question('Digite o Segundo número que será utilizado para o Cálculo Matemático: ', function(numeroDois){
+        let segundoNumero = numeroDois
 
-        if(operacaoMatematica == '' || !isNaN(operacaoMatematica)){
-            console.log('ERRO: É necessário informar a Operação matemática que será executada.')
+        //Irá validar se o campo foi preenchido e se um número foi fornecido
+        if(numeroDois == '' || isNaN(numeroDois) || numeroDois <= 0){
+            console.log('ERRO: É necessário digitar um número válido para que possamos realizar o Cálculo Matemático e ele não pode ser escrito com letras.')
+            entradaDeDados.close()
         }
-    })
-})
+
+        //Entrada para que o usuário escolha a operação matemática digitada
+        entradaDeDados.question('Qual dessas Operações Matemáticas você deseja realizar? SOMA, SUBTRAÇÃO, MULTIPLICAÇÃO ou DIVISÃO: ', function(operacao){
+            let operacaoMatematica = operacao
+
+            if(operacaoMatematica == '' || !isNaN(operacaoMatematica)){
+                console.log('ERRO: É necessário informar a Operação matemática que será executada.')
+            }
+            
+            let calculos = require('./modulo/calculoMatematico')
+
+            //O resultado da operação matemática será mostrada ao usuário
+            if(calculos){
+                //toFixed serve para filtrar a quantidade de números após a vírgula
+                console.log('O resultado da Operação Matemática é: ' + montante.toFixed(2))
+                entradaDeDados.close()
+            }else{
+                console.log('ERRO: Devido a problemas no Cálculo Matemático, o programa encerrou.')
+                entradaDeDados.close()
+            }
+
+        })//Fechamento da operacaoMatematica
+    })//Fechamento do segundoNumero
+})//Fechamento do primeiroNumero

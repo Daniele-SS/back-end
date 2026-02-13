@@ -4,3 +4,7 @@
  * Data: 13/02/2026
  * Versão: 1.0
 ********************************************************************************************************************************/
+
+function calculos (numeroDois, numeroDois){
+    let resultadoOperacao = Number(resultado)
+}
