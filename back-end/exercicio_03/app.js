@@ -17,20 +17,20 @@ const entradaDeDados = readline.createInterface({
 })
 //Entrada do primeiro número que será digitada pelo usuário
 entradaDeDados.question('Digite o Primeiro número que será utilizado para o Cálculo Matemático: ', function(numeroUm){
-    let primeiroNumero = numeroUm
+    let primeiroNumero = parseFloat(numeroUm.replace(',', '.'))
 
     //Irá validar se o campo foi preenchido e se um número foi fornecido
-    if(numeroUm == '' || isNaN(numeroUm)){
+    if(primeiroNumero == '' || isNaN(primeiroNumero)){
         console.log('ERRO: É necessário digitar um número válido para que possamos realizar o Cálculo Matemático e ele não pode ser escrito com letras.')
         entradaDeDados.close()
     }
 
     //Entrada do segundo número que será digitada pelo usuário
     entradaDeDados.question('Digite o Segundo número que será utilizado para o Cálculo Matemático: ', function(numeroDois){
-        let segundoNumero = numeroDois
+        let segundoNumero = parseFloat(numeroDois.replace(',', '.'))
 
         //Irá validar se o campo foi preenchido e se um número foi fornecido
-        if(numeroDois == '' || isNaN(numeroDois)){
+        if(segundoNumero == '' || isNaN(segundoNumero)){
             console.log('ERRO: É necessário digitar um número válido para que possamos realizar o Cálculo Matemático e ele não pode ser escrito com letras.')
             entradaDeDados.close()
         }
@@ -47,7 +47,7 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
                 entradaDeDados.close()
 
             }else if(operacaoMatematica == 'Somar' || operacaoMatematica == 'somar' || operacaoMatematica == 'SOMAR'){
-                let resultadoSomar = calculoMatematico.somar(numeroUm, numeroDois)
+                let resultadoSomar = calculoMatematico.somar(primeiroNumero, segundoNumero)
                 entradaDeDados.close()
 
             }else if(operacaoMatematica == 'Subtrair' || operacaoMatematica == 'subtrair' || operacaoMatematica == 'SUBTRAIR'){
