@@ -63,7 +63,8 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
                  entradaDeDados.close()
             }
             else{
-                console.log('DEU MERDA')
+                console.log('ERRO: Devido a problemas no Cálculo Matemático, o programa encerrou.')
+                entradaDeDados.close()
             }
             
         })//Fechamento da operacaoMatematica
