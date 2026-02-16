@@ -5,7 +5,7 @@
  * Versão: 1.0
 ***************************************************************************************************************/
 
-function soma (numeroUm, numeroDois){
+function somar (numeroUm, numeroDois){
     let primeiroNumero = numeroUm
     let segundoNumero = numeroDois
 
@@ -17,7 +17,7 @@ function soma (numeroUm, numeroDois){
     }
 }
 
-function subtracao (numeroUm, numeroDois){
+function subtrair (numeroUm, numeroDois){
     let primeiroNumero = numeroUm
     let segundoNumero = numeroDois
 
@@ -26,13 +26,38 @@ function subtracao (numeroUm, numeroDois){
     }else{
         console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm) - Number(numeroDois)}`)  
         return true
+    }
+}
+
+function multiplicar (numeroUm, numeroDois){
+    let primeiroNumero = numeroUm
+    let segundoNumero = numeroDois
+
+    if(numeroUm == '' || isNaN(numeroUm) || numeroDois == '' || isNaN(numeroDois)){
+        return false
+        
+    }else{
+        console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm) * Number(numeroDois)}`)  
+        return true
         
     }
 }
 
+function dividir (numeroUm, numeroDois){
+    let primeiroNumero = numeroUm
+    let segundoNumero = numeroDois
 
+    if(numeroUm == '' || isNaN(numeroUm) || numeroUm <=0 || numeroDois == '' || isNaN(numeroDois) || numeroDois <=0){
+        return false
+    }else{
+        console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm) / Number(numeroDois)}`)  
+        return true
+    }
+}
 
 module.exports = {
-    soma,
-    subtracao
+    somar,
+    subtrair,
+    multiplicar,
+    dividir
 }

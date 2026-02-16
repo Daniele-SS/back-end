@@ -36,19 +36,36 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
         }
 
         //Entrada para que o usuário escolha a operação matemática digitada
-        entradaDeDados.question('Qual dessas Operações Matemáticas você deseja realizar? SOMA, SUBTRAÇÃO, MULTIPLICAÇÃO ou DIVISÃO: ', function(operacao){
+        entradaDeDados.question('Qual dessas Operações Matemáticas você deseja realizar? SOMAR, SUBTRAIR, MULTIPLICAR, DIVIDIR: ', function(operacao){
             let operacaoMatematica = operacao
 
-            if(operacaoMatematica == '' || !isNaN(operacaoMatematica)){
-                console.log('ERRO: É necessário informar a Operação matemática que será executada.')
-            }
-            
             //Import da biblioteca que realiza calculos matematicos
             let calculoMatematico = require('./modulo/calculoMatematico')
 
-            let resultadoSoma = calculoMatematico.soma(numeroUm, numeroDois)
-            let resultadoSubtracao = calculoMatematico.subtracao(numeroUm, numeroDois)
+            if(operacaoMatematica == '' || !isNaN(operacaoMatematica)){
+                console.log('ERRO: É necessário informar a Operação matemática que será executada.')
+                entradaDeDados.close()
 
+            }else if(operacaoMatematica == 'Somar' || operacaoMatematica == 'somar' || operacaoMatematica == 'SOMAR'){
+                let resultadoSomar = calculoMatematico.somar(numeroUm, numeroDois)
+                entradaDeDados.close()
+
+            }else if(operacaoMatematica == 'Subtrair' || operacaoMatematica == 'subtrair' || operacaoMatematica == 'SUBTRAIR'){
+                let resultadoSubtrair = calculoMatematico.subtrair(numeroUm, numeroDois)
+                entradaDeDados.close()
+
+            }else if(operacaoMatematica == 'Multiplicar' || operacaoMatematica == 'multiplicar' || operacaoMatematica == 'MULTIPLICAR'){
+                let resultadoMultiplicar = calculoMatematico.multiplicar(numeroUm, numeroDois)
+                entradaDeDados.close()
+
+            }else if(operacaoMatematica == 'Dividir' || operacaoMatematica == 'dividir' || operacaoMatematica == 'DIVIDIR'){
+                let resultadoDividir = calculoMatematico.dividir(numeroUm, numeroDois)
+                 entradaDeDados.close()
+            }
+            else{
+                console.log('DEU MERDA')
+            }
+            
         })//Fechamento da operacaoMatematica
     })//Fechamento do segundoNumero
 })//Fechamento do primeiroNumero
