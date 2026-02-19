@@ -37,7 +37,7 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
 
         //Entrada para que o usuário escolha a operação matemática digitada
         entradaDeDados.question('Qual dessas Operações Matemáticas você deseja realizar? SOMAR, SUBTRAIR, MULTIPLICAR, DIVIDIR: ', function(operacao){
-            let operacaoMatematica = operacao
+            let operacaoMatematica = operacao.toLowerCase()
 
             //Import da biblioteca que realiza calculos matematicos
             let calculoMatematico = require('./modulo/calculoMatematico')
@@ -46,19 +46,19 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
                 console.log('ERRO: É necessário informar a Operação matemática que será executada.')
                 entradaDeDados.close()
 
-            }else if(operacaoMatematica == 'Somar' || operacaoMatematica == 'somar' || operacaoMatematica == 'SOMAR'){
+            }else if(operacaoMatematica == 'somar'){
                 let resultadoSomar = calculoMatematico.somar(primeiroNumero, segundoNumero)
                 entradaDeDados.close()
 
-            }else if(operacaoMatematica == 'Subtrair' || operacaoMatematica == 'subtrair' || operacaoMatematica == 'SUBTRAIR'){
+            }else if(operacaoMatematica == 'subtrair'){
                 let resultadoSubtrair = calculoMatematico.subtrair(numeroUm, numeroDois)
                 entradaDeDados.close()
 
-            }else if(operacaoMatematica == 'Multiplicar' || operacaoMatematica == 'multiplicar' || operacaoMatematica == 'MULTIPLICAR'){
+            }else if(operacaoMatematica == 'multiplicar'){
                 let resultadoMultiplicar = calculoMatematico.multiplicar(numeroUm, numeroDois)
                 entradaDeDados.close()
 
-            }else if(operacaoMatematica == 'Dividir' || operacaoMatematica == 'dividir' || operacaoMatematica == 'DIVIDIR'){
+            }else if(operacaoMatematica == 'dividir'){
                 let resultadoDividir = calculoMatematico.dividir(numeroUm, numeroDois)
                  entradaDeDados.close()
             }
