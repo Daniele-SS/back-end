@@ -53,17 +53,17 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
 
             }else if(operacaoMatematica == 'subtrair'){
                 let resultadoSubtrair = calculoMatematico.subtrair(primeiroNumero, segundoNumero)
-                console.log('O resultado da Subtair é: ' + resultadoSubtrair)
+                console.log('O resultado da Subtação é: ' + resultadoSubtrair)
                 entradaDeDados.close()
 
             }else if(operacaoMatematica == 'multiplicar'){
                 let resultadoMultiplicar = calculoMatematico.multiplicar(primeiroNumero, segundoNumero)
-                console.log('O resultado da Multiplicar é: ' + resultadoMultiplicar)
+                console.log('O resultado da Multiplicação é: ' + resultadoMultiplicar)
                 entradaDeDados.close()
 
             }else if(operacaoMatematica == 'dividir' || operacaoMatematica <=0){
                 let resultadoDividir = calculoMatematico.dividir(primeiroNumero, segundoNumero)
-                console.log('O resultado da Multiplicar é: ' + resultadoDividir)
+                console.log('O resultado da Divisão é: ' + resultadoDividir)
                 entradaDeDados.close()
             }
             else{
