@@ -9,49 +9,31 @@ function somar (numeroUm, numeroDois){
     let primeiroNumero = numeroUm
     let segundoNumero = numeroDois
 
-    if(numeroUm == '' || isNaN(numeroUm) || numeroDois == '' || isNaN(numeroDois)){
-        return false
-    }else{
-        console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm) + Number(numeroDois)}`)  
-        return true
-    }
+    return Number(numeroUm) + Number(numeroDois)
 }
 
 function subtrair (numeroUm, numeroDois){
     let primeiroNumero = numeroUm
     let segundoNumero = numeroDois
 
-    if(numeroUm == '' || isNaN(numeroUm) || numeroDois == '' || isNaN(numeroDois)){
-        return false
-    }else{
-        console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm) - Number(numeroDois)}`)  
-        return true
-    }
+    return Number(numeroUm) - Number(numeroDois)
 }
 
 function multiplicar (numeroUm, numeroDois){
     let primeiroNumero = numeroUm
     let segundoNumero = numeroDois
 
-    if(numeroUm == '' || isNaN(numeroUm) || numeroDois == '' || isNaN(numeroDois)){
-        return false
-        
-    }else{
-        console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm) * Number(numeroDois)}`)  
-        return true
-        
-    }
+    return Number(numeroUm) * Number(numeroDois)  
 }
 
 function dividir (numeroUm, numeroDois){
     let primeiroNumero = numeroUm
     let segundoNumero = numeroDois
 
-    if(numeroUm == '' || isNaN(numeroUm) || numeroUm <=0 || numeroDois == '' || isNaN(numeroDois) || numeroDois <=0){
-        return false
+    if(numeroDois <=0){
+        console.log(`ERRO: Não é possível realizar a Divisão por 0.`)
     }else{
-        console.log(`O resultado do Cálculo Matemático é ${Number(numeroUm) / Number(numeroDois)}`)  
-        return true
+        return Number(numeroUm) / Number(numeroDois)
     }
 }
 

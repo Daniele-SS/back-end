@@ -17,7 +17,7 @@ const entradaDeDados = readline.createInterface({
 })
 //Entrada do primeiro número que será digitada pelo usuário
 entradaDeDados.question('Digite o Primeiro número que será utilizado para o Cálculo Matemático: ', function(numeroUm){
-    let primeiroNumero = parseFloat(numeroUm.replace(',', '.'))
+    let primeiroNumero = (numeroUm.replace(',', '.'))
 
     //Irá validar se o campo foi preenchido e se um número foi fornecido
     if(primeiroNumero == '' || isNaN(primeiroNumero)){
@@ -27,7 +27,7 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
 
     //Entrada do segundo número que será digitada pelo usuário
     entradaDeDados.question('Digite o Segundo número que será utilizado para o Cálculo Matemático: ', function(numeroDois){
-        let segundoNumero = parseFloat(numeroDois.replace(',', '.'))
+        let segundoNumero = (numeroDois.replace(',', '.'))
 
         //Irá validar se o campo foi preenchido e se um número foi fornecido
         if(segundoNumero == '' || isNaN(segundoNumero)){
@@ -48,19 +48,23 @@ entradaDeDados.question('Digite o Primeiro número que será utilizado para o C�
 
             }else if(operacaoMatematica == 'somar'){
                 let resultadoSomar = calculoMatematico.somar(primeiroNumero, segundoNumero)
+                console.log('O resultado da Soma é: ' + resultadoSomar)
                 entradaDeDados.close()
 
             }else if(operacaoMatematica == 'subtrair'){
-                let resultadoSubtrair = calculoMatematico.subtrair(numeroUm, numeroDois)
+                let resultadoSubtrair = calculoMatematico.subtrair(primeiroNumero, segundoNumero)
+                console.log('O resultado da Subtair é: ' + resultadoSubtrair)
                 entradaDeDados.close()
 
             }else if(operacaoMatematica == 'multiplicar'){
-                let resultadoMultiplicar = calculoMatematico.multiplicar(numeroUm, numeroDois)
+                let resultadoMultiplicar = calculoMatematico.multiplicar(primeiroNumero, segundoNumero)
+                console.log('O resultado da Multiplicar é: ' + resultadoMultiplicar)
                 entradaDeDados.close()
 
-            }else if(operacaoMatematica == 'dividir'){
-                let resultadoDividir = calculoMatematico.dividir(numeroUm, numeroDois)
-                 entradaDeDados.close()
+            }else if(operacaoMatematica == 'dividir' || operacaoMatematica <=0){
+                let resultadoDividir = calculoMatematico.dividir(primeiroNumero, segundoNumero)
+                console.log('O resultado da Multiplicar é: ' + resultadoDividir)
+                entradaDeDados.close()
             }
             else{
                 console.log('ERRO: Devido a problemas no Cálculo Matemático, o programa encerrou.')
