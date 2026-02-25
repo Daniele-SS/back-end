@@ -56,7 +56,7 @@ const calcular = function(numero1, numero2, operador){
     }
 
     return resultado
-}
+}//Fechamento da const calcular
 
 //Exemplo de funcções baseada em SETA (Arrow function)
 //Funções para realizar as operções matemáticas
@@ -67,5 +67,9 @@ const dividir       = (numero1, numero2) => Number(numero1) / Number(numero2)
 
 module.exports = {
     calcular,
-    somar, validarDados
+    validarDados,
+    somar, 
+    subtrair, 
+    multiplicar,
+    dividir
 }
