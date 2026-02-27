@@ -29,13 +29,64 @@ entradaDeDados.question('1. Calculo de IMC \n2. Calculo de notas escolares \n3. 
 
         entradaDeDados.question('Digite a sua altura: ', function(altura){
             let alturaDoUsuario = altura
-
+    
             entradaDeDados.question('Digite o seu peso: ', function(peso){
-            let pesoDoUsuario = peso
+                let pesoDoUsuario = peso
      
-        let resultado = imcDoUsuario.calcularImcDoUsuario()
-        })
+                let resultadoImc = imcDoUsuario.calcularImcDoUsuario()    
             })
-    }
+        })
+    }//Fechamento do if escolhaUsuario 1
+
+    if (escolhaUsuario == '2') {
+
+        entradaDeDados.question('Digite o nome do(a) anulo(a); ', function(aluno) {
+            let nomeAluno = aluno
+
+            entradaDeDados.question('Digite o nome do(a) professor(a): ', function(professor) {
+                let nomeProfessor = professor
+
+                entradaDeDados.question('Digite o sexo do(a) professor(a): ', function(sexualidadeDoProfessor) {
+                    let sexoDoProfessor = sexualidadeDoProfessor
+
+                    entradaDeDados.question('Digite o sexo do(a) aluno(a): ', function(sexualidadeDoAluno) {
+                        let sexoDoProfessor = sexualidadeDoAluno
+
+                        entradaDeDados.question('Digite o nome do curso: ', function(curso) {
+                            let nomeCurso = curso
+
+                            entradaDeDados.question('Digite o nome da disciplina: ', function(disciplina) {
+                                let nomeDisciplina = disciplina
+
+
+
+                            })//Fechamento da entradadeDeDados nomeDisciplina
+
+                        })//Fechamento da entradadeDeDados nomeCurso
+
+                    })//Fechamento da entradadeDeDados sexualidadeDoAluno
+
+                })//Fechamento da entradadeDeDados sexoDoProfessor
+
+            })//Fechamento da entradadeDeDados nomeProfessor
+
+        })//Fechamento da entradadeDeDados nomeAluno
+
+    }//Fechamento do if escolhaUsuario 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 })//Fechamento da entradaDeDados
