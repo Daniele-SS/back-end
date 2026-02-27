@@ -21,32 +21,21 @@ const entradaDeDados = readline.createInterface({
 
 //Entrada para da opção de calculos disponíveis no sistema
 entradaDeDados.question('1. Calculo de IMC \n2. Calculo de notas escolares \n3. Calculo de uma tabuada \n4. Calculo do fatorial de um número \n5. Gerenciamento de números pares e ímpares \nDigite o número da opção desejada: ', function(escolha){
-   // let escolhaUsuario      = escolha
-   // let calculoImc          = imc
-   // let calculoMediaEscolar = mediaEscolar
-   // let calculoTabuada      = tabuada
-   // let calculoFatorial     = fatorial
-   // let calculoNumeros      = numeros
+    let escolhaUsuario = escolha
 
     let imcDoUsuario = require('./modulo/imc')
 
-    //Irá validar a opção que o usuário digitar
-    if(escolhaUsuario == '1'){
-        let validar = imcDoUsuario.calcularImcDoUsuario()
+    if (escolhaUsuario == '1') {
 
-    }else if(escolhaUsuario == '2')
-        return mediaEscolar
+        entradaDeDados.question('Digite a sua altura: ', function(altura){
+            let alturaDoUsuario = altura
 
-    else if (escolhaUsuario == '3') 
-        return tabuada
-
-    else if (escolhaUsuario == '4') 
-       return tabuada 
-
-    else if (escolhaUsuario == '5') 
-        return numeros
-
-    else{
-        return false
+            entradaDeDados.question('Digite o seu peso: ', function(peso){
+            let pesoDoUsuario = peso
+     
+        let resultado = imcDoUsuario.calcularImcDoUsuario()
+        })
+            })
     }
+
 })//Fechamento da entradaDeDados
