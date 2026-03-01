@@ -6,33 +6,30 @@
  *********************************************************************************************/
 
 function calcularImcDoUsuario(altura, peso){
-    let alturaDoUsuario = 1.66
-    let pesoDoUsuario   = 90
-    const calculo = Number(pesoDoUsuario) / Number(alturaDoUsuario * alturaDoUsuario)
+     let resultado = ''
+     const imcModulo = Number(peso) / Number(altura * altura)
 
-    if (calculo < 18.5) {
-         console.log(`Seu peso é ${calculo.toFixed(2)}, você está abaixo do peso!`)
+    if (imcModulo < 18.5) {
+         console.log(`Seu IMC é ${imcModulo.toFixed(2)}, você está abaixo do peso!`)
 
-    }else if (calculo >= 18.5 && calculo <= 24.9) {
-         console.log(`Seu peso é ${calculo.toFixed(2)}, você está com o peso normal.`)
+    }else if (imcModulo >= 18.5 && imcModulo <= 24.9) {
+         console.log(`Seu IMC é ${imcModulo.toFixed(2)}, você está com o peso normal.`)
 
-    }else if(calculo >= 25 && calculo <= 29.9){
-         console.log(`Seu peso é ${calculo.toFixed(2)}, você está acima do peso (sobrepeso).`)
+    }else if(imcModulo >= 25 && imcModulo <= 29.9){
+         console.log(`Seu IMC é ${imcModulo.toFixed(2)}, você está acima do peso (sobrepeso).`)
 
-    }else if (calculo >= 30 && calculo <= 34.9) {
-         console.log(`Seu peso é ${calculo.toFixed(2)}, você está com Obesidade I!`)
+    }else if (imcModulo >= 30 && imcModulo <= 34.9) {
+         console.log(`Seu IMC é ${imcModulo.toFixed(2)}, você está com Obesidade I!`)
 
-    }else if (calculo >= 35 && calculo <= 39.9) {
-         console.log(`Seu peso é ${calculo.toFixed(2)}, você está com Obesidade II!`)
+    }else if (imcModulo >= 35 && imcModulo <= 39.9) {
+         console.log(`Seu IMC é ${imcModulo.toFixed(2)}, você está com Obesidade II!`)
 
-    }else if (calculo >= 40) {
-         console.log(`Seu peso é ${calculo.toFixed(2)}, você está com Obesidade III!`)
-    }else{
-        console.log('merda')
+    }else if (imcModulo >= 40) {
+         console.log(`Seu IMC é ${imcModulo.toFixed(2)}, você está com Obesidade III!`)
     }
-}
 
-calcularImcDoUsuario()
+    return resultado
+}
 
 module.exports = {
     calcularImcDoUsuario
