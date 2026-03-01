@@ -28,10 +28,10 @@ const iniciarSistema = async () => {
     
     //Menu de opções 
     console.log('1 - Cálculo de IMC')
-    console.log('2 - Cálculo de médias escolares')
-    console.log('3 - Cálculo de tabuada')
+    console.log('2 - Cálculo de Médias Escolares')
+    console.log('3 - Cálculo de Tabuada')
     console.log('4 - Cálculo de Fatorial')
-    console.log('5 - Gerenciar números pares e ímpares')
+    console.log('5 - Gerenciar números Pares e Ímpares')
 
     //Aqui o sistema para e espera a escolha do usuário
     const escolhaUsuario = await entradaDados('\nEscolha uma opção (1-5): ')
@@ -40,7 +40,7 @@ const iniciarSistema = async () => {
     switch (escolhaUsuario) {
         case '1':
             console.log('\n--- Exercício 01: Cálculo de IMC ---')
-            
+
             const altura = await entradaDados('Digite a sua altura: ')
             const peso = await entradaDados('Digite o seu peso: ')
             
@@ -52,13 +52,31 @@ const iniciarSistema = async () => {
         case '2':
             console.log('\n--- Exercício 02: Médias Escolares ---')
 
-            const nomeAluno = await entradaDados('Nome do aluno: ')
-            const sexoAluno = await entradaDados('Sexo do aluno [F/M]: ')
-            const nomeProfessor = await entradaDados('Nome do professor: ')
-            const sexoProfessor = await entradaDados('Sexo do professor [F/M]: ') 
+            //Pega as informações do aluno, professor, curso e disciplina
+            const nomeAluno = await entradaDados('Nome do(a) aluno(a): ')
+            const sexoAluno = await entradaDados('Sexo do(a) aluno(a) [F/M]: ')
+            const nomeProfessor = await entradaDados('Nome do(a) professor(a): ')
+            const sexoProfessor = await entradaDados('Sexo do(a) professor(a) [F/M]: ') 
+            const curso = await entradaDados('\nDigite o nome do curso: ')
+            const disciplina = await entradaDados('Digite a disciplina: ')
 
-            const resultado = mediaEscolar.calcularMedia(dados)
-            console.log(resultado)
+            //Pega as notas do aluno
+            const n1 = await entradaDados('Nota 1: ')
+            const n2 = await entradaDados('Nota 2: ')
+            const n3 = await entradaDados('Nota 3: ')
+            const n4 = await entradaDados('Nota 4: ')
+
+            const dados = {
+            nomeAluno: nomeAluno,
+            sexoA: sexoAluno,
+            nomeProfessor: nomeProfessor,
+            sexoP: sexoProfessor,
+            curso: curso,
+            disciplina: disciplina,   
+        }
+
+            const resultadoMedia = mediaModulo.calcularMedia(dados)
+            console.log(resultadoMedia)
             break
 
         case '3':
