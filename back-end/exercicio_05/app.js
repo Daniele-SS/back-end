@@ -63,7 +63,7 @@ const iniciarSistema = async () => {
             //Pega as notas do aluno
             const n1 = await entradaDados('Nota 1: ')
             const n2 = await entradaDados('Nota 2: ')
-            const n3 = await entradaDados('Nota 3: ')
+            const n3= await entradaDados('Nota 3: ')
             const n4 = await entradaDados('Nota 4: ')
 
             const dados = {
@@ -73,6 +73,10 @@ const iniciarSistema = async () => {
             sexoP: sexoProfessor,
             curso: curso,
             disciplina: disciplina,   
+            n1: n1,
+            n2: n2,
+            n3: n3,
+            n4: n4,
         }
 
             const resultadoMedia = mediaModulo.calcularMedia(dados)

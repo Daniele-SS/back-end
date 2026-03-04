@@ -38,37 +38,39 @@ function calcularMedia(dados){
     let status
     if (media >= 70) {
         status = 'aprovado' // Média acima de 70 
-    } else if (media < 50) {
-        status = 'reprovado' // Média abaixo de 50 
-    } else {
+    } else if (media >= 50) {
         status = 'em exame' // Média entre 50 e 69 
+    } else {
+        status = 'reprovado' // Média abaixo de 50
     }
 
     //Caso o aluno fique em exame será feito um novo cálculo para decedir a aprovação dele ou não
     let mediaFinalExame = 0
-    if (status === 'em exame') {
-        // Nota do exame deve vir do objeto dados enviado pelo app.js
-        mediaFinalExame = (media + Number(dados.notaExame)) / 2
-    
-        if (mediaFinalExame >= 60) {
-            status = 'aprovado no exame'
-        } else {
-            status = 'reprovado no exame'
-        }
-    }
+        if (status === 'em exame' || dados.notaExame !== null)
+            mediaFinalExame = (media + Number(dados.notaExame)) / 2
+        
+            if (mediaFinalExame >= 60) {
+                status = 'aprovado no exame'
+            } else {
+                status = 'reprovado no exame'
+            }
 
     const relatorio = `
     Relatório do aluno:
-    ${titulos.relatoAluno} ${dados.nomeA} foi ${status} na disciplina ${dados.disc}.
+    ${titulos.relatoAluno} ${dados.nomeAluno} foi ${status} na disciplina ${dados.disciplina}.
     Curso: ${dados.curso}
-    ${titulos.relatoProfessor}: ${dados.nomeP}
+    ${titulos.relatoProfessor}: ${dados.nomeProfessor}
     Notas do aluno: ${dados.n1}, ${dados.n2}, ${dados.n3}, ${dados.n4}
     Média Final: ${media.toFixed(1)}`
 
-    return relatorio
+    return {
+        status: status,// 'aprovado', 'reprovado', 'em exame'.
+        relatorio: relatorio
+    }
     
 }//Fechamento da function calcularMedia
 
+//Impor da function calcularMedia
 module.exports = { 
     calcularMedia 
 }
