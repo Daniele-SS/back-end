@@ -84,7 +84,12 @@ const iniciarSistema = async () => {
             break
 
         case '3':
-            // Lógica para Tabuada 
+            console.log('\n--- Exercício 03: Cálculo de Tabuada ---')
+
+            const tabInicial = await entradaDados ('Digite a Tabuada Inicial a ser calculada (2 - 100): ')
+            const tabFinal = await entradaDados ('Digite a Tabuada Final a ser calculada (2 - 100): ')
+
+
             break;
 
         case '4':
