@@ -9,6 +9,9 @@ function gerarTabuada (tabuadaInical, tabuadaFinal, numeroInicial, numeroFinal) 
     //Esse primeiro while irá definir quantos multiplicandos a tabuada terá
     while (tabuadaInical <= tabuadaFinal) {
 
+        console.log('')
+        console.log(`Tabuada do: ${tabuadaInical}`)
+
         //É a minha variável que receberá o número (multiplicador) inicial
         let auxiliar = numeroInicial
 
@@ -31,4 +34,6 @@ function gerarTabuada (tabuadaInical, tabuadaFinal, numeroInicial, numeroFinal) 
  
 }
 
-gerarTabuada(5, 5, 1, 10)
+module.exports = {
+    gerarTabuada
+}

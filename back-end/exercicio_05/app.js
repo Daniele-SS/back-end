@@ -86,10 +86,14 @@ const iniciarSistema = async () => {
         case '3':
             console.log('\n--- Exercício 03: Cálculo de Tabuada ---')
 
-            const tabInicial = await entradaDados ('Digite a Tabuada Inicial a ser calculada (2 - 100): ')
-            const tabFinal = await entradaDados ('Digite a Tabuada Final a ser calculada (2 - 100): ')
+            const tabInicial = await entradaDados ('Digite um número para a Tabuada Inicial (2 - 100): ')
+            const tabFinal = await entradaDados ('Digite um número para a Tabuada Final (2 - 100): ')
+            const numInical = await entradaDados ('Digite um número inicial do contador da tabuada (1 - 50): ')
+            const numFinal = await entradaDados ('Digite o número final do contador da tabuada (1 - 50): ')
 
 
+            const resultadoTabuada = tabuadaModulo.gerarTabuada(tabInicial, tabFinal, numInical, numFinal)
+            console.log(resultadoTabuada)
             break;
 
         case '4':
