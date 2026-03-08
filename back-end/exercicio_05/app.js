@@ -41,8 +41,8 @@ const iniciarSistema = async () => {
         case '1':
             console.log('\n--- Exercício 01: Cálculo de IMC ---')
 
-            const altura = await entradaDados('Digite a sua altura: ')
-            const peso = await entradaDados('Digite o seu peso: ')
+            const altura    = await entradaDados('Digite a sua altura: ')
+            const peso      = await entradaDados('Digite o seu peso: ')
             
             //Chama a função do módulo e guarda o retorno
             const resultadoImc = imcModulo.calcularImcDoUsuario(altura, peso)
@@ -53,17 +53,17 @@ const iniciarSistema = async () => {
             console.log('\n--- Exercício 02: Médias Escolares ---')
 
             //Pega as informações do aluno, professor, curso e disciplina
-            const nomeAluno = await entradaDados('Nome do(a) aluno(a): ')
-            const sexoAluno = await entradaDados('Sexo do(a) aluno(a) [F/M]: ')
+            const nomeAluno     = await entradaDados('Nome do(a) aluno(a): ')
+            const sexoAluno     = await entradaDados('Sexo do(a) aluno(a) [F/M]: ')
             const nomeProfessor = await entradaDados('Nome do(a) professor(a): ')
             const sexoProfessor = await entradaDados('Sexo do(a) professor(a) [F/M]: ') 
-            const curso = await entradaDados('\nDigite o nome do curso: ')
-            const disciplina = await entradaDados('Digite a disciplina: ')
+            const curso         = await entradaDados('\nDigite o nome do curso: ')
+            const disciplina    = await entradaDados('Digite a disciplina: ')
 
             //Pega as notas do aluno
             const n1 = await entradaDados('Nota 1: ')
             const n2 = await entradaDados('Nota 2: ')
-            const n3= await entradaDados('Nota 3: ')
+            const n3 = await entradaDados('Nota 3: ')
             const n4 = await entradaDados('Nota 4: ')
 
             const dados = {
@@ -91,13 +91,17 @@ const iniciarSistema = async () => {
             const numInical = await entradaDados ('Digite um número inicial do contador da tabuada (1 - 50): ')
             const numFinal = await entradaDados ('Digite o número final do contador da tabuada (1 - 50): ')
 
-
             const resultadoTabuada = tabuadaModulo.gerarTabuada(tabInicial, tabFinal, numInical, numFinal)
             console.log(resultadoTabuada)
             break;
 
         case '4':
-            // Lógica para Fatorial 
+            console.log('\n--- Exercício 03: Cálculo de Fatorial ---')
+
+            const numFatorial = await entradaDados('Digite um número para calcular o seu fatorial: ')
+
+            const resultadoFatorial = fatorialModulo.calcularFatorial(numFatorial)
+            console.log(resultadoFatorial)
             break;
 
         case '5':
