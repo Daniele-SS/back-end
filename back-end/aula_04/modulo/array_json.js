@@ -99,8 +99,23 @@ const manipularDados = function(){
         Para adicionar mais de um item basta adicionar a vírgurla para separar.
     */
     listaDeFornecedores.push('Mario da Silva', 'André da Silva', 'Carlos da Silva', 'Zezinho da Silva', 'Huguinho da Silva', 'Luiz da Silva')
-
     console.table(listaDeFornecedores)
+
+
+    listaDeFornecedores.unshift('Ana Carolina')// O .unshift permite adicionar novos elementos no array sempre no INICIO da lista
+    console.table(listaDeFornecedores)
+
+
+    listaDeFornecedores.pop()//O .pop() permite remover elementos do FINAL da lista
+    console.table(listaDeFornecedores)
+
+
+    listaDeFornecedores.shift()//O .shift() permite remover elementos do INICIO da lista
+    console.table(listaDeFornecedores)
+
+    listaDeFornecedores.splice(2,2)//O .splice(indicie, qtde de elementos) permite remover um elemento baseado no indice da lista
+    console.table(listaDeFornecedores)
+
 }
 
 manipularDados()
