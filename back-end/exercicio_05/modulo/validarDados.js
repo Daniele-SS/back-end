@@ -38,7 +38,7 @@ function validarTabuada(tabuadaInical, tabuadaFinal, numeroInicial, numeroFinal)
 function validarFatorial(fatorial) {
     let numeroFatorial = fatorial
 
-    if (numeroFatorial == '' || isNaN(numeroFatorial)) {
+    if (numeroFatorial == '' || isNaN(numeroFatorial) || numeroFatorial < 2 || numeroFatorial <= 0) {
         return false
     } else {
         return true
