@@ -33,7 +33,17 @@
  */
 
 //Formas de criar um ARRAY
-const listaDeNomes          = ['José', 'Maria', 'João', 'André', 'Ana']//Consigo guardar tipos de dados diferentes dentro de um array
+const listaDeNomes          = ['José', 
+                                'Maria', 
+                                'João', 
+                                'André', 
+                                'Ana', 
+                                'Carlos', 
+                                'Bruna', 
+                                'Jake',
+                                'José da Silva',
+                                'José'
+                            ]//Consigo guardar tipos de dados diferentes dentro de um array
 const listaDeClientes       = []
 const listaDeFornecedores   = []
 
@@ -115,7 +125,59 @@ const manipularDados = function(){
 
     listaDeFornecedores.splice(2,2)//O .splice(indicie, qtde de elementos) permite remover um elemento baseado no indice da lista
     console.table(listaDeFornecedores)
-
 }
 
-manipularDados()
+const removerItem = function(nome) {
+
+    let indice = listaDeNomes.indexOf(nome)/*O .indexOf(variável, que nesse caso é 'nome'),
+    retorna o indice de um elemento fazendo a busca pelo valor.
+    Se o .indexOf() não encontrar o conteúdo ele devolve -1*/
+    
+    if (indice != -1) {
+            listaDeNomes.splice(indice,1)
+            return true
+    } else {
+            return false
+    }
+
+    //--- FOR IN ---
+    /*for(indice in listaDeNomes){
+        if (listaDeNomes[indice] == nome) {
+                listaDeNomes.splice(indice,2)/*O número após a minha variável, que nesse caso é o 'indice' 
+                irá remover o nome selecionado que nesse caso é 'Maria e Bruna' mais o próximo elemento da lista.
+                O número 2 é a quantidade de itens a serem removidos após o indice
+        }
+    }*/
+}
+
+const verificarItem = function(nome) {
+    return listaDeNomes.includes(nome)//Verifica a existencia de um conteúdo dentro de uma linha (true/false)
+}
+
+const quantidadeItens = function(nome) {
+    let cont = 0
+
+    listaDeNomes.forEach(function(item) {
+        if (String(item).toUpperCase() == String(nome).toUpperCase())
+            cont += 1
+    })
+
+    return cont
+}
+
+//exebirDados()
+//manipularDados()
+//console.table(listaDeNomes)
+
+// let resposta = removerItem('blabla')
+
+// if (resposta) 
+//      console.log('Item removido com sucesso')
+//  else 
+//     console.log('Não foram encontrados itens para serem removidos.')
+
+// console.table(listaDeNomes) 
+
+//console.log(verificarItem('Maria'))//Para verificar o que o return irá mostrar no caso do .includes, é nece
+
+console.log(quantidadeItens('José da Silva'))
