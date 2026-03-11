@@ -97,8 +97,14 @@ const iniciarSistema = async () => {
             const numInical     = await entradaDados ('Digite um número inicial do contador da tabuada (1 - 50): ')
             const numFinal      = await entradaDados ('Digite o número final do contador da tabuada (1 - 50): ')
 
-            const resultadoTabuada = tabuadaModulo.gerarTabuada(tabInicial, tabFinal, numInical, numFinal)
-            console.log(resultadoTabuada)
+            let validarTabuada = validacaoModulo.validarTabuada(tabFinal, tabInicial, numFinal, numInical)
+
+            if (validarTabuada) {
+                const resultadoTabuada = tabuadaModulo.gerarTabuada(tabInicial, tabFinal, numInical, numFinal)
+                console.log(resultadoTabuada)
+            } else {
+                console.log('Falha')
+            }
             break
 
         case '4':

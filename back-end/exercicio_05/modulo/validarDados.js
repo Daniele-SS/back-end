@@ -6,8 +6,8 @@
  *********************************************************************************************/
 
 function validarImcDoUsuario(validarAltura, validaraPeso) {
-    let altura = validarAltura
-    let peso = validaraPeso
+    let altura  = validarAltura
+    let peso    = validaraPeso
 
     if (altura == '' || isNaN(altura) || peso == '' || isNaN(peso)) {
         return false
@@ -16,19 +16,39 @@ function validarImcDoUsuario(validarAltura, validaraPeso) {
     }
 }//Função para validação do calculo de imc
 
-function valirMediasEscolares(params) {
+function valirMediasEscolares() {
     
 }
 
+function validarTabuada(tabuadaInical, tabuadaFinal, numeroInicial, numeroFinal) {
+    let tabInicial  = tabuadaInical
+    let tabFinal    = tabuadaFinal
+    let numInicio   = numeroInicial
+    let numFinal    = numeroFinal
 
+    if (tabFinal <= 1 || tabInicial > 100 || tabInicial == '' || !isNaN(tabInicial) 
+        || tabFinal <= 0 || tabFinal > 100 || tabFinal == '' || !isNaN(tabFinal) || tabFinal <  tabInicial
+        || numInicio == '' || numInicio < 1 || numInicio > 50 || !isNaN(numInicio) || numFinal < numFinal) {
+        return false
+    } else {
+        return true
+    }
+}
 
+function validarFatorial(fatorial) {
+    let numeroFatorial = fatorial
 
+    if (numeroFatorial == '' || isNaN(numeroFatorial)) {
+        return false
+    } else {
+        return true
+    }
 
-
-
-
+}
 
 module.exports = {
     validarImcDoUsuario,
-    valirMediasEscolares
+    valirMediasEscolares,
+    validarFatorial,
+    validarTabuada
 }
