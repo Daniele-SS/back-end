@@ -14,11 +14,11 @@
 const { entradaDados } = require('./modulo/config.js')
 
 //Import dos módulos de cálculo 
-const imcModulo = require('./modulo/imc.js')
-const mediaModulo = require('./modulo/mediaEscolar.js')
-const tabuadaModulo = require('./modulo/tabuada.js')
-const fatorialModulo = require('./modulo/fatorial.js')
-const numerosModulo = require('./modulo/numeros.js')
+const imcModulo         = require('./modulo/imc.js')
+const mediaModulo       = require('./modulo/mediaEscolar.js')
+const tabuadaModulo     = require('./modulo/tabuada.js')
+const fatorialModulo    = require('./modulo/fatorial.js')
+const numerosModulo     = require('./modulo/numeros.js')
 
 //Import da validação de dados
 const validacaoModulo = require('./modulo/validarDados.js')
@@ -44,9 +44,15 @@ const iniciarSistema = async () => {
             const altura    = await entradaDados('Digite a sua altura: ')
             const peso      = await entradaDados('Digite o seu peso: ')
             
-            //Chama a função do módulo e guarda o retorno
-            const resultadoImc = imcModulo.calcularImcDoUsuario(altura, peso)
-            console.log(resultadoImc)
+            let validarImcDoUsuario = validacaoModulo.validarImcDoUsuario(altura, peso)
+
+            if (validarImcDoUsuario) {
+                //Chama a função do módulo e guarda o retorno
+                const resultadoImc = imcModulo.calcularImcDoUsuario(altura, peso)
+                console.log(resultadoImc)
+            } else {
+                console.log('Falha')
+            }
             break
 
         case '2':
@@ -93,7 +99,7 @@ const iniciarSistema = async () => {
 
             const resultadoTabuada = tabuadaModulo.gerarTabuada(tabInicial, tabFinal, numInical, numFinal)
             console.log(resultadoTabuada)
-            break;
+            break
 
         case '4':
             console.log('\n--- Exercício 04: Cálculo de Fatorial ---')
@@ -102,7 +108,7 @@ const iniciarSistema = async () => {
 
             const resultadoFatorial = fatorialModulo.calcularFatorial(numFatorial)
             console.log(resultadoFatorial)
-            break;
+            break
 
         case '5':
             console.log('\n--- Exercício 05: Gerenciar números Pares e Ímpares ---')
@@ -117,7 +123,7 @@ const iniciarSistema = async () => {
             break
 
         default:
-            console.log('Opção inválida!')
+            console.log('É necessário digitar um número de 1 a 5!')
             break
     }
 
