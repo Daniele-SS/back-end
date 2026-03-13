@@ -188,8 +188,86 @@ const criandoDadosJSON = function() {
     aluno.sexo = 'Masculino'//variável.atributo que ainda não existe, irá adicionar um novo atributo no JSON
     console.log(aluno)
 
-    delete aluno.telefone//Comando para excluir um atributo do JSON que neste caso é "telefone"
+    delete aluno.telefone//Remove um atributo do JSON que neste caso é "telefone"
     console.log(aluno)
+}
+
+const cadastroDeProdutos = function() {
+    let cores = [
+        {"id": 1, "cor": "Branco"},//Indice 0 do meu array de cores
+        {"id": 2, "cor": "Preto"},//Indice 1
+        {"id": 3, "cor": "Azul"},//Indice 2
+        {"id": 4, "cor": "Rosa"},//Indice 3
+        {"id": 5, "cor": "Cinza"}//Indice 4, fechamento do JSON
+    ]//Fechamento do Array
+
+    let marcas = [
+        {"id": 1, "marca": "LG",         "telefone": "123456789",    "email": "lg@gmail.com"},//Indice 0 do array
+        {"id": 2, "marca": "Dell",       "telefone": "789456123",    "email": "dell@gmail.com.br"},
+        {"id": 3, "marca": "Lenovo",     "telefone": "578913421",     "email": "lenovo@gmail.com.br"},
+        {"id": 4, "marca": "Aplle",      "telefone": "741258963",    "email": "aplle@gmail.com"},
+        {"id": 5, "marca": "Razer",      "telefone": "369852147",    "email": "razer@gmail.com.br"},
+        {"id": 6, "marca": "Logitech",   "telefone": "852369874",   "email": "logitech@gmail.com"},
+        {"id": 7, "marca": "Multilaser", "telefone": "827415269",    "email": "multilaser@gmail.com"}//Fechamento do JSON
+    ]//Fechamento do Array
+
+    let produtos = [
+        {   "id": 1, 
+            "nome": "Monitor", 
+            "descricao": "27 polegadas",
+            "marca": [
+                marcas[1].marca
+            ],
+            "qtde": 20,
+            "cor": [
+                cores[4].cor,
+                cores[1].cor
+            ],//Fechamento do Array cor
+            "valor": 800.50
+        },//Fechamento do JSON
+        {   "id": 2,
+            "nome": "Teclado", 
+            "descricao": "Teclado mecânico RGB",
+            "marca": [
+                marcas[5].marca
+            ],
+            "qtde": 200,
+            "cor": cores,
+            "valor": 150
+        },
+        {   "id": 3,
+            "nome": "Mouse", 
+            "descricao": "Sem fio",
+            "marca": [
+                marcas[1].marca,
+                marcas[4].marca,
+                marcas[5].marca
+            ],
+            "qtde": 500,
+            "cor": [
+                cores[0].cor,
+                cores[1].cor,
+                cores[4].cor
+            ],
+            "valor": 80
+        }
+    ]//Fechamento do Array
+
+    // console.log(cores)
+    // console.table(cores)
+    // console.log(cores[2].nome)/*variável[indice do array].objeto do JSON, irá me mostrar o objeto 
+    // selecionado do indice "2" que neste caso é "azul"*/
+
+    console.table(produtos)
+    // console.log(produtos[0].cor)/*Irá mostrar as cores que estam dentro do meu array "cor" que está dentro do meu JSON
+    // da variável let produtos*/
+    // console.log(produtos[0].cor[1].cor)/*Navegando dentro de dois JSON e dois arrays.
+    // variálvel[indice].variável.[indicie].variável -> Para mostrar o objeto desejado do JSON.*/
+
+    // produtos[0].cor.forEach(function(nomeCor) {
+    //     console.log('A cor do produto é: ' + nomeCor.cor)
+    // })//Fechamento do FOR EACH
+
 }
 
 //exebirDados()
@@ -208,4 +286,5 @@ const criandoDadosJSON = function() {
 //console.log(verificarItem('Maria'))//Para verificar o que o return irá mostrar no caso do .includes, é nece
 //console.log(quantidadeItens('José da Silva'))
 
-criandoDadosJSON()
+//criandoDadosJSON()
+cadastroDeProdutos()
