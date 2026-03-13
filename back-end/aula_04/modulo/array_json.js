@@ -42,8 +42,7 @@ const listaDeNomes          = ['José',
                                 'Bruna', 
                                 'Jake',
                                 'José da Silva',
-                                'José'
-                            ]//Consigo guardar tipos de dados diferentes dentro de um array
+                                'José']//Consigo guardar tipos de dados diferentes dentro de um array
 const listaDeClientes       = []
 const listaDeFornecedores   = []
 
@@ -173,7 +172,25 @@ const quantidadeItens = function(nome) {
     return cont
 }
 
+const criandoDadosJSON = function() {
+    let aluno = {   "nome":     "José", 
+                    "ra":       123456, 
+                    "telefone": "8299135674", 
+                    "email":    "jose@gmail.com" }
 
+    //Exibe o objeto JSON completo
+    console.log(aluno)
+    console.table(aluno)
+
+    console.log(aluno.nome)//variável.objeto (aluno.nome), irá mostrar o atributo do objeto, que neste caso é "nome"
+    console.log(aluno.email)//variável.objeto (aluno.email), irá mostrar o atributo do objeto, que neste caso é "email"
+
+    aluno.sexo = 'Masculino'//variável.atributo que ainda não existe, irá adicionar um novo atributo no JSON
+    console.log(aluno)
+
+    delete aluno.telefone//Comando para excluir um atributo do JSON que neste caso é "telefone"
+    console.log(aluno)
+}
 
 //exebirDados()
 //manipularDados()
@@ -189,6 +206,6 @@ const quantidadeItens = function(nome) {
 // console.table(listaDeNomes) 
 
 //console.log(verificarItem('Maria'))//Para verificar o que o return irá mostrar no caso do .includes, é nece
-
 //console.log(quantidadeItens('José da Silva'))
 
+criandoDadosJSON()
