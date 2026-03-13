@@ -123,7 +123,15 @@ const manipularDados = function(){
     listaDeFornecedores.shift()//O .shift() permite remover elementos do INICIO da lista
     console.table(listaDeFornecedores)
 
-    listaDeFornecedores.splice(2,2)//O .splice(indicie, qtde de elementos) permite remover um elemento baseado no indice da lista
+    listaDeFornecedores.splice(2,2)//Neste caso, o .splice(indicie, qtde de elementos) permite remover um elemento baseado no indice da lista
+    console.table(listaDeFornecedores)
+
+    listaDeFornecedores.splice(2,0,'Carlos da Silva')
+    /*Neste caso, o .splice permite adicionar um novo elemento em um determinado lugar do array (indice).
+    O indicie 0 significa que não será removido niguém, novo conteúdo.*/
+    console.table(listaDeFornecedores)
+
+    listaDeFornecedores[1] = 'Zezinho de Souza'
     console.table(listaDeFornecedores)
 }
 
@@ -165,10 +173,12 @@ const quantidadeItens = function(nome) {
     return cont
 }
 
+
+
 //exebirDados()
 //manipularDados()
 //console.table(listaDeNomes)
-
+//manipularDados()
 // let resposta = removerItem('blabla')
 
 // if (resposta) 
@@ -180,4 +190,5 @@ const quantidadeItens = function(nome) {
 
 //console.log(verificarItem('Maria'))//Para verificar o que o return irá mostrar no caso do .includes, é nece
 
-console.log(quantidadeItens('José da Silva'))
+//console.log(quantidadeItens('José da Silva'))
+
