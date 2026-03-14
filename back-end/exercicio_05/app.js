@@ -115,8 +115,8 @@ const iniciarSistema = async () => {
             let validarFatorial = validacaoModulo.validarFatorial(numFatorial)
 
             if (validarFatorial) {
-            const resultadoFatorial = fatorialModulo.calcularFatorial(numFatorial)
-            console.log(resultadoFatorial)
+                const resultadoFatorial = fatorialModulo.calcularFatorial(numFatorial)
+                console.log(resultadoFatorial)
             } else {
                 console.log('Falha')
             }
@@ -129,9 +129,14 @@ const iniciarSistema = async () => {
             const numero2 = await entradaDados('Digite o segundo número: ')
             const opcaoUsuario = await entradaDados('Digite 1 para números pares e 2 para números ímpares: ')
 
+            let validarNumerosParImpar = validacaoModulo.validarNumerosParImpar(numero1, numero2, opcaoUsuario)
 
-            const resultadoImPar = numerosModulo.listaDeNumeros(numero1, numero2, opcaoUsuario)
-            console.log(resultadoImPar)
+            if (validarNumerosParImpar) {
+                const resultadoImPar = numerosModulo.listaDeNumeros(numero1, numero2, opcaoUsuario)
+                console.log(resultadoImPar)
+            } else {
+                console.log('Falha')
+            }
             break
 
         default:

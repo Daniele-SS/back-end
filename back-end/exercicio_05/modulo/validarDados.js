@@ -43,12 +43,27 @@ function validarFatorial(fatorial) {
     } else {
         return true
     }
+}
 
+function validarNumerosParImpar(n1, n2, escolha) {
+    let numIni = n1
+    let numFim = n2
+    let escolhaDoUsuario = escolha
+
+    if (numIni == '' || isNaN(numIni) || numIni <= 0 || numIni >= 500 
+        || numFim == '' || isNaN(numFim) || numFim <= 100 || numFim >= 1000
+        || numIni > numFim || numIni == numFim) {
+        return false
+    } else {
+        return true
+    }
+    
 }
 
 module.exports = {
     validarImcDoUsuario,
     valirMediasEscolares,
     validarFatorial,
-    validarTabuada
+    validarTabuada,
+    validarNumerosParImpar
 }
