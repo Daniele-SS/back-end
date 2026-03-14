@@ -112,8 +112,14 @@ const iniciarSistema = async () => {
 
             const numFatorial = await entradaDados('Digite um número para calcular o seu fatorial: ')
 
+            let validarFatorial = validacaoModulo.validarFatorial(numFatorial)
+
+            if (validarFatorial) {
             const resultadoFatorial = fatorialModulo.calcularFatorial(numFatorial)
             console.log(resultadoFatorial)
+            } else {
+                console.log('Falha')
+            }
             break
 
         case '5':
