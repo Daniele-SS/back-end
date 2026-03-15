@@ -45,10 +45,9 @@ function validarFatorial(fatorial) {
     }
 }
 
-function validarNumerosParImpar(n1, n2, escolha) {
+function validarNumerosParImpar(n1, n2) {
     let numIni = n1
     let numFim = n2
-    let escolhaDoUsuario = escolha
 
     if (numIni == '' || isNaN(numIni) || numIni <= 0 || numIni >= 500 
         || numFim == '' || isNaN(numFim) || numFim <= 100 || numFim >= 1000

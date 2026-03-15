@@ -128,16 +128,24 @@ const iniciarSistema = async () => {
             const numero1 = await entradaDados('Digite o primeiro número: ')
             const numero2 = await entradaDados('Digite o segundo número: ')
             const opcaoUsuario = await entradaDados('Digite 1 para números pares e 2 para números ímpares: ')
-
+            
             let validarNumerosParImpar = validacaoModulo.validarNumerosParImpar(numero1, numero2, opcaoUsuario)
 
-            if (validarNumerosParImpar) {
+            if (opcaoUsuario == '1') {
+                console.log("Lista de Números Pares")
                 const resultadoImPar = numerosModulo.listaDeNumeros(numero1, numero2, opcaoUsuario)
                 console.log(resultadoImPar)
-            } else {
+
+            } else if (opcaoUsuario == '2') {
+                console.log("Lista de Números Ímpares")
+                const resultadoImPar = numerosModulo.listaDeNumeros(numero1, numero2, opcaoUsuario)
+                console.log(resultadoImPar)
+
+            } else if (validarNumerosParImpar !== opcaoUsuario) {
                 console.log('Falha')
             }
             break
+
 
         default:
             console.log('É necessário digitar um número de 1 a 5!')
