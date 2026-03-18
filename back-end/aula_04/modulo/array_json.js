@@ -220,8 +220,8 @@ const cadastroDeProdutos = function() {
             ],
             "qtde": 20,
             "cor": [
-                cores[4].cor,
-                cores[1].cor
+                cores[4],
+                cores[1]
             ],//Fechamento do Array cor
             "valor": 800.50
         },//Fechamento do JSON
@@ -245,9 +245,9 @@ const cadastroDeProdutos = function() {
             ],
             "qtde": 500,
             "cor": [
-                cores[0].cor,
-                cores[1].cor,
-                cores[4].cor
+                cores[0],
+                cores[1],
+                cores[4]
             ],
             "valor": 80
         }
@@ -258,7 +258,7 @@ const cadastroDeProdutos = function() {
     // console.log(cores[2].nome)/*variável[indice do array].objeto do JSON, irá me mostrar o objeto 
     // selecionado do indice "2" que neste caso é "azul"*/
 
-    console.table(produtos)
+    console.log(produtos)
     // console.log(produtos[0].cor)/*Irá mostrar as cores que estam dentro do meu array "cor" que está dentro do meu JSON
     // da variável let produtos*/
     // console.log(produtos[0].cor[1].cor)/*Navegando dentro de dois JSON e dois arrays.
@@ -267,6 +267,61 @@ const cadastroDeProdutos = function() {
     // produtos[0].cor.forEach(function(nomeCor) {
     //     console.log('A cor do produto é: ' + nomeCor.cor)
     // })//Fechamento do FOR EACH
+
+   produtos.forEach(function(itemProduto) {
+    console.log(`Produto: ${itemProduto.nome}`)/* Percorre o objeto de produto para trazer os dados de cada produto.
+                                                Irá printar no terminal o nome do produto por conta do '.nome' após chamar o meu parametro (variável),
+                                                que neste caso é 'itemProduto' */
+
+    itemProduto.marca.forEach(function(itemMarca){/* Começando do primeiro loop '.itemProduto'
+                                                    Percorre o objeto de marca dentro de cada produto, para trazer as marcas*/
+        console.log(`       Marca: ${itemMarca}`)
+    })//Fechamento do loop itemProduto.marca
+
+    itemProduto.cor.forEach(function(itemCor) {//Percorre o objeto de cor dentro de cada produto, para trazer as cores
+        console.log(`           Cor: ${itemCor.cor}`)
+    })//Fechamento do loop itemProduto.cor
+    
+   })//Fechamento do loop produtos
+
+
+   //Pesquisando um produto pelo NOME
+   console.log('Pesquisando um produto pelo NOME')
+   let nome = 'teclado'
+   
+   produtos.forEach(function(itemProduto) {//Percorrendo o ARRAY DE PRODUTOS->
+    if (String(itemProduto.nome).toLocaleUpperCase() == String(nome).toLocaleUpperCase()) {
+        console.log(itemProduto)
+    }
+   })//Fechamento do loop produtos
+
+
+   //Pesquisando um produto pela COR
+   console.log('Pesquisando um produto pela COR')
+   let cor = 'azul'
+   let status = false
+
+   produtos.forEach(function(itemProduto) {
+
+    itemProduto.cor.forEach(function(itemCor) {
+        if (String(itemCor.cor).toLocaleLowerCase() == String(cor).toLocaleLowerCase()) {
+         console.log(itemProduto)/*Irá printar os produtos que possuem a cor 'azul' pois atribui ela a minha variável 'cor'. 
+                                    Caso eu coloque a cor 'rosa', será apresentado todos os produtos que possuem essa cor. */
+            status = true 
+
+         //console.log(itemProduto.cor)Irá printar somente as cores dos produtos sem falar qual é o produto 
+         // que possui a cor atribuida a minha variável 'cor', pois estou usando o .cor
+        }
+
+        if (!status) {/*Irá validar se a variável digitada é valida para printar as mensagens no terminal
+                        e caso não seja, irá cair nesse console.log */
+            console.log('Item pesquisado não foi encontrado...')
+        }
+
+    })//Fechamento do forEach de itemProduto.cor
+
+   })//Fechamento do forEach de produtos
+
 
 }
 
