@@ -39,4 +39,20 @@ const getDadosEstado = function (uf) {
     return resultado
 }
 
-console.log(getDadosEstado('MT'))
+const getCapitalEstado = function (uf) {
+    let info 
+
+    listaDeEstados.estados.forEach(function(result) {
+        if (result.sigla === uf) {
+            info = {
+                uf: result.sigla,
+                descricao: result.nome,
+                capital: result.capital
+            }
+        }
+    })
+    return info
+}
+
+//console.log(getDadosEstado('MT'))
+//console.log(getCapitalEstado('RN'))
