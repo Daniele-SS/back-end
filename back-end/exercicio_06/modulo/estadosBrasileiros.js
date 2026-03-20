@@ -20,5 +20,23 @@ const getListaDeEstados = function () {
     }
 }
     
- 
-console.log(getListaDeEstados())
+const getDadosEstado = function (uf) {
+    let resultado
+
+    listaDeEstados.estados.forEach(function(descricao) {
+        if (descricao.sigla === uf) {
+            resultado = {
+                uf: descricao.sigla,
+                descricao: descricao.nome,
+                capital: descricao.capital,
+                regiao: descricao.regiao
+
+            }//Fechamento do JSON
+
+        }//Fechamento do if
+
+    })
+    return resultado
+}
+
+console.log(getDadosEstado('MT'))
