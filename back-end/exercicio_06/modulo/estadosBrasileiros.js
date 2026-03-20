@@ -54,5 +54,23 @@ const getCapitalEstado = function (uf) {
     return info
 }
 
+const getEstadosRegiao = function (reg) {
+    let aux = []//A variável vira um array porque uma região tem vários estados
+
+    listaDeEstados.estados.forEach(function(estado) {
+        if (estado.regiao === reg) {
+            /**O .push() é usado para poder 'puxar' todos os estados
+                da região selecionada */
+            aux.push({
+                regiao: estado.regiao,
+                uf: estado.sigla,
+                descricao: estado.nome
+            })
+        }
+    })
+    return aux
+}
+
 //console.log(getDadosEstado('MT'))
 //console.log(getCapitalEstado('RN'))
+console.log(getEstadosRegiao('Nordeste'))
