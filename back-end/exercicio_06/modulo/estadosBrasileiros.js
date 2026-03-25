@@ -36,6 +36,7 @@ const getDadosEstado = function (uf) {
         }//Fechamento do if
 
     })
+
     return resultado
 }
 
@@ -51,6 +52,7 @@ const getCapitalEstado = function (uf) {
             }
         }
     })
+
     return info
 }
 
@@ -66,6 +68,7 @@ const getEstadosRegiao = function (reg) {
             })
         }
     })
+
     return {
         regiao: reg,
         estados: aux
@@ -74,22 +77,29 @@ const getEstadosRegiao = function (reg) {
 
 const getCapitalPais = function () {
     let capitais = []
+    let json = {}
 
     listaDeEstados.estados.forEach(function(capitalBr) {
         if (capitalBr.capital_pais) {
             capitais.push({
+                capital_atual: capitalBr.capital_pais.capital,
                 uf: capitalBr.sigla,
                 descricao: capitalBr.nome,
                 capital: capitalBr.capital,
                 regiao: capitalBr.regiao,
                 capital_pais_ano_inicio: capitalBr.capital_pais.ano_inicio,
-                capital_pais_ano_termino: capitalBr.capital_pais.ano_fim,
-                capital_atual: capitalBr.capital_pais.capital
+                capital_pais_ano_termino: capitalBr.capital_pais.ano_fim
             })
         }
     })
 
-    return capitais
+    json.capitais = capitais
+
+    return json
+}
+
+const getCidades = function () {
+
 }
 
 //console.log(getDadosEstado('MT'))
