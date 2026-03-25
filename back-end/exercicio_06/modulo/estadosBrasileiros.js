@@ -91,8 +91,8 @@ const getEstadosRegiao = function (reg) {
 
     if (retornoFalso) {
         return {
-        regiao: reg,
-        estados: aux
+            regiao: reg,
+            estados: aux
         }
 
     } else {
