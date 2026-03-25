@@ -5,7 +5,6 @@
  * Versão: 1.0
  ****************************************/
 
-const { describe } = require('node:test')
 const listaDeEstados = require('./estados_cidades.js')
 
 const getListaDeEstados = function () {
@@ -73,22 +72,23 @@ const getEstadosRegiao = function (reg) {
     }
 }
 
-const getCapitalPais = function (uf) {
+const getCapitalPais = function () {
     let capitais = []
 
     listaDeEstados.estados.forEach(function(capitalBr) {
-        if (capitalBr.capital_atual === uf) {
+        if (capitalBr.capital_pais) {
             capitais.push({
                 uf: capitalBr.sigla,
                 descricao: capitalBr.nome,
                 capital: capitalBr.capital,
                 regiao: capitalBr.regiao,
-                capital_pais_ano_inicio: capitalBr.ano_inicio,
-                capital_pais_ano_termino: capitalBr.false,
-                capital_atual: capitalBr.capital_atual
+                capital_pais_ano_inicio: capitalBr.capital_pais.ano_inicio,
+                capital_pais_ano_termino: capitalBr.capital_pais.ano_fim,
+                capital_atual: capitalBr.capital_pais.capital
             })
         }
     })
+
     return capitais
 }
 
