@@ -22,9 +22,10 @@ const getListaDeEstados = function () {
     
 const getDadosEstado = function (uf) {
     let resultado
+    let retornoFalso = false //return false da variável caso seja fornecido um estado que não existe
 
     listaDeEstados.estados.forEach(function(descricao) {
-        if (descricao.sigla === uf) {
+        if (descricao.sigla.toLocaleUpperCase() === uf.toLocaleUpperCase()) {
                 resultado = {
                     uf: descricao.sigla,
                     descricao: descricao.nome,
@@ -33,45 +34,69 @@ const getDadosEstado = function (uf) {
 
                 }//Fechamento do JSON
 
+                retornoFalso = true
+
         }//Fechamento do if
 
     })
 
-    return resultado
+    if (retornoFalso) {
+        return resultado
+
+    } else {
+        return false
+    }
 }
 
 const getCapitalEstado = function (uf) {
     let info 
+    let retornoFalso = false
 
     listaDeEstados.estados.forEach(function(result) {
-        if (result.sigla === uf) {
+        if (result.sigla.toUpperCase() === uf.toUpperCase()) {
                 info = {
                 uf: result.sigla,
                 descricao: result.nome,
                 capital: result.capital
             }
+
+            retornoFalso = true
+
         }
     })
 
-    return info
+    if (retornoFalso) {
+        return info
+
+    } else {
+        return false
+    }
 }
 
 const getEstadosRegiao = function (reg) {
     let aux = []/*A variável vira um array porque uma região tem vários estados. 
                 Será preciso percorrer o array para localizar a região e seus estados */
+    let retornoFalso = false
 
     listaDeEstados.estados.forEach(function(estado) {
-        if (estado.regiao === reg) {
+        if (estado.regiao.toUpperCase() === reg.toUpperCase()) {
             aux.push({//O .push() é usado para poder 'puxar' todos os estados da região selecionada
                 uf: estado.sigla,
                 descricao: estado.nome
             })
         }
+
+        retornoFalso = true
     })
 
-    return {
+    if (retornoFalso) {
+        return {
         regiao: reg,
         estados: aux
+        }
+
+    } else {
+        return false
     }
 }
 
@@ -98,11 +123,37 @@ const getCapitalPais = function () {
     return json
 }
 
-const getCidades = function () {
+const getCidades = function (siglaEstado) {
+    let estadoSelecionado = []
+    let retornoFalso = false
 
+    listaDeEstados.estados.forEach(function(estado){
+        if (estado.sigla === siglaEstado) {
+            estadoSelecionado.push({
+                uf: estado.sigla,
+                descricao: estado.nome,
+                quantidade: estado.cidades.length,
+                cidades: estado.cidades.map(cidade => cidade.nome)
+            })
+
+            retornoFalso = true
+
+        }
+    })
+
+    if (retornoFalso) {
+        return estadoSelecionado
+
+    } else {
+        return false
+    }
 }
 
-//console.log(getDadosEstado('MT'))
-//console.log(getCapitalEstado('RN'))
-// console.log(getEstadosRegiao('Nordeste'))
-console.log(getCapitalPais())
+module.exports = {
+    getListaDeEstados,
+    getDadosEstado,
+    getCapitalEstado,
+    getEstadosRegiao,
+    getCapitalPais,
+    getCidades
+}
