@@ -4,6 +4,7 @@
  * Autora: Daniele Silva Santos
  * Versão: 1.0
  * 
- * Instalação do EXPRESS - npm install express --save
+ * Instalação do EXPRESS    - npm install express --save
+ * Instalação do CORS       - npm install cors --save
  * 
  ************************************************************************************/
