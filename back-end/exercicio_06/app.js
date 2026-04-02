@@ -36,31 +36,89 @@ app.use(cors(corsOptions)) //Configura as permissões da API através do cors
 //Import do arquivo de funções
 const estadosCidades = require ('./modulo/functions')
 
-
-//Criando EndPoints para a API
-app.get('/v1/senai/estados', function(request, response) {
-
-    let estados = estadosCidades.getListaDeEstados() //Chama a função que retorna a lista de estados
-
-    response.json(estados)
-    response.status(200)
-})
-
+//Retorna dados dos estados filtrando pelo UF
 app.get('/v1/senai/dados/estado/:uf', function(request, response){
 
     let sigla   = request.params.uf
     let estado  = estadosCidades.getDadosEstado(sigla)
 
+    if(estado) {
+    response.status(200)
     response.json(estado)
-    response.status(200)
+    } else {
+        response.status(404)
+        response.json({"message": "O estado informado não foi encontrado!"})
+    }
 })
 
 
-app.get('/cidades', function(request, response){
-    response.json({"message": "Testando minha API de Cidades"})
-    response.status(200)
+//Retorna dados da capital de cada estado filtrando pelo UF
+app.get('/v1/senai/capital/estado/:uf', function(request, response) {
+    let sigla           = request.params.uf
+    let capitalEstado   = estadosCidades.getCapitalEstado(sigla)
+
+    if(capitalEstado) {
+        response.status(200)
+        response.json(capitalEstado)
+
+    } else {
+        response.status(404)
+        response.json({"message": "ERROR: Estado fornecido não existe!"})
+    }
+
 })
 
+
+//Retorna dados dos estados filtrando pela região
+app.get('/v1/senai/estados/regiao/:regiao', function(request, response){
+    let regiao          = request.params.regiao
+    let regiaoEstado    = estadosCidades.getEstadosRegiao(regiao)
+
+    if(regiaoEstado) {
+        response.status(200)
+        response.json(regiaoEstado)
+
+    } else {
+        response.status(404)
+        response.json({"message": "ERROR: A região fornecida é inválida!"})
+    }
+})
+
+
+//Retorna dados dos estados que foram capitais do Brasil
+app.get('/v1/senai/estados/capital/brasil', function (request, response){
+    let siglaCapital    = request.params
+    let capitais        = estadosCidades.getCapitalPais(siglaCapital)
+
+    response.status(200)
+    response.json(capitais)
+})
+
+
+//Retorna dados da cidades filtrando pela UF
+app.get('/v1/senai/estados/cidade/:uf', function(request, response){
+    let cidade      = request.params.uf
+    let cidadesBr   = estadosCidades.getCidades(cidade)
+
+    if(cidadesBr) {
+        response.status(200)
+        response.json(cidadesBr)
+
+    } else {
+        response.status(404)
+        response.json({"message": "ERROR: Estado fornecido não existe!"})
+    }
+})
+
+
+//Retorna dados das cidades filtrando pela UF
+app.get('/v1/senai/estados', function(request, response) {
+
+    let estados = estadosCidades.getListaDeEstados() //Chama a função que retorna a lista de estados
+
+    response.status(200)
+    response.json(estados)
+})
  
 //Serve para inicializar a API para receber requisições (8080 é minha porta para receber a requisição)
 app.listen(8080, function(){

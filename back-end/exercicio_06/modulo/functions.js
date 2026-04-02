@@ -84,11 +84,12 @@ const getEstadosRegiao = function (reg) {
                 uf: estado.sigla,
                 descricao: estado.nome
             })
-        }
 
-        retornoFalso = true
+            retornoFalso = true
+        }
     })
 
+    
     if (retornoFalso) {
         return {
             regiao: reg,
@@ -126,9 +127,9 @@ const getCapitalPais = function () {
 const getCidades = function (siglaEstado) {
     let estadoSelecionado = []
     let retornoFalso = false
-
+    
     listaDeEstados.estados.forEach(function(estado){
-        if (estado.sigla === siglaEstado) {
+        if (estado.sigla.toUpperCase() === siglaEstado.toUpperCase()) {
             estadoSelecionado.push({
                 uf: estado.sigla,
                 descricao: estado.nome,
@@ -137,7 +138,7 @@ const getCidades = function (siglaEstado) {
             })
 
             retornoFalso = true
-
+       
         }
     })
 
