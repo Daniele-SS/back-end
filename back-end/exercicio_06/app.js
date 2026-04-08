@@ -37,9 +37,13 @@ app.use(cors(corsOptions)) //Configura as permissões da API através do cors
 const estadosCidades = require ('./modulo/functions')
 
 //Retorna dados dos estados filtrando pelo UF
-app.get('/v1/senai/dados/estado/:uf', function(request, response){
+app.get('/v1/senai/dados/estado/', function(request, response){
 
-    let sigla   = request.params.uf
+    // app.get('/v1/senai/dados/estado/:uf', function(request, response)
+    //Recebe a variável UF através da URL separada pela /
+    // let sigla   = request.params.uf
+
+    let sigla   = request.query.uf //Recebe a variável UF via QUERY PARAMS, que são variáveis encaminhas após o simbolo de ?
     let estado  = estadosCidades.getDadosEstado(sigla)
 
     if(estado) {
@@ -50,7 +54,6 @@ app.get('/v1/senai/dados/estado/:uf', function(request, response){
         response.json({"message": "O estado informado não foi encontrado!"})
     }
 })
-
 
 //Retorna dados da capital de cada estado filtrando pelo UF
 app.get('/v1/senai/capital/estado/:uf', function(request, response) {
