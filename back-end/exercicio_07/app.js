@@ -29,32 +29,48 @@ app.get('/v1/whatsapp/dados/', function(request, response){
     if(todasAsConversas) {
         response.status(200)
         response.json(todasAsConversas)
+
         } else {
             response.status(404)
             response.json({"message": "Nenhum dado encontrado."})
         }
-    })
-
-
-app.get('/v1/whatsapp/dados/conta/profile/usuario', function(request, response){
-
 })
+
+
+app.get('/v1/whatsapp/dados/conta/profile/usuario/:nick', function(request, response){
+    let profile         = request.query.nick
+    let dadosProfile    = listaDeContatos.getContaProfile(profile)
+
+    if(dadosProfile) {
+        response.status(200)
+        response.json(dadosProfile)
+
+        } else {
+            response.status(404)
+            response.json({"message": "Nenhum dado encontrado."})
+        }
+})
+
 
 app.get('/v1/whatsapp/dados/contato/usuario', function(request, response){
     
 })
 
+
 app.get('/v1/whatsapp/dados/all/mensagens/conta/usuario', function(request, response){
     
 })
+
 
 app.get('/v1/whatsapp/dados/usuario/contato', function(request, response){
     
 })
 
+
 app.get('/v1/whatsapp/dados/help', function(request, response){
     
 })
+
 
 app.listen(8080, function(){
     console.log('API funcionando e aguardando novas requisições ...')

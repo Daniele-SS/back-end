@@ -11,4 +11,30 @@ const getDados = function() {
     return listaDeContatos.contatos['whats-users']
 }
 
-module.exports = { getDados }
+function getContaProfile() {
+    let nicknameDosUsuarios = []
+
+    listaDeContatos.contatos['whats-users'].forEach (function(dadoUsuario){
+        nicknameDosUsuarios.push({
+        nome: dadoUsuario.account,
+        nick: dadoUsuario.nick,
+        // dataCriacao: dadoUsuario['created-since']
+        numero: dadoUsuario.number,
+        foto: dadoUsuario.background,
+        contatos: dadoUsuario.contacts
+        })
+    })
+    return nicknameDosUsuarios
+}
+
+console.log(getContaProfile())
+
+
+
+
+//getContaProfile()
+
+// module.exports = { 
+//     getDados,
+//     getContaProfile
+// }
