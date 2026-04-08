@@ -19,3 +19,43 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions)) //Configura as permissões da API através do cors
+
+const listaDeContatos = require ('./modulo/functions')
+
+app.get('/v1/whatsapp/dados/', function(request, response){
+
+    let todasAsConversas = listaDeContatos.getDados()
+
+    if(todasAsConversas) {
+        response.status(200)
+        response.json(todasAsConversas)
+        } else {
+            response.status(404)
+            response.json({"message": "Nenhum dado encontrado."})
+        }
+    })
+
+
+app.get('/v1/whatsapp/dados/conta/profile/usuario', function(request, response){
+
+})
+
+app.get('/v1/whatsapp/dados/contato/usuario', function(request, response){
+    
+})
+
+app.get('/v1/whatsapp/dados/all/mensagens/conta/usuario', function(request, response){
+    
+})
+
+app.get('/v1/whatsapp/dados/usuario/contato', function(request, response){
+    
+})
+
+app.get('/v1/whatsapp/dados/help', function(request, response){
+    
+})
+
+app.listen(8080, function(){
+    console.log('API funcionando e aguardando novas requisições ...')
+})

@@ -5,4 +5,10 @@
  * Versão: 1.0
  **************************************************************/
 
-const contatos = require ('./contatos.js')
+const listaDeContatos = require ('./contatos.js')
+
+const getDados = function() {
+    return listaDeContatos.contatos['whats-users']
+}
+
+module.exports = { getDados }
