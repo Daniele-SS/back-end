@@ -18,23 +18,25 @@ function getContaProfile() {
         nicknameDosUsuarios.push({
         nome: dadoUsuario.account,
         nick: dadoUsuario.nick,
-        // dataCriacao: dadoUsuario['created-since']
+        dataCriacao: dadoUsuario['created-since'],
+        imagem: dadoUsuario['profile-image'],
         numero: dadoUsuario.number,
-        foto: dadoUsuario.background,
+        cor: dadoUsuario.background,
         contatos: dadoUsuario.contacts
         })
     })
+
     return nicknameDosUsuarios
 }
 
-console.log(getContaProfile())
+// console.log(getContaProfile())
 
 
 
 
 //getContaProfile()
 
-// module.exports = { 
-//     getDados,
-//     getContaProfile
-// }
+module.exports = { 
+    getDados,
+    getContaProfile
+}
