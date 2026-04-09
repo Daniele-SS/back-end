@@ -23,7 +23,6 @@ app.use(cors(corsOptions)) //Configura as permissões da API através do cors
 const listaDeContatos = require ('./modulo/functions')
 
 app.get('/v1/whatsapp/dados/', function(request, response){
-
     let todasAsConversas = listaDeContatos.getDados()
 
     if(todasAsConversas) {
@@ -52,8 +51,18 @@ app.get('/v1/whatsapp/dados/conta/profile/usuario/:nick', function(request, resp
 })
 
 
-app.get('/v1/whatsapp/dados/contato/usuario', function(request, response){
-    
+app.get('/v1/whatsapp/dados/contato/pessoal/usuario', function(request, response){
+    let contatoPessoal = request.query
+    let dadosPessoaisDoContato = listaDeContatos.getContatosPessoais(contatoPessoal)
+
+    if(dadosPessoaisDoContato) {
+        response.status(200)
+        response.json(dadosPessoaisDoContato)
+
+        } else {
+            response.status(404)
+            response.json({"message": "Nenhum dado encontrado."})
+        }
 })
 
 

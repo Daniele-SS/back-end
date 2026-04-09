@@ -14,29 +14,40 @@ const getDados = function() {
 function getContaProfile() {
     let nicknameDosUsuarios = []
 
-    listaDeContatos.contatos['whats-users'].forEach (function(dadoUsuario){
+    listaDeContatos.contatos['whats-users'].forEach(function(dadosDoUsuario){
         nicknameDosUsuarios.push({
-        nome: dadoUsuario.account,
-        nick: dadoUsuario.nick,
-        dataCriacao: dadoUsuario['created-since'],
-        imagem: dadoUsuario['profile-image'],
-        numero: dadoUsuario.number,
-        cor: dadoUsuario.background,
-        contatos: dadoUsuario.contacts
+        id: dadosDoUsuario.id,
+        nome: dadosDoUsuario.account,
+        nick: dadosDoUsuario.nickname,
+        dataCriacao: dadosDoUsuario['created-since'],
+        imagem: dadosDoUsuario['profile-image'],
+        numero: dadosDoUsuario.number,
+        cor: dadosDoUsuario.background,
+        contatos: dadosDoUsuario.contacts
         })
     })
 
     return nicknameDosUsuarios
 }
 
-// console.log(getContaProfile())
+function getContatosPessoais() {
+    let contatosPessoais = []
+
+    listaDeContatos.contatos['whats-users'].forEach(function(dadosPessoaisDoUsuario){
+        contatosPessoais.push({
+            nome: dadosPessoaisDoUsuario.name
+        })
+    })
+
+    return contatosPessoais
+}
+
+// console.log(contatosPessoais(dadosPessoaisDoUsuario))
 
 
-
-
-//getContaProfile()
 
 module.exports = { 
     getDados,
-    getContaProfile
+    getContaProfile,
+    getContatosPessoais
 }
