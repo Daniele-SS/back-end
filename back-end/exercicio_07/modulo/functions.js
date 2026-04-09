@@ -35,7 +35,7 @@ function getContatosPessoais() {
 
     listaDeContatos.contatos['whats-users'].forEach(function(dadosPessoaisDoUsuario){
         contatosPessoais.push({
-            nome: dadosPessoaisDoUsuario.name
+            usuarios: dadosPessoaisDoUsuario.contacts
         })
     })
 
