@@ -132,7 +132,7 @@ app.get('/v1/senai/help', function(request, response){
         "Version": "1.0",
         "Endpoints": [
             {   "id": 1,
-                "": "/v1/senai/estados",
+                "rota": "/v1/senai/estados",
                 "description": "Retorna a lista de todos os estados brasileiros",
             },
             {   "id": 2,
