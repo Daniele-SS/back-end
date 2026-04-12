@@ -132,28 +132,28 @@ app.get('/v1/senai/help', function(request, response){
         "Version": "1.0",
         "Endpoints": [
             {   "id": 1,
-                "Rota 1": "/v1/senai/estados",
-                "OBS": "Retorna a lista de todos os estados brasileiros",
+                "": "/v1/senai/estados",
+                "description": "Retorna a lista de todos os estados brasileiros",
             },
             {   "id": 2,
-                "Rota 2": "/v1/senai/dados/estado/al",
-                "OBS": "Retorna os dados do estado filtrando pela sigla do estado"
+                "rota": "/v1/senai/dados/estado/al",
+                "description": "Retorna os dados do estado filtrando pela sigla do estado"
             },
             {   "id": 3,
-                "Rota 3": "/v1/senai/capital/estado/se",
-                "OBS": "Retorna os dados da capital filtrando pela sigla do estado"
+                "rota": "/v1/senai/capital/estado/se",
+                "description": "Retorna os dados da capital filtrando pela sigla do estado"
             },
             {   "id": 4,
-                "Rota 4": "/v1/senai/estados/regiao/centro-oeste",
-                "OBS": "Retorna todos os estados referente a uma região"
+                "rota": "/v1/senai/estados/regiao/centro-oeste",
+                "description": "Retorna todos os estados referente a uma região"
             },
             {   "id": 5,
-                "Rota 5": "/v1/senai/estados/capital/brasil",
-                "OBS": "Retorna todos os estados que formaram capital do Brasil"
+                "rota": "/v1/senai/estados/capital/brasil",
+                "description": "Retorna todos os estados que formaram capital do Brasil"
             },
             {   "id": 6,
-                "Rota 6": "/v1/senai/estados/cidade/sp",
-                "OBS": "Retorna todas as cidades filtrando pela sigla do estado"
+                "rota": "/v1/senai/estados/cidade/sp",
+                "description": "Retorna todas as cidades filtrando pela sigla do estado"
             }
         ]
     }
