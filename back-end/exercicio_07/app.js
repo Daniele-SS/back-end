@@ -51,8 +51,8 @@ app.get('/v1/whatsapp/dados/conta/profile/usuario/:nick', function(request, resp
 })
 
 
-app.get('/v1/whatsapp/dados/contato/pessoal/usuario/:nick', function(request, response){
-    let contatoPessoal = request.query.nick
+app.get('/v1/whatsapp/dados/contato/pessoal/usuario/', function(request, response){
+    let contatoPessoal = request.query 
     let dadosPessoaisDoContato = listaDeContatos.getContatosPessoais(contatoPessoal)
 
     if(dadosPessoaisDoContato) {
