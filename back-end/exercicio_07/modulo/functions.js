@@ -16,14 +16,12 @@ function getContaProfile() {
 
     listaDeContatos.contatos['whats-users'].forEach(function(dadosDoUsuario){
         nicknameDosUsuarios.push({
-        id: dadosDoUsuario.id,
         nome: dadosDoUsuario.account,
         nick: dadosDoUsuario.nickname,
         dataCriacao: dadosDoUsuario['created-since'],
         imagem: dadosDoUsuario['profile-image'],
         numero: dadosDoUsuario.number,
-        cor: dadosDoUsuario.background,
-        contatos: dadosDoUsuario.contacts
+        cor: dadosDoUsuario.background
         })
     })
 
