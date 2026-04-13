@@ -28,24 +28,56 @@ function getContaProfile() {
     return nicknameDosUsuarios
 }
 
-function getContatosPessoais() {
-    let contatosPessoais = []
+function getContatosPessoais(numero) {
+    let contatosPessoais = false
 
-    listaDeContatos.contatos['whats-users'].forEach(function(dadosPessoaisDoUsuario){
-        contatosPessoais.push({
-            usuarios: dadosPessoaisDoUsuario.contacts
-        })
+    listaDeContatos.contatos['whats-users'].forEach(function(dadosPessoaisDoUsuario) {
+        if(Number(dadosPessoaisDoUsuario.number) == Number(numero)) {
+            contatosPessoais = {
+                nome: dadosPessoaisDoUsuario.account,
+                numero: dadosPessoaisDoUsuario.number,
+                contatos: []
+            }
+            
+            dadosPessoaisDoUsuario.contacts.forEach(function(contato){
+                contatosPessoais.contatos.push({
+                    nome: contato.name,
+                    foto: contato.image,
+                    descricao: contato.description
+                })
+            })
+        }
     })
 
     return contatosPessoais
 }
 
+function getAllMessages(number) {
+    let all = []
 
+    listaDeContatos.contatos['whats-users'].forEach(function(conversa){
+        if(Number(conversa.number) == Number(number)){
+
+            conversa.contacts.forEach(function(message){
+
+                message.messages.forEach(function(conversa){
+                    all.push({
+                        
+                    })
+                })
+
+            })
+        }
+    })
+}
+
+// console.log(getContatosPessoais("11987876567"))
 
 
 
 module.exports = { 
     getDados,
     getContaProfile,
-    getContatosPessoais
+    getContatosPessoais,
+    getAllMessages
 }

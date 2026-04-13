@@ -28,7 +28,6 @@ app.get('/v1/whatsapp/dados', function(request, response){
     if(todasAsConversas) {
         response.status(200)
         response.json(todasAsConversas)
-
         } else {
             response.status(404)
             response.json({"message": "Nenhum dado encontrado."})
@@ -43,7 +42,6 @@ app.get('/v1/whatsapp/dados/conta/profile/usuario', function(request, response){
     if(dadosProfile) {
         response.status(200)
         response.json(dadosProfile)
-
         } else {
             response.status(404)
             response.json({"message": "Nenhum dado encontrado."})
@@ -51,14 +49,13 @@ app.get('/v1/whatsapp/dados/conta/profile/usuario', function(request, response){
 })
 
 
-app.get('/v1/whatsapp/dados/contato/pessoal/usuario', function(request, response){
-    let contatoPessoal = request.query 
-    let dadosPessoaisDoContato = listaDeContatos.getContatosPessoais(contatoPessoal)
+app.get('/v1/whatsapp/dados/contato/pessoal/usuario/:numero', function(request, response){
+    let contatosPessoais = request.params.numero
+    let dadosPessoaisDoContato = listaDeContatos.getContatosPessoais(contatosPessoais)
 
     if(dadosPessoaisDoContato) {
         response.status(200)
         response.json(dadosPessoaisDoContato)
-
         } else {
             response.status(404)
             response.json({"message": "Nenhum dado encontrado."})
@@ -66,8 +63,18 @@ app.get('/v1/whatsapp/dados/contato/pessoal/usuario', function(request, response
 })
 
 
-app.get('/v1/whatsapp/dados/all/mensagens/conta/usuario', function(request, response){
-    
+app.get('/v1/whatsapp/dados/all/mensagens/usuario', function(request, response){
+    let usuarioEmissor = request.params
+    let usuarioDestinatario = request.query
+    let messages = listaDeContatos.getAllMessages(usuarioEmissor, usuarioDestinatario)
+
+    if(messages) {
+        response.status(200)
+        response.json(messages)
+        } else {
+            response.status(404)
+            response.json({"message": "Nenhum dado encontrado."})
+        }
 })
 
 
