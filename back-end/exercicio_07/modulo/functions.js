@@ -40,7 +40,7 @@ function getContatosPessoais() {
     return contatosPessoais
 }
 
-// console.log(contatosPessoais(dadosPessoaisDoUsuario))
+
 
 
 
