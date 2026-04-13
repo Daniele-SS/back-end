@@ -63,8 +63,8 @@ app.get('/v1/whatsapp/dados/contato/pessoal/usuario/:numero', function(request, 
 })
 
 
-app.get('/v1/whatsapp/dados/all/mensagens/usuario', function(request, response){
-    let usuarioEmissor = request.params
+app.get('/v1/whatsapp/dados/all/mensagens/usuario/:contato', function(request, response){
+    let usuarioEmissor = request.params.contato
     let usuarioDestinatario = request.query
     let messages = listaDeContatos.getAllMessages(usuarioEmissor, usuarioDestinatario)
 

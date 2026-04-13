@@ -52,32 +52,44 @@ function getContatosPessoais(numero) {
     return contatosPessoais
 }
 
-function getAllMessages(number) {
+function getAllMessages(contato) {
     let all = []
 
     listaDeContatos.contatos['whats-users'].forEach(function(conversa){
-        if(Number(conversa.number) == Number(number)){
+        if(Number(conversa.number) == Number(contato)){
 
             conversa.contacts.forEach(function(message){
+                let contatoAtual = {
+                    nome: message.name,
+                    mensagens: []
+                }
 
                 message.messages.forEach(function(conversa){
-                    all.push({
-                        
+                    contatoAtual.mensagens.push({
+                        emissor: conversa.sender,
+                        mensagem: conversa.content,
+                        hora: conversa.time
                     })
                 })
 
+                all.push(contatoAtual)
             })
         }
     })
+
+    return all
 }
 
-// console.log(getContatosPessoais("11987876567"))
+function getConversaUsuario() {
 
+}
 
+// console.log(getAllMessages("11987876567"))
 
 module.exports = { 
     getDados,
     getContaProfile,
     getContatosPessoais,
-    getAllMessages
+    getAllMessages,
+    getConversaUsuario
 }
