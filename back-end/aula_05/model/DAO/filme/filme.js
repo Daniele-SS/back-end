@@ -7,7 +7,24 @@
 
 //Função para inserir dados na tabela de filme
 const insertFilme = async function(filme) {
-
+    let sql = `insert into tbl_filme (
+						nome, 
+                        data_lancamento, 
+                        duracao, 
+                        sinopse, 
+                        avaliacao, 
+                        valor, 
+                        capa
+                        ) 
+				values (
+						'${filme.nome}', 
+						'${filme.data_lancamento}', 
+						'${filme.duracao}', 
+						'${filme.sinopse}',
+						'${filme.avaliacao}',
+						'${filme.valor}',
+						'${filme.capa}'
+						);`
 }
 
 //Função para atualizar um filme existente na tabela
