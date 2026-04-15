@@ -4,3 +4,35 @@
  * Autora: Daniele Silva Santos
  * Versão: 1.0
  **********************************************************************************/
+
+//Função para inserir dados na tabela de filme
+const insertFilme = async function(filme) {
+
+}
+
+//Função para atualizar um filme existente na tabela
+const updateFilme = async function(filme) {
+    
+}
+
+
+const selectAllFilme = async function() {
+    
+}
+
+//Função que irá retornar os dados de um filme pela primary key
+const selectByIdFilme = async function(id) {
+    
+}
+
+const deleteFilme = async function(id) {
+
+}
+
+module.exports = {
+    insertFilme,
+    updateFilme,
+    selectAllFilme,
+    selectByIdFilme,
+    deleteFilme
+}
