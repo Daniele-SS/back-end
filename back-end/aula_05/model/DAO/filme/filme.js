@@ -50,15 +50,19 @@ const updateFilme = async function(filme) {
 }
 
 
+//Função que retorna todos os filmes da tabela de filmes
 const selectAllFilme = async function() {
     
 }
+
 
 //Função que irá retornar os dados de um filme pela primary key
 const selectByIdFilme = async function(id) {
     
 }
 
+
+//Função para excluir um filme pelo id
 const deleteFilme = async function(id) {
 
 }
