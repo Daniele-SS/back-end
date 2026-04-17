@@ -6,8 +6,16 @@
  ************************************************************************************/
 
 //Import das depedências para criar a API
-const express   = require ('express')
-const cors      = require ('cors')
+const express       = require ('express')
+const cors          = require ('cors')
+const bodyParser    = require('body-parser')
+
+
+//Import das CONTROLLERS do projeto
+const controllerFilme = require('./controller/filme/controller_filme.js')
+
+
+const bodyParserJSON = bodyParser.json() //Criando um objeto para manipular dados do body da API em formato JSON
 
 const app = express() //Criando um objeto para manipular o express
 
@@ -21,7 +29,13 @@ const corsOptions = {
 app.use(cors(corsOptions)) //Configura as permissões da API através do cors
 
 
+app.post('/v1/senai/locadora/filme', bodyParserJSON, async function(request, response){
+    let dados = request.body //Recebe o conteúdo dentro do body da requisição
 
+    let result = await controllerFilme.inserirNovoFilme(dados)
+    response.status(result.status_code)
+    response.json(result) //Irá retornar meu JSON que já está configurado na controller
+})
 
 
 app.listen(8080, function(){
