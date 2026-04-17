@@ -6,6 +6,9 @@
  * Versão: 1.0
  **************************************************************/
 
+//Import do arquivo de padronização de mensagens
+const config_message = require('../modulo/configMessages.js')
+
 //Função para inserir um novo filme
 const inserirNovoFilme = async function(filme) {
     if(filme.nome == '' || filme.nome == null || filme.nome == undefined || filme.nome.length > 80) {
