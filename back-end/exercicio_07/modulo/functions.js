@@ -123,14 +123,19 @@ function getConversaSelecionada(numero, pesquisa) {
                             numero: contato.number,
                             mensagens: contato.messages,
                         })
-                    }
 
+                        retornoFalso = true
+                    }
                 })
             })
         }
     })
 
-    return selecionaConversa = vetor
+    if(retornoFalso) {
+        return selecionaConversa.conversas = vetor
+    } else {
+        return false
+    }
 }
 
 // console.log(getAllMessages("11987876567"))
