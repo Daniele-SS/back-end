@@ -80,11 +80,33 @@ function getAllMessages(contato) {
     return all
 }
 
-function getConversaUsuario() {
+function getConversaUsuario(usuario, contato) {
+    let conversas = {}
+    let bola = false 
 
+    listaDeContatos.contatos['whats-users'].forEach(function(messages){
+        if(Number(messages.number) == Number(usuario)) {
+            
+            messages.contacts.forEach(function(contac){
+                if(contac.name.toLowerCase == contato.toLowerCase) {
+                    conversas.name = contac.name
+                    conversas.mensagem = contac.messages
+
+                    bola = true
+                } 
+            })
+        }
+    })
+
+    if(bola) {
+        return conversas
+    } else {
+        return false
+    }
 }
 
 // console.log(getAllMessages("11987876567"))
+// console.log(getConversaUsuario("11955577796", "Franklin Silva"))
 
 module.exports = { 
     getDados,
