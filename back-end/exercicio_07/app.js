@@ -78,20 +78,20 @@ app.get('/v1/whatsapp/dados/all/mensagens/usuario/:contato', function(request, r
 })
 
 
-// app.get('/v1/whatsapp/dados/usuario/contato/:numero', function(request, response){
-//     let numero  =  request.params.numero
-//     let contato = request.query.contato
+app.get('/v1/whatsapp/dados/usuario/:numero', function(request, response){
+    let numero  = request.params.numero
+    let contato = request.query.contato
 
-//     let todasMensagens =  listaDeContatos.getConversaUsuario(numero,contato)
+    let todasMensagens =  listaDeContatos.getConversaUsuario(numero,contato)
 
-//     if(todasMensagens) {
-//         response.status(200)
-//         response.json(todasMensagens)
-//         } else {
-//             response.status(404)
-//             response.json({"message": "Nenhum dado encontrado."})
-//         }
-// })
+    if(todasMensagens) {
+        response.status(200)
+        response.json(todasMensagens)
+        } else {
+            response.status(404)
+            response.json({"message": "Nenhum dado encontrado."})
+        }
+})
 
 
 // app.get('/v1/whatsapp/pesquisa/:numero', function(request, response){

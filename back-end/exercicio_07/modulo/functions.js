@@ -82,23 +82,23 @@ function getAllMessages(contato) {
 
 function getConversaUsuario(usuario, contato) {
     let conversas = {}
-    let bola = false 
+    let retornoFalso = false 
 
     listaDeContatos.contatos['whats-users'].forEach(function(messages){
         if(Number(messages.number) == Number(usuario)) {
             
             messages.contacts.forEach(function(contac){
-                if(contac.name.toLowerCase() == contato.toLowerCase()) {
+                if(contac.name == contato) {
                     conversas.name = contac.name
                     conversas.mensagem = contac.messages
 
-                    bola = true
+                    retornoFalso = true
                 } 
             })
         }
     })
 
-    if(bola) {
+    if(retornoFalso) {
         return conversas
     } else {
         return false
