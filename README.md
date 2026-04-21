@@ -1,434 +1,304 @@
-# Aula 01 - Fundamentos e Entrada de Dados
+# 📚 Back-End com Node.js
 
-Primeiros passos com Node.js, explorando a saída de dados e a interação com o utilizador via terminal.
+Repositório de estudos e exercícios práticos de back-end com Node.js, desenvolvido durante o curso. Cobre desde os fundamentos da linguagem até a criação de APIs REST com Express.
 
-## 📝 Conceitos Aprendidos
-- **Saída de Dados:** Uso do `console.log` para imprimir conteúdos.
-- **Variáveis:** Declaração de variáveis simples com `var`.
-- **Concatenação:** - Tradicional: `'Texto' + variavel`
-  - Template Strings: `` `Texto ${variable}` ``
-- **Biblioteca Readline:** Importação e criação de interface para entrada e saída de dados (`stdin`/`stdout`).
-- **Callbacks:** Entendimento de funções de retorno para processar dados digitados.
-
-## 💻 Exemplo de Código
-O projeto solicita o nome e o e-mail do utilizador de forma sequencial no terminal.
+**Autora:** Daniele Silva Santos  
+**Período:** Janeiro – Abril de 2026
 
 ---
-# Aula 02 - Variáveis, Operadores e Condicionais
 
-Desenvolvimento de um sistema de cálculo de médias escolares para praticar lógica de programação.
+## 🗂️ Estrutura do Repositório
 
-## 📝 Conceitos Aprendidos
-- **Tipos de Variáveis:**
-  - `var`: Escopo global (uso em início de código).
-  - `let`: Escopo local/bloco `{ }` (nasce e morre no bloco).
-  - `const`: Valores constantes (recomendado uso de MAIÚSCULAS).
-- **Operadores de Comparação:**
-  - `==` (conteúdo) vs `===` (conteúdo e tipo).
-  - `!=`, `<`, `>`, `>=`, `<=`.
-- **Operadores Lógicos:**
-  - `&&` (E), `||` (OU), `!` (NÃO).
-- **Validação:** Verificação de campos vazios e limites numéricos (0 a 100).
-
-## ⚙️ Funcionalidade
-O sistema recebe o nome do aluno e 4 notas, validando se todos os campos foram preenchidos antes de prosseguir.
-
----
-# Aula 03 - Funções e Modularização
-
-Criação de um sistema de cálculo de juros utilizando boas práticas de organização de código.
-
-## 📝 Conceitos Aprendidos
-- **Modularização:** Separação da lógica de negócio em ficheiros distintos (ex: `./modulo/calculos.js`).
-- **Funções:** - Declaração de funções tradicionais.
-  - Retorno de valores (`return`).
-  - Funções públicas via `module.exports`.
-- **Tratamento de Dados:** - `Number()` para conversão de tipos.
-  - `isNaN()` para validar se a entrada é um número válido.
-  - `.toFixed(2)` para formatar casas decimais.
-
-## 📂 Estrutura
-O ficheiro principal gere a entrada de dados, enquanto o módulo realiza os cálculos matemáticos de juros compostos e percentuais.
-
----
-# Aula 04 - Estruturas de Dados (Array e JSON)
-
-Estudo sobre manipulação de coleções de dados complexas utilizando objetos e listas.
-
-## 📝 Conceitos Aprendidos
-- **Array `[]`:** Objeto em memória para múltiplos valores indexados.
-- **JSON `{}`:** Objeto baseado em Chave e Valor.
-- **Estruturas de Repetição:**
-  - `while`, `for`, `forEach`, `for in` e `for of`.
-- **Métodos de Manipulação:**
-  - `.push()`, `.unshift()`, `.pop()`, `.shift()`, `.splice()`, `.indexOf()`, `.includes()`.
-- **Navegação em Objetos:** Aceder a atributos (`objeto.atributo`) e iterar sobre arrays internos.
-
-## 🛠️ Prática
-Implementação de um sistema de inventário onde produtos possuem marcas e múltiplas cores associadas através de JSONs aninhados.
-
----
-# Exercício 05 - Soma de Valores
-
-Exercício prático focado na captura de múltiplos dados e operações aritméticas.
-
-## 📝 Objetivo
-Solicitar ao utilizador o seu nome e três números aleatórios, realizando a soma total.
-
-## 💡 Destaques Técnicos
-- Uso do `readline` para capturar múltiplas entradas encadeadas.
-- Conversão explícita de String para Número com a classe `Number` para evitar erros de concatenação na soma.
-- Encerramento da interface com `entradaDeDados.close()`.
-
----
-# Exercício 06 - Sistema Viva Moda (Juros)
-
-Aplicação completa de um sistema de vendas com cálculo de juros compostos e emissão de comprovante.
-
-## 📝 Funcionalidades
-- **Validação de Dados:**
-  - Nome deve ter mais de 2 caracteres e não ser numérico.
-  - Valor da compra deve ser superior a 0 e numérico.
-- **Lógica de Pagamento:**
-  - Opção de parcelamento em **Meses** ou **Anos**.
-  - Conversão automática de anos para meses (`anos * 12`).
-- **Cálculo de Juros:** Aplicação da fórmula de juros compostos para determinar o montante final e o valor do acréscimo.
-
-## 📄 Comprovante
-O sistema gera um "ticket" visual no terminal com todos os detalhes da transação para o Sr(a) cliente.
-
----
-# Projeto Cálculos SA - Escola de Treinamentos
-
-Este sistema foi desenvolvido para a empresa "Cálculos SA", focando-se em fornecer uma aplicação para cálculos matemáticos corporativos através do terminal.
-
-## 📝 Conceitos Aprendidos
-- **Tratamento de Inputs:** Uso de `.replace(',', '.')` para aceitar números no formato brasileiro e convertê-los para o padrão computacional.
-- **Normalização de Dados:** Aplicação de `.toLowerCase()` para garantir que a escolha da operação (ex: "SOMAR" ou "somar") seja interpretada corretamente.
-- **Validação de Erros:** - Verificação de campos vazios.
-  - Uso de `isNaN()` para impedir a entrada de letras em campos numéricos.
-  - Encerramento seguro da interface com `entradaDeDados.close()`.
-- **Modularização:** Separação da lógica de cálculo num ficheiro externo (`calculoMatematico.js`).
-
-## 🚀 Funcionalidades
-Realiza as quatro operações básicas: **Soma, Subtração, Multiplicação e Divisão**, com validação específica para evitar divisões por zero.
-
----
-# Módulo de Operações Matemáticas
-
-Ficheiro de back-end responsável pelo processamento aritmético das operações solicitadas pelo sistema principal.
-
-## 📝 Detalhes Técnicos
-- **Funções Nomeadas:** Implementação de funções claras para `somar`, `subtrair`, `multiplicar` e `dividir`.
-- **Segurança na Divisão:** Inclusão de um bloco `if` para validar se o divisor é menor ou igual a zero, emitindo uma mensagem de erro personalizada.
-- **Tipagem:** Garantia de que os parâmetros são tratados como números através da classe `Number()`.
-- **Exportação de Funções:** Uso do `module.exports` para disponibilizar todas as operações de forma pública para o projeto.
-
----
-# Validação e Processamento de Dados (Versão 2.0)
-
-Este projeto demonstra uma abordagem mais avançada na organização de funções e validação de dados antes da execução de cálculos.
-
-## 📝 Conceitos Aprendidos
-- **Funções Anónimas:** Declaração de lógica através de constantes (`const calcular = function`).
-- **Lógica de Validação:** Criação de uma função dedicada (`validarDados`) que retorna um Booleano, separando a verificação de erros da execução do cálculo.
-- **Estrutura Switch Case:** Substituição de múltiplos `if/else` pela estrutura `switch` para selecionar a operação de forma mais limpa e organizada.
-- **Arrow Functions (Funções de Seta):** Implementação de funções de linha única para as operações básicas, tornando o código mais moderno e conciso:
-  - `const somar = (n1, n2) => n1 + n2;`
-
-## 🛠️ Métodos Utilizados
-- `toUpperCase()`: Para padronizar o operador matemático em letras maiúsculas dentro do `switch`.
-
----
-# Gerador Automático de Tabuada
-
-Aplicação focada na utilização de estruturas de repetição para automação de tarefas matemáticas.
-
-## 📝 Conceitos Aprendidos
-- **Estrutura de Repetição `for`:** Implementação de um laço que percorre do número 0 ao 10 para gerar a tabuada completa de forma automática.
-- **Consumo de Módulos:** Integração com o ficheiro `calcular.js` para reaproveitar a função de multiplicação.
-- **Interpolação de Strings:** Uso de Template Literals (crases) para exibir os resultados de forma legível no terminal:
-  - Ex: `` `${tab} x ${cont} = ${resultado}` ``.
-
-## ⚙️ Como Funciona
-Basta invocar a função `gerarTabuadaFor(numero)` e o sistema processa toda a lógica de repetição, imprimindo linha a linha o resultado da multiplicação.
-
----
-# Sistema Integrado de Exercícios Lógicos - Node.js
-
-Este projeto é uma aplicação de console que agrupa cinco ferramentas fundamentais de lógica de programação, desenvolvida para consolidar conceitos de funções assíncronas, modularização e validação de dados em ambiente Node.js.
-
-## 🚀 Funcionalidades
-
-O sistema oferece um menu interativo com as seguintes opções:
-
-1.  **Cálculo de IMC:** Calcula o Índice de Massa Corporal e retorna a classificação de saúde (abaixo do peso, peso ideal, obesidade, etc.).
-2.  **Médias Escolares:** Gerencia notas de alunos em uma universidade, gerando um relatório detalhado com tratamento de gênero (aluno/aluna, professor/professora) e cálculo de exame final.
-3.  **Cálculo de Tabuada:** Gera tabuadas personalizadas permitindo definir o intervalo de multiplicandos (ex: tabuada do 2 ao 5) e o intervalo de multiplicadores (ex: do 1 ao 10).
-4.  **Cálculo de Fatorial:** Calcula o fatorial de um número fornecido, exibindo a sequência lógica da operação (ex: 5x4x3x2x1 = 120).
-5.  **Números Pares e Ímpares:** Filtra e lista números dentro de um intervalo definido pelo usuário, separando-os entre pares ou ímpares e exibindo a contagem total.
-
-## 📝 Conceitos Técnicos Aplicados
-
--   **Programação Assíncrona:** Uso de `async/await` e `Promises` para gerenciar a entrada de dados via terminal sem travar a execução.
--   **Modularização (CommonJS):** Organização do código em múltiplos arquivos na pasta `./modulo/` para facilitar a manutenção e escalabilidade.
--   **Encapsulamento de Lógica:** Separação clara entre o arquivo principal (`app.js`), os motores de cálculo (`imc.js`, `tabuada.js`, etc.) e a camada de validação (`validarDados.js`).
--   **Tratamento de Dados:** Validações rigorosas para garantir que entradas vazias, caracteres não numéricos ou intervalos inválidos não quebrem a aplicação.
--   **Estruturas de Repetição:** Uso estratégico de `for` e `while` para geração de sequências matemáticas e tabelas.
-
-## 📂 Estrutura de Arquivos
-
-```text
-├── app.js                # Arquivo principal (Menu e fluxo do sistema)
-└── modulo/               # Pasta contendo a lógica de negócio
-    ├── config.js         # Configuração do Readline com Promises
-    ├── imc.js            # Lógica do Cálculo de IMC
-    ├── mediaEscolar.js   # Lógica de médias e relatórios
-    ├── tabuada.js        # Lógica de geração de tabuadas
-    ├── fatorial.js       # Lógica do cálculo fatorial
-    ├── numeros.js        # Lógica de filtragem par/ímpar
-    └── validarDados.js   # Funções de validação para todos os módulos
 ```
-
-## 🛠️ Como Executar
-
-1.  Certifique-se de ter o [Node.js](https://nodejs.org/) instalado.
-2.  Clone o repositório ou baixe os arquivos.
-3.  No terminal, navegue até a pasta do projeto.
-4.  Execute o comando:
-
-```bash
-node app.js
+back-end/
+├── aula_01/
+├── aula_02/
+├── aula_03/
+├── aula_04/
+├── aula_05/          ← Em andamento (introdução a banco de dados)
+├── exercicio_01/
+├── exercicio_02/
+├── exercicio_03/
+├── exercicio_04/
+├── exercicio_05/
+├── exercicio_06/
+├── exercicio_07/
+└── README.md
 ```
 
 ---
-# 🗺️ API de Estados e Cidades do Brasil
 
-API REST desenvolvida com Node.js e Express para consulta de dados geográficos dos estados e cidades brasileiras, com módulo dedicado para filtragem e manipulação dos dados em JSON.
+## 🎓 Aulas
+
+### 🖥️ Aula 01 — Fundamentos e Entrada de Dados
+
+Primeiros passos com Node.js: saída de dados no terminal e captura de entrada via `readline`.
+
+**Conceitos abordados:**
+- `console.log` para saída de dados
+- Declaração de variáveis com `var`
+- Concatenação tradicional e com template strings
+- Importação da biblioteca `readline` e criação de interface `stdin`/`stdout`
+- Callbacks para processar dados digitados pelo usuário
+
+**Funcionamento:** O programa solicita nome e e-mail do usuário de forma sequencial no terminal.
+
+---
+
+### 🔢 Aula 02 — Variáveis, Operadores e Condicionais
+
+Sistema de cálculo de médias escolares para praticar lógica de programação.
+
+**Conceitos abordados:**
+- Tipos de variáveis: `var` (escopo global), `let` (escopo de bloco), `const` (valores constantes)
+- Operadores de comparação: `==`, `===`, `!=`, `<`, `>`, `>=`, `<=`
+- Operadores lógicos: `&&` (E), `||` (OU), `!` (NÃO)
+- Validação de campos vazios e limites numéricos (0 a 100)
+
+**Funcionamento:** Recebe nome do aluno e 4 notas, com validação antes de prosseguir.
+
+---
+
+### ⚙️ Aula 03 — Funções e Modularização
+
+Sistema de cálculo de juros compostos com separação de responsabilidades entre arquivos.
+
+**Estrutura:**
+```
+aula_03/
+├── app.js
+├── folhaPagto.js
+└── modulo/
+    └── calculos.js
+```
+
+**Conceitos abordados:**
+- Modularização com `module.exports` e `require`
+- Funções tradicionais com retorno de valores (`return`)
+- Conversão de tipos com `Number()` e `isNaN()`
+- Formatação de decimais com `.toFixed(2)`
+
+**Funcionamento:** `app.js` gerencia a entrada de dados (cliente, produto, capital, taxa e tempo). `calculos.js` executa o cálculo de juros compostos e percentual.
+
+---
+
+### 📦 Aula 04 — Estruturas de Dados (Array e JSON)
+
+Primeiro contato com coleções de dados complexas. Foco no arquivo `/modulo/array_json.js` — o `app.js` não foi alterado nesta aula.
+
+**Estrutura:**
+```
+aula_04/
+└── modulo/
+    └── array_json.js
+```
+
+**Conceitos abordados:**
+- `Array []`: objeto indexado para múltiplos valores
+- `JSON {}`: estrutura de Chave e Valor
+- Estruturas de repetição: `while`, `for`, `forEach`, `for in`, `for of`
+- Métodos de Array: `.push()`, `.unshift()`, `.pop()`, `.shift()`, `.splice()`, `.indexOf()`, `.includes()`
+- Navegação em objetos e arrays aninhados
+
+**Prática:** Sistema de inventário com produtos, marcas e múltiplas cores em JSONs aninhados.
+
+---
+
+### 🎲 Aula 05 — Banco de Dados com Node.js *(em andamento)*
+
+Primeiro contato com banco de dados integrado ao back-end. Estrutura com múltiplas pastas e arquivos ainda em desenvolvimento.
+
+---
+
+## 🛠️ Exercícios
+
+### 📒 Exercício 01 — Soma de Valores
+
+**Objetivo:** Solicitar nome e três números ao usuário, realizando a soma total.
+
+**Destaques técnicos:**
+- Entrada de dados encadeada com `readline`
+- Conversão explícita de `String` para `Number` para evitar concatenação indevida
+- Encerramento da interface com `entradaDeDados.close()`
+
+---
+
+### 📝 Exercício 02 — Sistema Viva Moda (Juros Compostos)
+
+**Objetivo:** Aplicação de vendas com cálculo de juros compostos e emissão de comprovante no terminal.
+
+**Funcionalidades:**
+- Validação de nome (mínimo 3 caracteres, não pode ser numérico) e valor da compra (deve ser maior que 0)
+- Parcelamento em **meses** ou **anos** (com conversão automática: `anos * 12`)
+- Cálculo de juros compostos e exibição do montante final e valor do acréscimo
+- Geração de comprovante visual no terminal
+
+---
+
+### 🧮 Exercício 03 — Cálculos SA (Operações Matemáticas)
+
+**Objetivo:** Sistema para a empresa "Cálculos SA" que realiza as 4 operações matemáticas básicas via terminal.
+
+**Estrutura:**
+```
+exercicio_03/
+├── app.js
+└── modulo/
+    └── calculoMatematico.js
+```
+
+**Funcionalidades:**
+- Aceita números no formato brasileiro com `.replace(',', '.')`
+- Normaliza a operação digitada com `.toLowerCase()`
+- Validação de campos vazios e entradas não numéricas
+- Operações: **Soma, Subtração, Multiplicação e Divisão**
+- Proteção contra divisão por zero
+
+---
+
+### 💸 Exercício 04 — Validação e Cálculos v2.0
+
+**Objetivo:** Versão mais avançada do sistema de cálculos, com melhor organização de funções e inclusão de gerador de tabuada.
+
+**Estrutura:**
+```
+exercicio_04/
+├── app.js
+└── modulo/
+    ├── calcular.js
+    └── tabuada.js
+```
+
+**Conceitos abordados:**
+- Funções anônimas: `const calcular = function(...)`
+- Função de validação dedicada (`validarDados`) que retorna booleano
+- `switch/case` para seleção de operação matemática
+- **Arrow Functions:** `const somar = (n1, n2) => n1 + n2`
+- Gerador de tabuada com estrutura `for`
+
+---
+
+### 📚 Exercício 05 — Sistema Integrado de Exercícios Lógicos *(em andamento)*
+
+**Objetivo:** Aplicação de console com menu interativo que agrupa 5 ferramentas de lógica.
+
+**Estrutura:**
+```
+exercicio_05/
+├── app.js
+└── modulo/
+    ├── config.js
+    ├── imc.js
+    ├── mediaEscolar.js
+    ├── tabuada.js
+    ├── fatorial.js
+    ├── numeros.js
+    └── validarDados.js
+```
+
+**Funcionalidades do menu:**
+1. **Cálculo de IMC** — Calcula e classifica o IMC (abaixo do peso, normal, sobrepeso, obesidade I/II/III)
+2. **Médias Escolares** — Relatório com tratamento de gênero, média e lógica de exame final
+3. **Tabuada Personalizada** — Gera tabuadas com intervalo de multiplicandos e multiplicadores definidos pelo usuário
+4. **Fatorial** — Calcula o fatorial exibindo a sequência completa da operação (ex: `5x4x3x2x1 = 120`)
+5. **Pares e Ímpares** — Filtra e lista números dentro de um intervalo com contagem total
+
+**Conceitos técnicos:**
+- Programação assíncrona com `async/await` e `Promise`
+- `readline` encapsulado como Promise em `config.js`
+- Modularização completa com separação de lógica, validação e entrada de dados
+
+---
+
+### 🗺️ Exercício 06 — API de Estados e Cidades do Brasil
+
+API REST para consulta de dados geográficos dos estados e cidades brasileiras.
 
 **Versão:** 1.0 | **Data:** 01/04/2026
 
----
+**Estrutura:**
+```
+exercicio_06/
+├── app.js
+├── package.json
+└── modulo/
+    ├── functions.js
+    └── estados_cidades.js
+```
 
-## 📋 Conceitos Aplicados
-
-- **Express.js:** Criação de servidor HTTP e definição de rotas com parâmetros dinâmicos
-- **CORS:** Configuração de permissões de acesso externo à API
-- **Módulos:** Separação de responsabilidades entre `app.js` (rotas) e `functions.js` (lógica)
-- **Manipulação de Arrays:** Uso de `.forEach()`, `.push()` e `.map()` para construção de coleções dinâmicas
-- **Tratamento de Strings:** `.toUpperCase()` para buscas case-insensitive
-- **Códigos HTTP:** Retorno semântico de status `200` e `404` conforme resultado da operação
-- **Parâmetros de Rota:** Captura de dados dinâmicos via `request.params`
-- **JSON Dinâmico:** Construção de objetos de resposta personalizados por endpoint
-
----
-
-## 💻 Endpoints Disponíveis
+**Endpoints disponíveis:**
 
 | Método | Rota | Descrição |
 |--------|------|-----------|
 | GET | `/v1/senai/estados` | Lista as siglas de todos os estados e quantidade total |
 | GET | `/v1/senai/dados/estado/:uf` | Retorna nome, capital e região de um estado pela sigla |
-| GET | `/v1/senai/capital/estado/:uf` | Retorna os dados da capital de um estado pela sigla |
+| GET | `/v1/senai/capital/estado/:uf` | Retorna os dados da capital de um estado |
 | GET | `/v1/senai/estados/regiao/:regiao` | Retorna todos os estados de uma região |
 | GET | `/v1/senai/estados/capital/brasil` | Retorna os estados que já foram capital do Brasil |
-| GET | `/v1/senai/estados/cidade/:uf` | Retorna todas as cidades de um estado e quantidade total |
-| GET | `/v1/senai/help` | Retorna a documentação completa dos endpoints |
+| GET | `/v1/senai/estados/cidade/:uf` | Retorna todas as cidades de um estado |
+| GET | `/v1/senai/help` | Documentação completa dos endpoints |
+
+```bash
+npm install
+node app.js
+# Disponível em: http://localhost:8080
+```
 
 ---
 
-## 📂 Estrutura de Arquivos
-```text
-exercicio_06/
-├── app.js                  # Servidor Express e definição das rotas
+### 📱 Exercício 07 — WhatsApp Data API
+
+API REST para simulação e consulta de dados de conversas do WhatsApp.
+
+**Versão:** 1.0 | **Data:** 08/04/2026
+
+**Estrutura:**
+```
+exercicio_07/
+├── app.js
 ├── package.json
 └── modulo/
-    ├── functions.js        # Lógica de filtragem e funções exportadas
-    └── estados_cidades.js  # Base de dados em JSON
+    ├── functions.js
+    └── contatos.js
 ```
 
----
+**Endpoints disponíveis:**
 
-## 🚀 Como Executar Localmente
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/v1/whatsapp/dados` | Retorna todos os usuários, contatos e conversas |
+| GET | `/v1/whatsapp/dados/conta/profile/usuario` | Dados de perfil editáveis (`?nick=`) |
+| GET | `/v1/whatsapp/dados/contato/pessoal/usuario/:numero` | Dados pessoais dos contatos de um usuário |
+| GET | `/v1/whatsapp/dados/all/mensagens/usuario/:contato` | Todas as mensagens de uma conta |
+| GET | `/v1/whatsapp/dados/usuario/:numero` | Conversa específica (`?contato=Nome`) |
+| GET | `/v1/whatsapp/pesquisa/:numero` | Busca por palavra-chave (`?palavra=termo`) |
+| GET | `/v1/whatsapp/help` | Documentação resumida da API em JSON |
 
-**Pré-requisito:** Node.js instalado
+**Respostas padrão:**
+
+| Status | Descrição |
+|--------|-----------|
+| `200` | Requisição bem-sucedida |
+| `404` | Nenhum dado encontrado |
+
 ```bash
-# Instalar dependências
 npm install
-
-# Iniciar a API
 node app.js
+# Disponível em: http://localhost:8080
 ```
-
-A API ficará disponível em: `http://localhost:8080`
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)
-![CORS](https://img.shields.io/badge/CORS-enabled-blue?style=flat)
-
----
-
-# 📱 WhatsApp Data API
-
-API REST para simulação e consulta de dados de conversas do WhatsApp, desenvolvida com Node.js e Express.
-
----
-
-## 🗂️ Estrutura do Projeto
-
-```
-├── app.js                  # Configuração do servidor e definição das rotas
-└── modulo/
-    ├── functions.js        # Funções de negócio e manipulação dos dados
-    └── contatos.js         # Base de dados local (JSON/objeto)
-```
-
----
-
-## 🛠️ Tecnologias
-
 | Tecnologia | Finalidade |
 |------------|------------|
 | Node.js    | Ambiente de execução |
-| Express    | Framework HTTP |
+| Express    | Framework HTTP para APIs |
 | CORS       | Controle de acesso entre origens |
+| Readline   | Entrada de dados via terminal (nativo) |
 
 ---
 
-## ⚙️ Instalação e Execução
-
-**Pré-requisitos:** Node.js instalado.
-
-```bash
-# Instalar dependências
-npm install
-
-# Iniciar o servidor
-node app.js
-```
-
-O servidor sobe na porta **8080**.
-
----
-
-## 🔌 Endpoints
-
-Base URL: `http://localhost:8080`
-
----
-
-### `GET /v1/whatsapp/dados`
-
-Retorna todos os usuários, contatos e conversas.
-
-**Resposta de sucesso `200`:**
-```json
-[
-  {
-    "account": "...",
-    "nickname": "...",
-    "number": "...",
-    "contacts": [ ... ]
-  }
-]
-```
-
----
-
-### `GET /v1/whatsapp/dados/conta/profile/usuario`
-
-Retorna os dados de perfil editáveis de todos os usuários.
-
-| Parâmetro | Tipo  | Local | Descrição |
-|-----------|-------|-------|-----------|
-| `nick`    | string | query | Nickname do usuário |
-
-**Exemplo:**
-```
-GET /v1/whatsapp/dados/conta/profile/usuario?nick=dani123
-```
-
----
-
-### `GET /v1/whatsapp/dados/contato/pessoal/usuario/:numero`
-
-Retorna os dados pessoais dos contatos de um usuário, filtrado pelo número de telefone.
-
-| Parâmetro | Tipo   | Local | Descrição               |
-|-----------|--------|-------|-------------------------|
-| `numero`  | number | path  | Número de telefone do usuário |
-
-**Exemplo:**
-```
-GET /v1/whatsapp/dados/contato/pessoal/usuario/11987876567
-```
-
----
-
-### `GET /v1/whatsapp/dados/all/mensagens/usuario/:contato`
-
-Retorna todas as mensagens trocadas de uma conta de usuário.
-
-| Parâmetro | Tipo   | Local | Descrição               |
-|-----------|--------|-------|-------------------------|
-| `contato` | number | path  | Número de telefone do usuário |
-
-**Exemplo:**
-```
-GET /v1/whatsapp/dados/all/mensagens/usuario/11955577796
-```
-
----
-
-### `GET /v1/whatsapp/dados/usuario/:numero`
-
-Retorna a conversa entre um usuário e um contato específico.
-
-| Parâmetro | Tipo   | Local | Descrição                    |
-|-----------|--------|-------|------------------------------|
-| `numero`  | number | path  | Número de telefone do usuário |
-| `contato` | string | query | Nome do contato               |
-
-**Exemplo:**
-```
-GET /v1/whatsapp/dados/usuario/11987876567?contato=Max Kellerman
-```
-
----
-
-### `GET /v1/whatsapp/pesquisa/:numero`
-
-Busca mensagens que contenham uma palavra-chave, filtradas pelo número do usuário.
-
-| Parâmetro | Tipo   | Local | Descrição                    |
-|-----------|--------|-------|------------------------------|
-| `numero`  | number | path  | Número de telefone do usuário |
-| `palavra` | string | query | Palavra-chave para busca      |
-
-**Exemplo:**
-```
-GET /v1/whatsapp/pesquisa/11955577796?palavra=design
-```
-
----
-
-### `GET /v1/whatsapp/help`
-
-Retorna a documentação resumida da API em formato JSON.
-
----
-
-## 📋 Respostas Padrão
-
-| Status | Descrição |
-|--------|-----------|
-| `200`  | Requisição bem-sucedida |
-| `404`  | Nenhum dado encontrado para os parâmetros informados |
-
----
 ## 👤 Autora 
 [Daniele Silva Santos](https://www.linkedin.com/in/danielesilvasantos/)
