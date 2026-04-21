@@ -271,5 +271,164 @@ A API ficará disponível em: `http://localhost:8080`
 ![CORS](https://img.shields.io/badge/CORS-enabled-blue?style=flat)
 
 ---
+
+# 📱 WhatsApp Data API
+
+API REST para simulação e consulta de dados de conversas do WhatsApp, desenvolvida com Node.js e Express.
+
+---
+
+## 🗂️ Estrutura do Projeto
+
+```
+├── app.js                  # Configuração do servidor e definição das rotas
+└── modulo/
+    ├── functions.js        # Funções de negócio e manipulação dos dados
+    └── contatos.js         # Base de dados local (JSON/objeto)
+```
+
+---
+
+## 🛠️ Tecnologias
+
+| Tecnologia | Finalidade |
+|------------|------------|
+| Node.js    | Ambiente de execução |
+| Express    | Framework HTTP |
+| CORS       | Controle de acesso entre origens |
+
+---
+
+## ⚙️ Instalação e Execução
+
+**Pré-requisitos:** Node.js instalado.
+
+```bash
+# Instalar dependências
+npm install
+
+# Iniciar o servidor
+node app.js
+```
+
+O servidor sobe na porta **8080**.
+
+---
+
+## 🔌 Endpoints
+
+Base URL: `http://localhost:8080`
+
+---
+
+### `GET /v1/whatsapp/dados`
+
+Retorna todos os usuários, contatos e conversas.
+
+**Resposta de sucesso `200`:**
+```json
+[
+  {
+    "account": "...",
+    "nickname": "...",
+    "number": "...",
+    "contacts": [ ... ]
+  }
+]
+```
+
+---
+
+### `GET /v1/whatsapp/dados/conta/profile/usuario`
+
+Retorna os dados de perfil editáveis de todos os usuários.
+
+| Parâmetro | Tipo  | Local | Descrição |
+|-----------|-------|-------|-----------|
+| `nick`    | string | query | Nickname do usuário |
+
+**Exemplo:**
+```
+GET /v1/whatsapp/dados/conta/profile/usuario?nick=dani123
+```
+
+---
+
+### `GET /v1/whatsapp/dados/contato/pessoal/usuario/:numero`
+
+Retorna os dados pessoais dos contatos de um usuário, filtrado pelo número de telefone.
+
+| Parâmetro | Tipo   | Local | Descrição               |
+|-----------|--------|-------|-------------------------|
+| `numero`  | number | path  | Número de telefone do usuário |
+
+**Exemplo:**
+```
+GET /v1/whatsapp/dados/contato/pessoal/usuario/11987876567
+```
+
+---
+
+### `GET /v1/whatsapp/dados/all/mensagens/usuario/:contato`
+
+Retorna todas as mensagens trocadas de uma conta de usuário.
+
+| Parâmetro | Tipo   | Local | Descrição               |
+|-----------|--------|-------|-------------------------|
+| `contato` | number | path  | Número de telefone do usuário |
+
+**Exemplo:**
+```
+GET /v1/whatsapp/dados/all/mensagens/usuario/11955577796
+```
+
+---
+
+### `GET /v1/whatsapp/dados/usuario/:numero`
+
+Retorna a conversa entre um usuário e um contato específico.
+
+| Parâmetro | Tipo   | Local | Descrição                    |
+|-----------|--------|-------|------------------------------|
+| `numero`  | number | path  | Número de telefone do usuário |
+| `contato` | string | query | Nome do contato               |
+
+**Exemplo:**
+```
+GET /v1/whatsapp/dados/usuario/11987876567?contato=Max Kellerman
+```
+
+---
+
+### `GET /v1/whatsapp/pesquisa/:numero`
+
+Busca mensagens que contenham uma palavra-chave, filtradas pelo número do usuário.
+
+| Parâmetro | Tipo   | Local | Descrição                    |
+|-----------|--------|-------|------------------------------|
+| `numero`  | number | path  | Número de telefone do usuário |
+| `palavra` | string | query | Palavra-chave para busca      |
+
+**Exemplo:**
+```
+GET /v1/whatsapp/pesquisa/11955577796?palavra=design
+```
+
+---
+
+### `GET /v1/whatsapp/help`
+
+Retorna a documentação resumida da API em formato JSON.
+
+---
+
+## 📋 Respostas Padrão
+
+| Status | Descrição |
+|--------|-----------|
+| `200`  | Requisição bem-sucedida |
+| `404`  | Nenhum dado encontrado para os parâmetros informados |
+
+---
 ## 👤 Autora 
 [Daniele Silva Santos](https://www.linkedin.com/in/danielesilvasantos/)
