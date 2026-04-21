@@ -138,10 +138,6 @@ function getConversaSelecionada(numero, pesquisa) {
     }
 }
 
-// console.log(getAllMessages("11987876567"))
-// console.log(getConversaUsuario("11955577796", "Franklin Silva"))
-// console.log(getConversaSelecionada('11955577796', 'como'))
-
 module.exports = { 
     getDados,
     getContaProfile,
