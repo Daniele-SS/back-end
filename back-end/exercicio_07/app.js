@@ -94,20 +94,20 @@ app.get('/v1/whatsapp/dados/usuario/:numero', function(request, response){
 })
 
 
-// app.get('/v1/whatsapp/pesquisa/:numero', function(request, response){
-//     let numero  =  request.params.numero
-//     let palavra = request.query.palavra
+app.get('/v1/whatsapp/pesquisa/:numero', function(request, response){
+    let numero  = request.params.numero
+    let palavra = request.query.palavra
 
-//     let mensagemEcontrada =  listaDeContatos.getConversaSelecionada(numero, palavra)
+    let mensagemEcontrada =  listaDeContatos.getConversaSelecionada(numero, palavra)
 
-//     if(mensagemEcontrada) {
-//         response.status(200)
-//         response.json(mensagemEcontrada)
-//         } else {
-//             response.status(404)
-//             response.json({"message": "Nenhum dado encontrado."})
-//         }
-// })
+    if(mensagemEcontrada) {
+        response.status(200)
+        response.json(mensagemEcontrada)
+        } else {
+            response.status(404)
+            response.json({"message": "Nenhum dado encontrado."})
+        }
+})
 
 
 // app.get('/v1/whatsapp/dados/help', function(request, response){

@@ -117,7 +117,7 @@ function getConversaSelecionada(numero, pesquisa) {
                 
                 contato.messages.forEach(function(mensagem){
 
-                    if(mensagem.content.toUpperCase().includes(pesquisa.toUpperCase())) {
+                    if(mensagem.content.includes(pesquisa)) {
                         vetor.push({
                             nome: contato.name,
                             numero: contato.number,
