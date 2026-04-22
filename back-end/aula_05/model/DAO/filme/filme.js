@@ -45,6 +45,7 @@ const insertFilme = async function(filme) {
             }
 
         } catch (error) {
+            console.log(error)
             return false
         }
 }
