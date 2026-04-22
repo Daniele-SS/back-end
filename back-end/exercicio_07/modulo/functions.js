@@ -80,16 +80,69 @@ function getAllMessages(contato) {
     return all
 }
 
-function getConversaUsuario() {
+function getConversaUsuario(usuario, contato) {
+    let conversas = {}
+    let retornoFalso = false 
 
+    listaDeContatos.contatos['whats-users'].forEach(function(messages){
+        if(Number(messages.number) == Number(usuario)) {
+            
+            messages.contacts.forEach(function(contac){
+                if(contac.name == contato) {
+                    conversas.name = contac.name
+                    conversas.mensagem = contac.messages
+
+                    retornoFalso = true
+                } 
+            })
+        }
+    })
+
+    if(retornoFalso) {
+        return conversas
+    } else {
+        return false
+    }
 }
 
-// console.log(getAllMessages("11987876567"))
+function getConversaSelecionada(numero, pesquisa) {
+    let selecionaConversa = {}
+    let vetor = [] 
+    let retornoFalso = false 
+
+    listaDeContatos.contatos['whats-users'].forEach(function(usuario){
+        if(Number(usuario.number) == Number(numero) ) {
+
+            usuario.contacts.forEach(function(contato){
+                
+                contato.messages.forEach(function(mensagem){
+
+                    if(mensagem.content.includes(pesquisa)) {
+                        vetor.push({
+                            nome: contato.name,
+                            numero: contato.number,
+                            mensagens: contato.messages,
+                        })
+
+                        retornoFalso = true
+                    }
+                })
+            })
+        }
+    })
+
+    if(retornoFalso) {
+        return selecionaConversa.conversas = vetor
+    } else {
+        return false
+    }
+}
 
 module.exports = { 
     getDados,
     getContaProfile,
     getContatosPessoais,
     getAllMessages,
-    getConversaUsuario
+    getConversaUsuario,
+    getConversaSelecionada
 }
