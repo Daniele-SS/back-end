@@ -18,6 +18,8 @@ const inserirNovoFilme = async function(filme, contentType) {
     let message = JSON.parse(JSON.stringify(config_message)) /*Criando um clone do objeto JSON para manipular 
                                                             a sua estrutura local sem modificar a estrutura original*/
 
+
+    //Validação para o tipo de dados da requisição (somente JSON)                                                        
     if(String(contentType).toUpperCase() == 'APPLICATION/JSON') {
         let validar = await validarDados(filme)
     
@@ -41,9 +43,8 @@ const inserirNovoFilme = async function(filme, contentType) {
         }
 
     } else {
-        return 
+        return message.ERROR_CONTENT_TYPE
     }
-
 
 }
 

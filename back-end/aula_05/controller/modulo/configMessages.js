@@ -28,6 +28,12 @@ const ERROR_INTERNAL_SERVER_MODEL = {
     message: 'Não foi possível processar a requisição por conta de erro na API [ERRO NA MODELAGEM DE DADOS]'
 }
 
+const ERROR_CONTENT_TYPE = {
+    status: false, 
+    status_code: 415, 
+    message: 'Não foi possível processar a requisição, pois o tipo de dados aceito pela API é somente JSON'
+}
+
 //Mensagens de sucesso da API
 const SUCCESS_CREATED_ITEM = {
     status: true,
@@ -39,5 +45,6 @@ module.exports = {
     defaultMessage,
     ERROR_BAD_REQUEST,
     SUCCESS_CREATED_ITEM,
-    ERROR_INTERNAL_SERVER_MODEL
+    ERROR_INTERNAL_SERVER_MODEL,
+    ERROR_CONTENT_TYPE
 }
