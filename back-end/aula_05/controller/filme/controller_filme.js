@@ -13,33 +13,38 @@ const config_message = require('../modulo/configMessages.js')
 const filmeDAO = require('../../model/DAO/filme/filme.js')
 
 //Função para inserir um novo filme
-const inserirNovoFilme = async function(filme) {
+const inserirNovoFilme = async function(filme, contentType) {
 
     let message = JSON.parse(JSON.stringify(config_message)) /*Criando um clone do objeto JSON para manipular 
                                                             a sua estrutura local sem modificar a estrutura original*/
 
-    let validar = await validarDados(filme)
+    if(String(contentType).toUpperCase() == 'APPLICATION/JSON') {
+        let validar = await validarDados(filme)
     
-    //Se a função validar retornar um JSON de erro, iremos devolver ao APP o erro
-    if(validar) {
-        return validar //400
-
-    } else {
-        let result = await filmeDAO.insertFilme(filme) //Encaminha os dados do filme para o DAO
-
-        if(result) { //201 (Created)
-            message.defaultMessage.status       = message.SUCCESS_CREATED_ITEM.status //Adiciona o status da requisição sucedida
-            message.defaultMessage.status_code  = message.SUCCESS_CREATED_ITEM.status_code //Adiciona o status_code (201) em caso de criação de atributo bem sucedida
-            message.defaultMessage.message      = message.SUCCESS_CREATED_ITEM.message //Adiciona a mensagem que será mostrada após a requisição ser finalizada
-
-        } else { //500 (Internal Server Error)
-            return message.ERROR_INTERNAL_SERVER_MODEL
+        //Se a função validar retornar um JSON de erro, iremos devolver ao APP o erro
+        if(validar) {
+            return validar //400
+    
+        } else {
+            let result = await filmeDAO.insertFilme(filme) //Encaminha os dados do filme para o DAO
+    
+            if(result) { //201 (Created)
+                message.defaultMessage.status       = message.SUCCESS_CREATED_ITEM.status //Adiciona o status da requisição sucedida
+                message.defaultMessage.status_code  = message.SUCCESS_CREATED_ITEM.status_code //Adiciona o status_code (201) em caso de criação de atributo bem sucedida
+                message.defaultMessage.message      = message.SUCCESS_CREATED_ITEM.message //Adiciona a mensagem que será mostrada após a requisição ser finalizada
+    
+            } else { //500 (Internal Server Error)
+                return message.ERROR_INTERNAL_SERVER_MODEL
+            }
+    
+            return message.defaultMessage
         }
 
-        return message.defaultMessage
+    } else {
+        return 
     }
-    // console.log(config_message.defaultMessage)
-    // // console.log(status_code)
+
+
 }
 
 
