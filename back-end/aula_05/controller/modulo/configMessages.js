@@ -22,7 +22,6 @@ const ERROR_BAD_REQUEST = {
     message: 'Os dados enviados na requisição não estão corretos.'
 }
 
-
 //Mensagens de sucesso da API
 const SUCCESS_CREATED_ITEM = {
     status: true,

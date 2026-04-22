@@ -24,37 +24,37 @@ const inserirNovoFilme = async function(filme) {
         message.ERROR_BAD_REQUEST.field = '[NOME] INVÁLIDO'
         return message.ERROR_BAD_REQUEST //400
 
-    } else if(filme.data_lancamento == '' || filme.data_lancamento == null || filme.data_lancamento == undefined || filme.data_lancamento != 10) {
+    } else if(filme.data_lancamento == '' || filme.data_lancamento == null || filme.data_lancamento == undefined || filme.data_lancamento.length != 10) {
         message.ERROR_BAD_REQUEST.field = '[DATA_LANÇAMENTO] INVÁLIDO'
-        
+        return message.ERROR_BAD_REQUEST //400
 
-    } else if(filme.duracao == '' || filme.duracao == null || filme.duracao == undefined || filme.duracao < 5) {
+    } else if(filme.duracao == '' || filme.duracao == null || filme.duracao == undefined || filme.duracao.length < 5) {
         message.ERROR_BAD_REQUEST.field = '[DURAÇÃO] INVÁLIDO'
-        
+        return message.ERROR_BAD_REQUEST //400
 
     } else if(filme.sinopse == '' || filme.sinopse == null || filme.sinopse == undefined) {
         message.ERROR_BAD_REQUEST.field = '[SINOPSE] INVÁLIDO'
-        
+        return message.ERROR_BAD_REQUEST //400
 
     } else if(isNaN(filme.avaliacao) || filme.avaliacao.length > 3) {
         message.ERROR_BAD_REQUEST.field = '[AVALIAÇÃO] INVÁLIDO'
-        
+        return message.ERROR_BAD_REQUEST //400
 
     } else if(filme.valor == '' || filme.valor == null || filme.valor == undefined || filme.valor.length > 5 || isNaN(filme.valor)) {
         message.ERROR_BAD_REQUEST.field = '[VALOR] INVÁLIDO'
-
+        return message.ERROR_BAD_REQUEST //400
 
     } else if(filme.capa.length > 255) {
         message.ERROR_BAD_REQUEST.field = '[CAPA] INVÁLIDO'
+        return message.ERROR_BAD_REQUEST //400
 
     } else {
-        let result = await filmeDAO.insertFilme(filme)
+        let result = await filmeDAO.insertFilme(filme) //Encaminha os dados do filme para o DAO
 
         if(result) { //201 (Created)
             message.defaultMessage.status       = message.SUCCESS_CREATED_ITEM.status //Adiciona o status da requisição sucedida
             message.defaultMessage.status_code  = message.SUCCESS_CREATED_ITEM.status_code //Adiciona o status_code (201) em caso de criação de atributo bem sucedida
             message.defaultMessage.message      = message.SUCCESS_CREATED_ITEM.message //Adiciona a mensagem que será mostrada após a requisição ser finalizada
-
         } else { //400 (Bad Request)
             message.defaultMessage.status       = message.ERROR_BAD_REQUEST.status
             message.defaultMessage.status_code  = message.ERROR_BAD_REQUEST.status_code
@@ -64,6 +64,8 @@ const inserirNovoFilme = async function(filme) {
 
         return message.defaultMessage
     }
+    // console.log(config_message.defaultMessage)
+    // // console.log(status_code)
 }
 
 
