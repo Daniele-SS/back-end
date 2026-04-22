@@ -16,32 +16,37 @@ const knexConex = knex(knexConfig.development)
 
 //Função para inserir dados na tabela de filme
 const insertFilme = async function(filme) {
-    let sql = `insert into tbl_filme (
-						nome, 
-                        data_lancamento, 
-                        duracao, 
-                        sinopse, 
-                        avaliacao, 
-                        valor, 
-                        capa
-                        ) 
-				values (
-						'${filme.nome}', 
-						'${filme.data_lancamento}', 
-						'${filme.duracao}', 
-						'${filme.sinopse}',
-						if('${filme.avaliacao}' = '', null, '${filme.avaliacao}'),
-						'${filme.valor}',
-						'${filme.capa}'
-						);`
+    try {
+            let sql = `insert into tbl_filme (
+                                nome, 
+                                data_lancamento, 
+                                duracao, 
+                                sinopse, 
+                                avaliacao, 
+                                valor, 
+                                capa
+                                ) 
+                        values (
+                                '${filme.nome}', 
+                                '${filme.data_lancamento}', 
+                                '${filme.duracao}', 
+                                '${filme.sinopse}',
+                                if('${filme.avaliacao}' = '', null, '${filme.avaliacao}'),
+                                '${filme.valor}',
+                                '${filme.capa}'
+                                );`
 
-    let result = await knexConex.raw(sql) //Executa o ScriptSql no banco de dados
+            let result = await knexConex.raw(sql) //Executa o ScriptSql no banco de dados
 
-    if(result) {
-        return true
-    } else {
-        return false
-    }
+            if(result) {
+                return true
+            } else {
+                return false
+            }
+
+        } catch (error) {
+            return false
+        }
 }
 
 //Função para atualizar um filme existente na tabela
