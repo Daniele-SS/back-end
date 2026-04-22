@@ -109,5 +109,6 @@ module.exports = {
     atualizarFilme,
     listarFilme,
     buscarFilme,
-    excluirFilme
+    excluirFilme,
+    validarDados
 }
