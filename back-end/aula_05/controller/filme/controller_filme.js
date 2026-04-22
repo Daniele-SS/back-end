@@ -18,34 +18,37 @@ const inserirNovoFilme = async function(filme, contentType) {
     let message = JSON.parse(JSON.stringify(config_message)) /*Criando um clone do objeto JSON para manipular 
                                                             a sua estrutura local sem modificar a estrutura original*/
 
+    try {                                            
+            //Validação para o tipo de dados da requisição (somente JSON)                                                        
+            if(String(contentType).toUpperCase() == 'APPLICATION/JSON') {
+                let validar = await validarDados(filme)
+            
+                //Se a função validar retornar um JSON de erro, iremos devolver ao APP o erro
+                if(validar) {
+                    return validar //400
+            
+                } else {
+                    let result = await filmeDAO.insertFilme(filme) //Encaminha os dados do filme para o DAO
+            
+                    if(result) { //201 (Created)
+                        message.defaultMessage.status       = message.SUCCESS_CREATED_ITEM.status //Adiciona o status da requisição sucedida
+                        message.defaultMessage.status_code  = message.SUCCESS_CREATED_ITEM.status_code //Adiciona o status_code (201) em caso de criação de atributo bem sucedida
+                        message.defaultMessage.message      = message.SUCCESS_CREATED_ITEM.message //Adiciona a mensagem que será mostrada após a requisição ser finalizada
+            
+                    } else { //500 (Internal Server Error na model)
+                        return message.ERROR_INTERNAL_SERVER_MODEL
+                    }
+            
+                    return message.defaultMessage
+                }
 
-    //Validação para o tipo de dados da requisição (somente JSON)                                                        
-    if(String(contentType).toUpperCase() == 'APPLICATION/JSON') {
-        let validar = await validarDados(filme)
-    
-        //Se a função validar retornar um JSON de erro, iremos devolver ao APP o erro
-        if(validar) {
-            return validar //400
-    
-        } else {
-            let result = await filmeDAO.insertFilme(filme) //Encaminha os dados do filme para o DAO
-    
-            if(result) { //201 (Created)
-                message.defaultMessage.status       = message.SUCCESS_CREATED_ITEM.status //Adiciona o status da requisição sucedida
-                message.defaultMessage.status_code  = message.SUCCESS_CREATED_ITEM.status_code //Adiciona o status_code (201) em caso de criação de atributo bem sucedida
-                message.defaultMessage.message      = message.SUCCESS_CREATED_ITEM.message //Adiciona a mensagem que será mostrada após a requisição ser finalizada
-    
-            } else { //500 (Internal Server Error)
-                return message.ERROR_INTERNAL_SERVER_MODEL
+            } else {
+                return message.ERROR_CONTENT_TYPE //415
             }
-    
-            return message.defaultMessage
+
+        } catch (error) {
+            return message.ERROR_INTERNAL_SERVER_CONTROLLER //500 (Internal Server Error na controller)
         }
-
-    } else {
-        return message.ERROR_CONTENT_TYPE
-    }
-
 }
 
 
