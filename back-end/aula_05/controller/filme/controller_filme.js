@@ -79,6 +79,7 @@ const excluirFilme = async function() {
 //Função para validar todos os dados de filme (obrigatórios, qtde de caracteres, etc)
 const validarDados = async function(filme) {
     let message = JSON.parse(JSON.stringify(config_message)) 
+    console.log(filme.valor.split('.')[0].length > 3)
 
     if(filme.nome == '' || filme.nome == null || filme.nome == undefined || filme.nome.length > 80) {
         message.ERROR_BAD_REQUEST.field = '[NOME] INVÁLIDO'
@@ -100,7 +101,7 @@ const validarDados = async function(filme) {
         message.ERROR_BAD_REQUEST.field = '[AVALIAÇÃO] INVÁLIDO'
         return message.ERROR_BAD_REQUEST //400
 
-    } else if(filme.valor == '' || filme.valor == null || filme.valor == undefined || filme.valor.length > 5 || isNaN(filme.valor)) {
+    } else if(filme.valor == '' || filme.valor == null || filme.valor == undefined || filme.valor.split('.')[0].length > 3 || isNaN(filme.valor)) {
         message.ERROR_BAD_REQUEST.field = '[VALOR] INVÁLIDO'
         return message.ERROR_BAD_REQUEST //400
 
