@@ -15,11 +15,17 @@ const defaultMessage = {
     response: {}
 }
 
-//Mensagens de erro da API
+//Mensagens de erro da API 
 const ERROR_BAD_REQUEST = {
     status: false, 
     status_code: 400, 
     message: 'Os dados enviados na requisição não estão corretos.'
+}
+
+const ERROR_INTERNAL_SERVER_MODEL = {
+    status: false, 
+    status_code: 500, 
+    message: 'Não foi possível processar a requisição por conta de erro na API [ERRO NA MODELAGEM DE DADOS]'
 }
 
 //Mensagens de sucesso da API
@@ -32,5 +38,6 @@ const SUCCESS_CREATED_ITEM = {
 module.exports = {
     defaultMessage,
     ERROR_BAD_REQUEST,
-    SUCCESS_CREATED_ITEM
+    SUCCESS_CREATED_ITEM,
+    ERROR_INTERNAL_SERVER_MODEL
 }

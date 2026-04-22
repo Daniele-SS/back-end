@@ -55,7 +55,7 @@ const inserirNovoFilme = async function(filme) {
             message.defaultMessage.status       = message.SUCCESS_CREATED_ITEM.status //Adiciona o status da requisição sucedida
             message.defaultMessage.status_code  = message.SUCCESS_CREATED_ITEM.status_code //Adiciona o status_code (201) em caso de criação de atributo bem sucedida
             message.defaultMessage.message      = message.SUCCESS_CREATED_ITEM.message //Adiciona a mensagem que será mostrada após a requisição ser finalizada
-        } else { //400 (Bad Request)
+        } else { //500 (Internal Server Error)
             message.defaultMessage.status       = message.ERROR_BAD_REQUEST.status
             message.defaultMessage.status_code  = message.ERROR_BAD_REQUEST.status_code
             message.defaultMessage.message      = message.ERROR_BAD_REQUEST.message
