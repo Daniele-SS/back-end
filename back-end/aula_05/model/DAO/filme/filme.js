@@ -65,7 +65,7 @@ const selectAllFilme = async function() {
         
         //Validação para verificar se o retorno no BD é um ARRAY
         if(Array.isArray(result)) {
-            return result
+            return result[0]
         } else {
             return false //Se o scriptSQL der erro, ele não devolve um ARRAY
         }
@@ -74,7 +74,6 @@ const selectAllFilme = async function() {
         
     }
 }
-selectAllFilme()
 
 
 //Função que irá retornar os dados de um filme pela primary key
