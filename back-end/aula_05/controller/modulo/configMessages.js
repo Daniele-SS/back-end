@@ -22,6 +22,12 @@ const ERROR_BAD_REQUEST = {
     message: 'Os dados enviados na requisição não estão corretos.'
 }
 
+const ERROR_NOT_FOUND = {
+    status: false, 
+    status_code: 404, 
+    message: 'Não foi encontrado nenhum dado para retorno.'
+}
+
 const ERROR_INTERNAL_SERVER_MODEL = {
     status: false, 
     status_code: 500, 
@@ -53,5 +59,6 @@ module.exports = {
     SUCCESS_CREATED_ITEM,
     ERROR_INTERNAL_SERVER_MODEL,
     ERROR_CONTENT_TYPE,
-    ERROR_INTERNAL_SERVER_CONTROLLER
+    ERROR_INTERNAL_SERVER_CONTROLLER,
+    ERROR_NOT_FOUND
 }

@@ -60,7 +60,21 @@ const atualizarFilme = async function() {
 
 //Fução para retornar todos os filmes
 const listarFilme = async function() {
+    let message = JSON.parse(JSON.stringify(config_message)) /*Criando um clone do objeto JSON para manipular 
+                                                            a sua estrutura local sem modificar a estrutura original*/
 
+    try {
+        let request = await filmeDAO.selectAllFilme() //Chama a função do DAO para retornar a lista de todos os filmes
+
+        if(result) {
+
+        } else {
+            return message.ERROR_INTERNAL_SERVER_MODEL // 500 (Internal Server Error na model)
+        }
+
+    } catch (error) {
+        return message.ERROR_INTERNAL_SERVER_CONTROLLER // 500 (Internal Server Error na controller)
+    }
 }
 
 
