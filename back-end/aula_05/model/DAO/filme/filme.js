@@ -62,7 +62,7 @@ const selectAllFilme = async function() {
         let sql = `select * from tbl_filme order by id desc` //Script para retornar todos os filmes por ordem decrescente
 
         let result = await knexConex.raw(sql) //Executa no banco de dados o scriptSQL para retornar os filmes
-        
+ 
         //Validação para verificar se o retorno no BD é um ARRAY
         if(Array.isArray(result)) {
             return result[0]
@@ -71,7 +71,7 @@ const selectAllFilme = async function() {
         }
 
     } catch (error) {
-        
+        return false
     }
 }
 

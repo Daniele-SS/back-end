@@ -30,8 +30,8 @@ app.use(cors(corsOptions)) //Configura as permissões da API através do cors
 
 
 app.post('/v1/senai/locadora/filme', bodyParserJSON, async function(request, response){
-    let dados = request.body //Recebe o conteúdo dentro do body da requisição
-    let contentType =  request.headers['content-type']
+    let dados       = request.body //Recebe o conteúdo dentro do body da requisição
+    let contentType = request.headers['content-type']
     
     let result = await controllerFilme.inserirNovoFilme(dados, contentType)
     response.status(result.status_code)
@@ -40,12 +40,12 @@ app.post('/v1/senai/locadora/filme', bodyParserJSON, async function(request, res
 })
 
 
-app.get('/v1/senai/locadora/filme'), async function(request, response) {
+app.get('/v1/senai/locadora/filme', async function(request, response) {
     let result = await controllerFilme.listarFilme()
 
     response.status(result.status_code)
-    request.json(result)
-}
+    response.json(result)
+})
 
 
 app.listen(8080, function(){
