@@ -71,6 +71,7 @@ const listarFilme = async function() {
             if(result.length > 0) { //Validação para verificar se existe conteúdo no ARRAY
                 message.defaultMessage.status           = message.SUCCESS_RESPONSE.status 
                 message.defaultMessage.status_code      = message.SUCCESS_RESPONSE.status_code
+                message.defaultMessage.response.count   = result.length //Retorna a quantidade de filmes cadastrados no BD para o front-end
                 message.defaultMessage.response.filme   = result
 
                 return message.defaultMessage // 200 (OK)
