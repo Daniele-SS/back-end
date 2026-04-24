@@ -64,10 +64,10 @@ const listarFilme = async function() {
                                                             a sua estrutura local sem modificar a estrutura original*/
 
     try {
-        let request = await filmeDAO.selectAllFilme() //Chama a função do DAO para retornar a lista de todos os filmes
+        let result = await filmeDAO.selectAllFilme() //Chama a função do DAO para retornar a lista de todos os filmes
 
         if(result) { //Valida se o DAO conseguiu processar os dados
-            
+
             if(result.length > 0) { //Validação para verificar se existe conteúdo no ARRAY
                 message.defaultMessage.status           = message.SUCCESS_RESPONSE.status 
                 message.defaultMessage.status_code      = message.SUCCESS_RESPONSE.status_code
