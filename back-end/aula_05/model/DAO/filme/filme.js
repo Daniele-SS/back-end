@@ -78,7 +78,19 @@ const selectAllFilme = async function() {
 
 //Função que irá retornar os dados de um filme pela primary key
 const selectByIdFilme = async function(id) {
-    
+    try {
+        let sql = `select * from tbl_filme where id=${id}`
+        let result = await knexConex.raw(sql)
+
+        if(Array.isArray(result)) {
+            return result[0]
+        } else {
+            return false
+        }
+
+    } catch (error) {
+        return false
+    }
 }
 
 

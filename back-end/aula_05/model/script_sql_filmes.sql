@@ -40,3 +40,7 @@ insert into tbl_filme (
         
 select * from tbl_filme;
 select * from tbl_filme order by id desc; #Ordena os filmes pelo id e por ordem decrescente
+
+delete from tbl_filme where id > 0;
+
+

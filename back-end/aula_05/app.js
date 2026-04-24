@@ -48,6 +48,15 @@ app.get('/v1/senai/locadora/filme', async function(request, response) {
 })
 
 
+app.get('/v1/senai/locadora/filme/:id', async function(request, response){
+    let id      = request.params.id //Recebe o ID via parâmetro
+    let result = await controllerFilme.buscarFilme(id)
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
 app.listen(8080, function(){
     console.log('API funcionando e aguardando novas requisições ...')
 })
