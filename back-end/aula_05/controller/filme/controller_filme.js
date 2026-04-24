@@ -66,9 +66,14 @@ const listarFilme = async function() {
     try {
         let request = await filmeDAO.selectAllFilme() //Chama a função do DAO para retornar a lista de todos os filmes
 
-        if(result) {
-            if(result.length > 0) {
+        if(result) { //Valida se o DAO conseguiu processar os dados
+            
+            if(result.length > 0) { //Validação para verificar se existe conteúdo no ARRAY
+                message.defaultMessage.status           = message.SUCCESS_RESPONSE.status 
+                message.defaultMessage.status_code      = message.SUCCESS_RESPONSE.status_code
+                message.defaultMessage.response.filme   = result
 
+                return message.defaultMessage // 200 (OK)
             } else {
                 return message.ERROR_NOT_FOUND // 404 (Not Found)
             }
