@@ -67,6 +67,11 @@ const listarFilme = async function() {
         let request = await filmeDAO.selectAllFilme() //Chama a função do DAO para retornar a lista de todos os filmes
 
         if(result) {
+            if(result.length > 0) {
+
+            } else {
+                return message.ERROR_NOT_FOUND // 404 (Not Found)
+            }
 
         } else {
             return message.ERROR_INTERNAL_SERVER_MODEL // 500 (Internal Server Error na model)
