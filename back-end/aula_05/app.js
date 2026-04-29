@@ -57,7 +57,7 @@ app.get('/v1/senai/locadora/filme/:id', async function(request, response){
 })
 
 
-app.put('/v1/senai/locadora/filme/:id', bodyParser, async function(request, response){
+app.put('/v1/senai/locadora/filme/:id', bodyParserJSON, async function(request, response){
     let contentType = request.headers['content-type'] //Recebe o contentType da requisição
 
     let id = request.params.id //Recebe o ID do registro a ser atualizado
