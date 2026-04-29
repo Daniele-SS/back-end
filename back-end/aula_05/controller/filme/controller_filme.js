@@ -55,7 +55,8 @@ const inserirNovoFilme = async function(filme, contentType) {
 //Função para atualizar um filme
 const atualizarFilme = async function(filme, id, contentType) {
 
-    let message = JSON.parse(JSON.stringify(config_message))
+    let message = JSON.parse(JSON.stringify(config_message)) /*Criando um clone do objeto JSON para manipular 
+                                                            a sua estrutura local sem modificar a estrutura original*/
 
     try {
         if(String(contentType).toUpperCase() == 'APPLICATION/JSON') { //Validação do contentType para receber apenas JSON
@@ -69,7 +70,20 @@ const atualizarFilme = async function(filme, id, contentType) {
             if(resultBuscarId.status) {
                 let validar = await validarDados(filme)
                 if(!validar) { //Validação de campos obrigátorios para a atualização (body)
-                    let result = await filmeDAO.updateFilme(filme)
+                    filme.id = id //Adiciona o atributo ID do filme no JSON paara ser enviado ao DAO
+
+                    let result = await filmeDAO.updateFilme(filme) //Chama a função do DAO para atualizar o filme (dados e ID)
+
+                    if(result) {
+                        message.defaultMessage.status       = message.SUCCESS_UPDATE_ITEM.status
+                        message.defaultMessage.status_code  = message.SUCCESS_UPDATE_ITEM.status_code
+                        message.defaultMessage.message      = message.SUCCESS_UPDATE_ITEM.message
+
+                        return message.defaultMessage //200 (OK, atualizado)
+
+                    } else {
+                        return message.ERROR_INTERNAL_SERVER_MODEL // 500 (Internal Server Error na model)
+                    }
 
                 } else {
                     return validar //400 (Bad Request)
