@@ -34,7 +34,8 @@ const inserirNovoFilme = async function(filme, contentType) {
                         message.defaultMessage.status       = message.SUCCESS_CREATED_ITEM.status //Adiciona o status da requisição sucedida
                         message.defaultMessage.status_code  = message.SUCCESS_CREATED_ITEM.status_code //Adiciona o status_code (201) em caso de criação de atributo bem sucedida
                         message.defaultMessage.message      = message.SUCCESS_CREATED_ITEM.message //Adiciona a mensagem que será mostrada após a requisição ser finalizada
-            
+                        message.defaultMessage.response     = filme
+
                     } else { //500 (Internal Server Error na model)
                         return message.ERROR_INTERNAL_SERVER_MODEL
                     }
