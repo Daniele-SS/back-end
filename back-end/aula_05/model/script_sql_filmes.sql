@@ -41,17 +41,11 @@ insert into tbl_filme (
 select * from tbl_filme;
 select * from tbl_filme order by id desc; #Ordena os filmes pelo id e por ordem decrescente
 
-delete from tbl_filme where id > 0;
+delete from tbl_filme where id = 21;
 
 update tbl_filme set
-	nome 			= 'filme 02',
-    data_lancamento = '2026-04-29',
-    duracao 		= '02:00',
-    sinopse 		= 'Testando o update no banco de dados',
-    avaliacao 		= '2',
-    valor 			= '10',
-    capa 			= 'teste capa'
-    where id = 23;
+	nome 			= 'filme 02'
+    where id = 21;
 
 
 
