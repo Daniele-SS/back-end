@@ -60,6 +60,14 @@ app.get('/v1/senai/locadora/filme', async function(request, response) {
 })
 
 
+app.get('/v1/senai/locadora/sexo', async function(request, response){
+    let result = await controllerSexo.listarSexo()
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
 //Listar filmes
 app.get('/v1/senai/locadora/filme/:id', async function(request, response){
     let id     = request.params.id //Recebe o ID via parâmetro

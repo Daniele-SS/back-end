@@ -44,7 +44,21 @@ const updateSexo = async function () {
 
 
 const selectAllSexo = async function () {
-    
+    try {
+        let sql = `select * from tbl_sexo order by id desc`
+
+        let result = await knexConex.raw(sql)
+ 
+        //Validação para verificar se o retorno no BD é um ARRAY
+        if(Array.isArray(result)) {
+            return result[0]
+        } else {
+            return false //Se o scriptSQL der erro, ele não devolve um ARRAY
+        }
+
+    } catch (error) {
+        return false
+    }
 }
 
 

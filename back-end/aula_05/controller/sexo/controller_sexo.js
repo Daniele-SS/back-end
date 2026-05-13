@@ -58,13 +58,41 @@ const atualizarSexo = async function (sexo, id, contentType) {
 }
 
 
-const listraSexo = async function () {
+const listarSexo = async function () {
 
+    let message = JSON.parse(JSON.stringify(config_message)) /*Criando um clone do objeto JSON para manipular 
+                                                                a sua estrutura local sem modificar a estrutura original*/
+    
+        try {
+            let result = await sexoDAO.selectAllSexo()
+    
+            if(result) { //Valida se o DAO conseguiu processar os dados
+    
+                if(result.length > 0) { //Validação para verificar se existe conteúdo no ARRAY
+                    message.defaultMessage.status           = message.SUCCESS_RESPONSE.status 
+                    message.defaultMessage.status_code      = message.SUCCESS_RESPONSE.status_code
+                    message.defaultMessage.response.count   = result.length
+                    message.defaultMessage.response.sexo   = result
+    
+                    return message.defaultMessage // 200 (OK)
+                } else {
+                    return message.ERROR_NOT_FOUND // 404 (Not Found)
+                }
+    
+            } else {
+                return message.ERROR_INTERNAL_SERVER_MODEL // 500 (Internal Server Error na model)
+            }
+    
+        } catch (error) {
+            return message.ERROR_INTERNAL_SERVER_CONTROLLER // 500 (Internal Server Error na controller)
+        }
 }
+
 
 const buscarSexo = async function (id) {
 
 }
+
 
 const excluirSexo = async function (id) {
 
@@ -83,7 +111,7 @@ const validarDados = async function(sexo) {
 module.exports = {
     inserirNovoSexo,
     atualizarSexo,
-    listraSexo,
+    listarSexo,
     buscarSexo,
     excluirSexo
 }
