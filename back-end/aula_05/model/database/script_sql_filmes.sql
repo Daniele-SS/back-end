@@ -29,7 +29,19 @@ show tables;
 desc tbl_filme;
 desc tbl_classificacao;
 desc tbl_genero;
+desc tbl_sexo;
+desc tbl_nacionalidade;
 
+
+create table tbl_sexo (
+	id 		int not null primary key auto_increment,
+    sigla 	varchar(3) not null
+);
+
+create table tbl_nacionalidade (
+	id 		int not null primary key auto_increment,
+    nome 	varchar(100) not null
+);
 
 #Inserir dados
 insert into tbl_filme (
