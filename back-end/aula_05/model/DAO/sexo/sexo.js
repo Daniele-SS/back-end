@@ -37,6 +37,31 @@ const insertSexo = async function(sexo) {
     }
 }
 
+
+const updateSexo = async function () {
+
+}
+
+
+const selectAllSexo = async function () {
+    
+}
+
+
+const selectByIdSexo = async function () {
+    
+}
+
+
+const deleteSexo = async function () {
+    
+}
+
+
 module.exports = {
-    insertSexo
+    insertSexo,
+    updateSexo,
+    selectAllSexo,
+    selectByIdSexo,
+    deleteSexo
 }
