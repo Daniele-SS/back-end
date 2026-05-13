@@ -12,13 +12,55 @@ const config_message = require('../modulo/configMessages.js')
 //Import do arquivo DAO para fazer o CRUD do filme no banco de dados
 const sexoDAO = require('../../model/DAO/sexo/sexo.js')
 
-const inserirNovoSexo = async function () {
+const inserirNovoSexo = async function (sexo, contentType) {
+
     let message = JSON.parse(JSON.stringify(config_message)) /*Criando um clone do objeto JSON para manipular 
                                                                 a sua estrutura local sem modificar a estrutura original*/
 
     try {
-        
-    } catch (error) {
-        
+            //Validação para o tipo de dados da requisição (somente JSON)                                                        
+            if(String(contentType).toUpperCase() == 'APPLICATION/JSON') {
+                let validar = await validarDados(sexo)
+            
+                //Se a função validar retornar um JSON de erro, iremos devolver ao APP o erro
+                if(validar) {
+                    return validar //400
+            
+                } else {
+                    let result = await sexoDAO.insertSexo(sexo) //Encaminha os dados do sexo para o DAO
+            
+                    if(result) { //201 (Created)
+                        sexo.id                             = result //Coloca o atributo ID no JSON do filme após ele ser gerado no insert do BD
+                        message.defaultMessage.status       = message.SUCCESS_CREATED_ITEM.status 
+                        message.defaultMessage.status_code  = message.SUCCESS_CREATED_ITEM.status_code 
+                        message.defaultMessage.message      = message.SUCCESS_CREATED_ITEM.message
+                        message.defaultMessage.response     = sexo
+
+                    } else { //500 (Internal Server Error na model)
+                        return message.ERROR_INTERNAL_SERVER_MODEL
+                    }
+            
+                    return message.defaultMessage
+                }
+
+            } else {
+                return message.ERROR_CONTENT_TYPE //415 (Unsupported Media Type)
+            }
+
+        } catch (error) {
+            return message.ERROR_INTERNAL_SERVER_CONTROLLER //500 (Internal Server Error na controller)
+        }
+}
+
+const validarDados = async function(sexo) {
+    let message = JSON.parse(JSON.stringify(config_message)) 
+
+    if(sexo.sigla == undefined || sexo.sigla == '' || sexo.sigla == null || sexo.sigla.length > 3) {
+        message.ERROR_BAD_REQUEST.field = '[SEXO] INVÁLIDO'
+        return message.ERROR_BAD_REQUEST //400
     }
+}
+
+module.exports = {
+    inserirNovoSexo
 }
