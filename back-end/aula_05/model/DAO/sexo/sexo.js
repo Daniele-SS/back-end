@@ -20,7 +20,7 @@ const insertSexo = async function(sexo) {
 						sigla
 						)
 						values (
-						'F'
+						'${sexo.sigla}'
 						);`
 
         let result = await knexConex.raw(sql) //Executa o ScriptSql no banco de dados

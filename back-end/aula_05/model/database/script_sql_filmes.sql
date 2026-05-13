@@ -38,6 +38,13 @@ create table tbl_sexo (
     sigla 	varchar(3) not null
 );
 
+insert into tbl_sexo (
+						sigla
+						)
+						values (
+						'F'
+						);
+
 create table tbl_nacionalidade (
 	id 		int not null primary key auto_increment,
     nome 	varchar(100) not null
@@ -66,6 +73,7 @@ insert into tbl_filme (
 						);
         
 select * from tbl_filme;
+select * from tbl_sexo;
 select * from tbl_filme order by id desc; #Ordena os filmes pelo id e por ordem decrescente
 
 delete from tbl_filme where id = 21;
