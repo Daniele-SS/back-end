@@ -41,6 +41,7 @@ app.post('/v1/senai/locadora/filme', bodyParserJSON, async function(request, res
 })
 
 
+//Inserir sexo
 app.post('/v1/senai/locadora/sexo', bodyParserJSON, async function(request, response){
     let dados       = request.body //Recebe o conteúdo dentro do body da requisição
     let contentType = request.headers['content-type']
@@ -60,6 +61,7 @@ app.get('/v1/senai/locadora/filme', async function(request, response) {
 })
 
 
+//Atualizar sexo
 app.get('/v1/senai/locadora/sexo', async function(request, response){
     let result = await controllerSexo.listarSexo()
 
@@ -72,6 +74,16 @@ app.get('/v1/senai/locadora/sexo', async function(request, response){
 app.get('/v1/senai/locadora/filme/:id', async function(request, response){
     let id     = request.params.id //Recebe o ID via parâmetro
     let result = await controllerFilme.buscarFilme(id)
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
+//Listar sexo
+app.get('/v1/senai/locadora/sexo/:id', async function(request, response){
+    let id     = request.params.id //Recebe o ID via parâmetro
+    let result = await controllerSexo.buscarSexo(id)
 
     response.status(result.status_code)
     response.json(result)

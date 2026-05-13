@@ -90,7 +90,38 @@ const listarSexo = async function () {
 
 
 const buscarSexo = async function (id) {
+    let message = JSON.parse(JSON.stringify(config_message))
 
+    try {
+        //Validação para garantir que o ID seja válido
+        if(id == undefined || id == '' || id == null || isNaN(id)) {
+            message.ERROR_BAD_REQUEST.field = '[ID] INVÁLIDO'
+            return message.ERROR_BAD_REQUEST //400
+
+        } else {
+            let result = await sexoDAO.selectByIdSexo(id)
+
+            if(result) {
+
+                if(result.length > 0) {
+                    message.defaultMessage.status           = message.SUCCESS_RESPONSE.status
+                    message.defaultMessage.status_code      = message.SUCCESS_RESPONSE.status_code
+                    message.defaultMessage.response.sexo   = result
+
+                    return message.defaultMessage //200
+                    
+                } else {
+                    return message.ERROR_NOT_FOUND //404
+                }
+
+            } else {
+                return message.ERROR_INTERNAL_SERVER_MODEL //500 (model)
+            }
+        }
+
+    } catch (error) {
+        return message.ERROR_INTERNAL_SERVER_CONTROLLER
+    }
 }
 
 
