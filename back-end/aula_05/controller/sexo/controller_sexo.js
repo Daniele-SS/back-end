@@ -52,6 +52,25 @@ const inserirNovoSexo = async function (sexo, contentType) {
         }
 }
 
+
+const atualizarSexo = async function (sexo, id, contentType) {
+
+}
+
+
+const listraSexo = async function () {
+
+}
+
+const buscarSexo = async function (id) {
+
+}
+
+const excluirSexo = async function (id) {
+
+}
+
+
 const validarDados = async function(sexo) {
     let message = JSON.parse(JSON.stringify(config_message)) 
 
@@ -62,5 +81,9 @@ const validarDados = async function(sexo) {
 }
 
 module.exports = {
-    inserirNovoSexo
+    inserirNovoSexo,
+    atualizarSexo,
+    listraSexo,
+    buscarSexo,
+    excluirSexo
 }

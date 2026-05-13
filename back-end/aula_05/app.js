@@ -50,6 +50,7 @@ app.post('/v1/senai/locadora/sexo', bodyParserJSON, async function(request, resp
     response.json(result) //Irá retornar meu JSON que já está configurado na controller
 })
 
+
 //Atualizar filme
 app.get('/v1/senai/locadora/filme', async function(request, response) {
     let result = await controllerFilme.listarFilme()
@@ -61,7 +62,7 @@ app.get('/v1/senai/locadora/filme', async function(request, response) {
 
 //Listar filmes
 app.get('/v1/senai/locadora/filme/:id', async function(request, response){
-    let id      = request.params.id //Recebe o ID via parâmetro
+    let id     = request.params.id //Recebe o ID via parâmetro
     let result = await controllerFilme.buscarFilme(id)
 
     response.status(result.status_code)
