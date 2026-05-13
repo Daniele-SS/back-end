@@ -14,7 +14,22 @@ create table tbl_filme (
     capa 			varchar(255)
 );
 
+create table tbl_classificacao (
+	id 				int not null primary key auto_increment,
+    sigla 			varchar(3) not null,
+    caracteristicas varchar(250) not null
+);
+
+create table tbl_genero (
+	id 		int not null primary key auto_increment,
+    nome 	varchar(205) not null
+);
+
 show tables;
+desc tbl_filme;
+desc tbl_classificacao;
+desc tbl_genero;
+
 
 #Inserir dados
 insert into tbl_filme (
