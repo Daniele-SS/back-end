@@ -139,8 +139,9 @@ insert into tbl_classificacao (sigla, caracteristicas, nome)
 
 select 	tbl_filme.nome as nome_filme, tbl_filme.sinopse, tbl_filme.data_lancamento, tbl_filme.capa,
 		tbl_classificacao.sigla, tbl_classificacao.nome as nome_classificacao
-
-
+from tbl_filme
+	inner join tbl_classificacao
+		on tbl_classificacao.id = tbl_filme.id_classificacao;
 
 
 
