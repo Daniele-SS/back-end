@@ -137,3 +137,16 @@ insert into tbl_classificacao (sigla, caracteristicas, nome)
                 '18+'
 				);
 
+select 	tbl_filme.nome as nome_filme, tbl_filme.sinopse, tbl_filme.data_lancamento, tbl_filme.capa,
+		tbl_classificacao.sigla, tbl_classificacao.nome as nome_classificacao
+
+
+
+
+
+
+
+
+
+
+
