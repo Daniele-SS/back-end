@@ -58,7 +58,8 @@ insert into tbl_filme (
                         sinopse, 
                         avaliacao, 
                         valor, 
-                        capa
+                        capa,
+                        id_classificacao
                         ) 
 				values (
 						'Super Mario Galaxy: O Filme', 
@@ -69,10 +70,12 @@ insert into tbl_filme (
 						aventura galáctica repleta de ação e momentos emocionantes depois de salvar o Reino dos Cogumelos.',
 						'3',
 						'50.70',
-						'https://shoppingcidadedasflores.com.br/wp-content/uploads/2026/04/Super-Mario-Galaxy-O-Filme2.jpg'
+						'https://shoppingcidadedasflores.com.br/wp-content/uploads/2026/04/Super-Mario-Galaxy-O-Filme2.jpg',
+                        1
 						);
         
 select * from tbl_filme;
+select * from tbl_classificacao;
 select * from tbl_sexo;
 select * from tbl_filme order by id desc; #Ordena os filmes pelo id e por ordem decrescente
 
