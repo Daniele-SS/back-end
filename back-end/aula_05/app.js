@@ -135,6 +135,17 @@ app.delete('/v1/senai/locadora/filme/:id', async function(request, response){
 })
 
 
+//Deletar sexo
+app.delete('/v1/senai/locadora/sexo/:id', async function(request, response){
+    let id = request.params.id //Recebe o ID do registro a ser deletado
+
+    let result = await controllerSexo.excluirSexo(id)
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
 app.listen(8080, function(){
     console.log('API funcionando e aguardando novas requisições ...')
 })

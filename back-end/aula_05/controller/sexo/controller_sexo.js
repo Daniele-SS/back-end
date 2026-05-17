@@ -169,6 +169,33 @@ const buscarSexo = async function (id) {
 
 const excluirSexo = async function (id) {
 
+    let message = JSON.parse(JSON.stringify(config_message))
+    
+        try {
+                let resultBuscarId = await buscarSexo(id) //Validação para o ID incorreto
+    
+                if(resultBuscarId.status) {
+    
+                        let result = await sexoDAO.deleteSexo(id) //Chama a função do DAO para deletar o filme (dados e ID)
+    
+                        if(result) {
+                            message.defaultMessage.status       = message.SUCCESS_DELETED_ITEM.status
+                            message.defaultMessage.status_code  = message.SUCCESS_DELETED_ITEM.status_code
+                            message.defaultMessage.message      = message.SUCCESS_DELETED_ITEM.message
+    
+                            return message.defaultMessage //200, mas o status code 204 (No Content) também poderia ser usado
+    
+                        } else {
+                            return message.ERROR_INTERNAL_SERVER_MODEL // 500 (Internal Server Error na model)
+                        }
+    
+                } else {
+                    return resultBuscarId //400 e 404
+                }
+            
+        } catch (error) {
+            return message.ERROR_INTERNAL_SERVER_CONTROLLER // 500 (Internal Server Error na controller)
+        }
 }
 
 
