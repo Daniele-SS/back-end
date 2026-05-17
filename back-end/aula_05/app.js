@@ -107,6 +107,23 @@ app.put('/v1/senai/locadora/filme/:id', bodyParserJSON, async function(request, 
 })
 
 
+//Buscar sexo
+app.put('/v1/senai/locadora/sexo/:id', bodyParserJSON, async function(request, response){
+    let contentType = request.headers['content-type'] //Recebe o contentType da requisição
+
+    let id = request.params.id //Recebe o ID do registro a ser atualizado
+
+    let dados = request.body //Recebe os dados enviados no corpo (BODY) da requisição
+
+    let result = await controllerSexo.atualizarSexo(dados, id, contentType) /*Chama a função de atualizar na controller 
+                                                                                e encaminha os dados, id, contentType
+                                                                                obedecendo a ordem de criação na função da controller*/
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
 //Deletar filmes
 app.delete('/v1/senai/locadora/filme/:id', async function(request, response){
     let id = request.params.id //Recebe o ID do registro a ser deletado

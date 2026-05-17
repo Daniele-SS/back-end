@@ -38,8 +38,26 @@ const insertSexo = async function(sexo) {
 }
 
 
-const updateSexo = async function () {
+const updateSexo = async function (sexo) {
 
+    try {
+        //Script para atualizar os dados no BD
+        let sql = `update tbl_sexo set
+                        sigla 	    = '${sexo.sigla}',
+                        where id    = '${sexo.id}'
+                        `
+
+        let result = await knexConex.raw(sql) //Executa o scriptSQL no BD
+
+        if(result) {
+            return true
+        } else {
+            return false
+        }
+        
+    } catch (error) {
+        return false
+    }
 }
 
 
