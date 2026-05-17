@@ -64,7 +64,7 @@ const atualizarSexo = async function (sexo, id, contentType) {
                 let resultBuscarId = await buscarSexo(id) //Validação para o ID incorreto
 
                 if(resultBuscarId.status) {
-                    let validar = await validarDados(filme)
+                    let validar = await validarDados(sexo)
                     if(!validar) { //Validação de campos obrigátorios para a atualização (body)
                         sexo.id = id //Adiciona o atributo ID do filme no JSON paara ser enviado ao DAO
     
