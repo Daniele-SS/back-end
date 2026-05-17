@@ -97,7 +97,7 @@ const selectByIdSexo = async function (id) {
 }
 
 
-const deleteSexo = async function () {
+const deleteSexo = async function (id) {
     try {
         let sql = `delete from tbl_sexo where id = ${id}`
 
