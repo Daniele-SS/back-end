@@ -179,7 +179,7 @@ const buscarClassificacao = async function(id){
 }
 
 //Função para excluir um classificacao
-const excluirclassificacao = async function(id){
+const excluirClassificacao = async function(id){
 
     let message = JSON.parse(JSON.stringify(config_message))
     
@@ -233,5 +233,5 @@ module.exports = {
     listarClassificacao,
     buscarClassificacao,
     atualizarClassificacao,
-    excluirclassificacao
+    excluirClassificacao
 }
