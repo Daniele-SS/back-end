@@ -2,6 +2,8 @@ create database db_filmes_2026; #Cria o database do projeto de filmes
 
 use db_filmes_2026; #Ativa o uso do database de filmes
 
+show tables;
+
 #Cria a tabela de filmes
 create table tbl_filme (
 	id 				int not null primary key auto_increment,
@@ -17,8 +19,19 @@ create table tbl_filme (
 create table tbl_classificacao (
 	id 				int not null primary key auto_increment,
     sigla 			varchar(3) not null,
-    caracteristicas varchar(250) not null
+    caracteristicas varchar(250) not null,
+    nome            varchar(50) not null
 );
+
+insert into tbl_classificacao (sigla, caracteristicas, nome)
+			values ('12',
+					 'Filme indicado para pessoas de 12 anos.',
+					 '12+'
+				   );
+                   
+desc tbl_classificacao;
+
+select * from tbl_classificacao;
 
 create table tbl_genero (
 	id 		int not null primary key auto_increment,
@@ -128,7 +141,7 @@ delete from tbl_classificacao where id = '2';
 
 insert into tbl_classificacao (sigla, caracteristicas, nome)
 		values ('L', 
-				'Filme de classificação livre. Conteúdo sensível para menores de 10 anos.',
+				'Filme de classificação livre.',
                 'Livre'
                 ),
                 (

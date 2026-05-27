@@ -20,14 +20,14 @@ const insertClassificacao = async function(classificacao){
     try {
 
         let sql = `insert into tbl_classificacao (
-                            nome, 
                             sigla, 
-                            descricao
+                            caracteristicas,
+                            nome
                             )
-                    values (
-                            '${classificacao.nome}', 
+                    values ( 
                             '${classificacao.sigla}', 
-                            '${classificacao.descricao}'
+                            '${classificacao.caracteristicas}',
+                            '${classificacao.nome}'
                             );`
 
         //Executar o ScriptSQL no banco de dados                        
@@ -40,7 +40,7 @@ const insertClassificacao = async function(classificacao){
             return false
 
     } catch (error) {
-        //console.log(error)
+        console.log(error)
         return false
     }
 }

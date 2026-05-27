@@ -184,7 +184,7 @@ app.get('/v1/senai/locadora/classificacao/:id', async function(request, response
 })
 
 
-//Endpoint para Atualiar um Filme pelo ID
+//Endpoint para Atualizar um Filme pelo ID
 app.put('/v1/senai/locadora/classificacao/:id', bodyParserJSON, async function(request, response){
     //Recebe o contenty type da requisição
     let contentType = request.headers['content-type']
