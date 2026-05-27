@@ -18,7 +18,6 @@ const inserirNovoClassificacao = async function(classificacao, contentType){
     //Criando um clone do objeto JSON para manipular a sua estrutura local sem
     //modificar a estrutura original
     let message = JSON.parse(JSON.stringify(config_message))
-    
     try {
    
         //Validação para o tipo de dados da requisição (somente JSON)
@@ -51,6 +50,7 @@ const inserirNovoClassificacao = async function(classificacao, contentType){
             }
         }else{
             return message.ERROR_CONTENT_TYPE //415
+            
         }
     } catch (error) {
         return message.ERROR_INTERNAL_SERVER_CONTROLLER //500 (controller)

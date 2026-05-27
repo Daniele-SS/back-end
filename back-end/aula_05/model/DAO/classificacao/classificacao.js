@@ -6,13 +6,13 @@
  * Versão: 1.0
  ******************************************************************************/
 
-//Import da bibliioteca para gerenciar o banco de dados Mysql no node.JS
+// Import da biblioteca para gerenciar o banco de dados MySQL no node.JS
 const knex = require('knex')
 
-//Import do arquivo de configuração para conexão com o BD Mysql
+// Import do arquivo de configuração para conexão do BD MySQL
 const knexConfig = require('../../database_config_knex/knexFile.js')
 
-//Criar a conexão com o BD Mysql
+// Criar a conexão com o BD MySQL
 const knexConex = knex(knexConfig.development)
 
 //Função para inserir dados na tabela de classificacao
