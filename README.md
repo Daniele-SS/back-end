@@ -3,7 +3,7 @@
 Repositório de estudos e exercícios práticos de back-end com Node.js, desenvolvido durante o curso. Cobre desde os fundamentos da linguagem até a criação de APIs REST com Express.
 
 **Autora:** Daniele Silva Santos  
-**Período:** Janeiro – Abril de 2026
+**Período:** Janeiro – Maio de 2026
 
 ---
 
