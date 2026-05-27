@@ -1,8 +1,8 @@
 /*****************************************************************************
  * Objetivo: Arquivo responsável pela validação, tratamento e 
  *      manipulação de dados para o CRUD de Filme e Generos
- * Data: 22/05/2026
- * Autor: Marcel
+ * Data: 27/05/2026
+ * Autora: Daniele Silva Santos
  * Versão: 1.0
  *****************************************************************************/
 

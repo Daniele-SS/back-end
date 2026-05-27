@@ -1,8 +1,8 @@
 /*****************************************************************************
  * Objetivo: Arquivo responsável pela validação, tratamento e 
  *      manipulação de dados para o CRUD de filmes
- * Data: 17/04/2026
- * Autor: Marcel
+ * Data: 27/05/2026
+ * Autora: Daniele Silva Santos
  * Versão: 1.0
  *****************************************************************************/
 

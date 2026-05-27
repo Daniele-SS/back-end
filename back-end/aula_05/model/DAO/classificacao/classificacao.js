@@ -1,18 +1,18 @@
 /******************************************************************************
  * Objetivo: Arquivo responsável pelo CRUD no Banco de dados MySQL na tabela
  *           classificacao
- * Data: 15/04/2026
- * Autor: Daniele Silva Santos
+ * Data: 27/05/2026
+ * Autora: Daniele Silva Santos
  * Versão: 1.0
  ******************************************************************************/
 
-// Import da biblioteca para gerenciar o banco de dados MySQL no node.JS
+//Import da bibliioteca para gerenciar o banco de dados Mysql no node.JS
 const knex = require('knex')
 
-// Import do arquivo de configuração para conexão do BD MySQL
+//Import do arquivo de configuração para conexão com o BD Mysql
 const knexConfig = require('../../database_config_knex/knexFile.js')
 
-// Criar a conexão com o BD MySQL
+//Criar a conexão com o BD Mysql
 const knexConex = knex(knexConfig.development)
 
 //Função para inserir dados na tabela de classificacao
