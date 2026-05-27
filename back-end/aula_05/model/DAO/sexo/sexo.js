@@ -45,7 +45,7 @@ const updateSexo = async function (sexo) {
         let sql = `update tbl_sexo set
                         sigla 	    = '${sexo.sigla}',
                         where id    = '${sexo.id}'
-                        `
+                    `
 
         let result = await knexConex.raw(sql) //Executa o scriptSQL no BD
 

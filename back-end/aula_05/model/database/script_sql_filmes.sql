@@ -143,6 +143,20 @@ from tbl_filme
 	inner join tbl_classificacao
 		on tbl_classificacao.id = tbl_filme.id_classificacao;
 
+select tbl_filme.nome, tbl_filme.data_lancamento, tbl_filme.sinopse, 
+	tbl_classificacao.sigla
+from tbl_filme
+		left join tbl_classificacao
+        on tbl_classificacao.id = tbl_filme.id_classificacao;
+        
+
+#Retorna os dados relacionados entre duas tableas e os dados existentes na tablea da direita 
+#que não está relacionado com a tabela da esquerda.
+select tbl_filme.nome, tbl_filme.data_lancamento, tbl_filme.sinopse, 
+	tbl_classificacao.sigla
+from tbl_classificacao
+		right join tbl_filme
+        on tbl_classificacao.id = tbl_filme.id_classificacao;
 
 
 
