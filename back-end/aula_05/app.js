@@ -146,6 +146,72 @@ app.delete('/v1/senai/locadora/sexo/:id', async function(request, response){
 })
 
 
+//CLASSIFICACAO
+//Endpoint para Inserir um Filme
+app.post('/v1/senai/locadora/classificacao', bodyParserJSON, async function(request, response){
+    //Recebe o conteúdo dentro do body da requisição
+    let dados = request.body
+    
+    //Recebe o content type da requisição, para validar se é um JSON
+    let contentType = request.headers['content-type']
+
+    let result = await controllerClassificacao.inserirNovoClassificacao(dados, contentType)
+   
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
+//Endpoint para Listar todos os Filmes
+app.get('/v1/senai/locadora/classificacao', async function(request, response){
+    let result = await controllerClassificacao.listarClassificacao()
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
+//Endpoint para Buscar um Filme pelo ID
+app.get('/v1/senai/locadora/classificacao/:id', async function(request, response){
+    //Recebe o ID via parametro
+    let id = request.params.id
+
+    let result = await controllerClassificacao.buscarClassificacao(id)
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
+//Endpoint para Atualiar um Filme pelo ID
+app.put('/v1/senai/locadora/classificacao/:id', bodyParserJSON, async function(request, response){
+    //Recebe o contenty type da requisição
+    let contentType = request.headers['content-type']
+    //Recebe o ID do registro a ser atualizado
+    let id = request.params.id
+    //Recebe os dados enviados no corpo da requisição
+    let dados = request.body
+
+    //Chama a função de atualizar na controller e encaminha os dados, id e content-type
+    //obedecendo a ordem de criação na função da controller
+    let result = await controllerClassificacao.atualizarClassificacao(dados, id, contentType)
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
+//Endpoint para Deletar um Filme pelo ID
+app.delete('/v1/senai/locadora/classificacao/:id', async function(request, response){
+    let id = request.params.id
+
+    let result = await controllerClassificacao.excluirClassificacao(id)
+
+    response.status(result.status_code)
+    response.json(result)
+})
+
+
 app.listen(8080, function(){
     console.log('API funcionando e aguardando novas requisições ...')
 })
