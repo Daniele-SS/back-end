@@ -1,146 +1,89 @@
-/************************************************************************************
- * Objetivo: Arquivo responsável pela criação da API do projeto de Filmes
- * Data: 17/04/2026
- * Autora: Daniele Silva Santos
- * Versão: 1.0
- ************************************************************************************/
 
-//Import das depedências para criar a API
-const express       = require ('express')
-const cors          = require ('cors')
+
+//Import das dependencias para criar a API
+const express       = require('express')
+const cors          = require('cors')
 const bodyParser    = require('body-parser')
 
-
 //Import das CONTROLLERS do projeto
-const controllerFilme   = require('./controller/filme/controller_filme.js')
-const controllerSexo    = require('./controller/sexo/controller_sexo.js')
+const controllerFilme = require('./controller/filme/controller_filme.js')
 const controllerClassificacao = require('./controller/classificacao/controller_classificacao.js')
+const controllerGenero = require('./controller/genero/controller_genero.js')
 
+//Criando um objeto para manipular dados do body da API em formato JSON
+const bodyParserJSON = bodyParser.json()
 
-const bodyParserJSON = bodyParser.json() //Criando um objeto para manipular dados do body da API em formato JSON
+//Criando um objeto para manipular o express
+const app = express()
 
-const app = express() //Criando um objeto para manipular o express
-
-//Conjunto de permissões a serem aplicadas no cors da API
+//Conjunto de permissões a serem aplicadas no CORS da API
 const corsOptions = {
-    origin: ['*'], //A origem da requisição, podendo ser um IP ou um asterisco '*' (que significa todos)
+    origin: ['*'], //A origem da requisição, podendo ser um IP ou *(Todos)
     methods: 'GET, POST, PUT, DELETE, OPTIONS', //São os verbos que serão liberados na API (GET, POST, PUT e DELETE)
-    allowedHeaders: ['Content-type', 'Autorization'] //São permissões de cabeçalho do cors
+    allowedHeaders: ['Content-type', 'Autorization'] //São permissões de cabeçalho do CORS
 }
 
-app.use(cors(corsOptions)) //Configura as permissões da API através do cors
+//Configura as permissões da API através do CORS
+app.use(cors(corsOptions))
 
-//Inserir filme
+//ENDPOINTS
+
+//FILME
+//Endpoint para Inserir um Filme
 app.post('/v1/senai/locadora/filme', bodyParserJSON, async function(request, response){
-    let dados       = request.body //Recebe o conteúdo dentro do body da requisição
-    let contentType = request.headers['content-type']
+    //Recebe o conteúdo dentro do body da requisição
+    let dados = request.body
     
+    //Recebe o content type da requisição, para validar se é um JSON
+    let contentType = request.headers['content-type']
+
     let result = await controllerFilme.inserirNovoFilme(dados, contentType)
+   
     response.status(result.status_code)
-    response.json(result) //Irá retornar meu JSON que já está configurado na controller
-    
+    response.json(result)
 })
 
-
-//Inserir sexo
-app.post('/v1/senai/locadora/sexo', bodyParserJSON, async function(request, response){
-    let dados       = request.body //Recebe o conteúdo dentro do body da requisição
-    let contentType = request.headers['content-type']
-    
-    let result = await controllerSexo.inserirNovoSexo(dados, contentType)
-    response.status(result.status_code)
-    response.json(result) //Irá retornar meu JSON que já está configurado na controller
-})
-
-
-//Atualizar filme
-app.get('/v1/senai/locadora/filme', async function(request, response) {
+//Endpoint para Listar todos os Filmes
+app.get('/v1/senai/locadora/filme', async function(request, response){
     let result = await controllerFilme.listarFilme()
 
     response.status(result.status_code)
     response.json(result)
 })
 
-
-//Atualizar sexo
-app.get('/v1/senai/locadora/sexo', async function(request, response){
-    let result = await controllerSexo.listarSexo()
-
-    response.status(result.status_code)
-    response.json(result)
-})
-
-
-//Listar filmes
+//Endpoint para Buscar um Filme pelo ID
 app.get('/v1/senai/locadora/filme/:id', async function(request, response){
-    let id     = request.params.id //Recebe o ID via parâmetro
+    //Recebe o ID via parametro
+    let id = request.params.id
+
     let result = await controllerFilme.buscarFilme(id)
 
     response.status(result.status_code)
     response.json(result)
 })
 
-
-//Listar sexo
-app.get('/v1/senai/locadora/sexo/:id', async function(request, response){
-    let id     = request.params.id //Recebe o ID via parâmetro
-    let result = await controllerSexo.buscarSexo(id)
-
-    response.status(result.status_code)
-    response.json(result)
-})
-
-
-//Buscar filmes
+//Endpoint para Atualiar um Filme pelo ID
 app.put('/v1/senai/locadora/filme/:id', bodyParserJSON, async function(request, response){
-    let contentType = request.headers['content-type'] //Recebe o contentType da requisição
+    //Recebe o contenty type da requisição
+    let contentType = request.headers['content-type']
+    //Recebe o ID do registro a ser atualizado
+    let id = request.params.id
+    //Recebe os dados enviados no corpo da requisição
+    let dados = request.body
 
-    let id = request.params.id //Recebe o ID do registro a ser atualizado
-
-    let dados = request.body //Recebe os dados enviados no corpo (BODY) da requisição
-
-    let result = await controllerFilme.atualizarFilme(dados, id, contentType) /*Chama a função de atualizar na controller 
-                                                                                e encaminha os dados, id, contentType
-                                                                                obedecendo a ordem de criação na função da controller*/
-
-    response.status(result.status_code)
-    response.json(result)
-})
-
-
-//Buscar sexo
-app.put('/v1/senai/locadora/sexo/:id', bodyParserJSON, async function(request, response){
-    let contentType = request.headers['content-type'] //Recebe o contentType da requisição
-
-    let id = request.params.id //Recebe o ID do registro a ser atualizado
-
-    let dados = request.body //Recebe os dados enviados no corpo (BODY) da requisição
-
-    let result = await controllerSexo.atualizarSexo(dados, id, contentType) /*Chama a função de atualizar na controller 
-                                                                                e encaminha os dados, id, contentType
-                                                                                obedecendo a ordem de criação na função da controller*/
+    //Chama a função de atualizar na controller e encaminha os dados, id e content-type
+    //obedecendo a ordem de criação na função da controller
+    let result = await controllerFilme.atualizarFilme(dados, id, contentType)
 
     response.status(result.status_code)
     response.json(result)
 })
 
-
-//Deletar filmes
+//Endpoint para Deletar um Filme pelo ID
 app.delete('/v1/senai/locadora/filme/:id', async function(request, response){
-    let id = request.params.id //Recebe o ID do registro a ser deletado
+    let id = request.params.id
 
     let result = await controllerFilme.excluirFilme(id)
-
-    response.status(result.status_code)
-    response.json(result)
-})
-
-
-//Deletar sexo
-app.delete('/v1/senai/locadora/sexo/:id', async function(request, response){
-    let id = request.params.id //Recebe o ID do registro a ser deletado
-
-    let result = await controllerSexo.excluirSexo(id)
 
     response.status(result.status_code)
     response.json(result)
@@ -162,7 +105,6 @@ app.post('/v1/senai/locadora/classificacao', bodyParserJSON, async function(requ
     response.json(result)
 })
 
-
 //Endpoint para Listar todos os Filmes
 app.get('/v1/senai/locadora/classificacao', async function(request, response){
     let result = await controllerClassificacao.listarClassificacao()
@@ -170,7 +112,6 @@ app.get('/v1/senai/locadora/classificacao', async function(request, response){
     response.status(result.status_code)
     response.json(result)
 })
-
 
 //Endpoint para Buscar um Filme pelo ID
 app.get('/v1/senai/locadora/classificacao/:id', async function(request, response){
@@ -182,7 +123,6 @@ app.get('/v1/senai/locadora/classificacao/:id', async function(request, response
     response.status(result.status_code)
     response.json(result)
 })
-
 
 //Endpoint para Atualiar um Filme pelo ID
 app.put('/v1/senai/locadora/classificacao/:id', bodyParserJSON, async function(request, response){
@@ -201,7 +141,6 @@ app.put('/v1/senai/locadora/classificacao/:id', bodyParserJSON, async function(r
     response.json(result)
 })
 
-
 //Endpoint para Deletar um Filme pelo ID
 app.delete('/v1/senai/locadora/classificacao/:id', async function(request, response){
     let id = request.params.id
@@ -212,30 +151,32 @@ app.delete('/v1/senai/locadora/classificacao/:id', async function(request, respo
     response.json(result)
 })
 
-
 //GENERO
-app.post('/v1/senai/locadora/genero', bodyParserJson, async function (request, response) {
-
-    //recebe o conteúdo
+//Endpoint para Inserir um Filme
+app.post('/v1/senai/locadora/genero', bodyParserJSON, async function(request, response){
+    //Recebe o conteúdo dentro do body da requisição
     let dados = request.body
-    let contentType = request.headers['content-type'] //recebe o content type da requisição para validar se é um json
+    
+    //Recebe o content type da requisição, para validar se é um JSON
+    let contentType = request.headers['content-type']
 
     let result = await controllerGenero.inserirNovoGenero(dados, contentType)
-
+   
     response.status(result.status_code)
     response.json(result)
 })
 
-
-app.get('/v1/senai/locadora/genero', async function (request, response) {
+//Endpoint para Listar todos os Filmes
+app.get('/v1/senai/locadora/genero', async function(request, response){
     let result = await controllerGenero.listarGenero()
 
     response.status(result.status_code)
     response.json(result)
 })
 
-
-app.get('/v1/senai/locadora/genero/:id', async function (request, response) {
+//Endpoint para Buscar um Filme pelo ID
+app.get('/v1/senai/locadora/genero/:id', async function(request, response){
+    //Recebe o ID via parametro
     let id = request.params.id
 
     let result = await controllerGenero.buscarGenero(id)
@@ -244,41 +185,36 @@ app.get('/v1/senai/locadora/genero/:id', async function (request, response) {
     response.json(result)
 })
 
-
-app.put('/v1/senai/locadora/genero/:id', bodyParserJson, async function (request, response) {
-
+//Endpoint para Atualiar um Filme pelo ID
+app.put('/v1/senai/locadora/genero/:id', bodyParserJSON, async function(request, response){
     //Recebe o contenty type da requisição
     let contentType = request.headers['content-type']
-
-    //Receber o ID do registro a ser atulizado
+    //Recebe o ID do registro a ser atualizado
     let id = request.params.id
-
-    //Receber os dados enviados no corpo de requisição
+    //Recebe os dados enviados no corpo da requisição
     let dados = request.body
 
-    //Chama a função de atualizar na controller e encaminhando os dados, id e content-type
+    //Chama a função de atualizar na controller e encaminha os dados, id e content-type
     //obedecendo a ordem de criação na função da controller
     let result = await controllerGenero.atualizarGenero(dados, id, contentType)
 
     response.status(result.status_code)
     response.json(result)
-
 })
 
-
-app.delete('/v1/senai/locadora/genero/:id', async function (request, response) {
-
-
+//Endpoint para Deletar um Filme pelo ID
+app.delete('/v1/senai/locadora/genero/:id', async function(request, response){
     let id = request.params.id
 
     let result = await controllerGenero.excluirGenero(id)
 
     response.status(result.status_code)
     response.json(result)
-
 })
 
 
+
+//Serve para inicializar a API para receber requisições
 app.listen(8080, function(){
     console.log('API funcionando e aguardando novas requisições ...')
 })

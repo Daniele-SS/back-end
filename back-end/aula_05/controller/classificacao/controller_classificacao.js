@@ -2,7 +2,7 @@
  * Objetivo: Arquivo responsável pela validação, tratamento e 
  *      manipulação de dados para o CRUD de classificacaos
  * Data: 17/04/2026
- * Autor: Daniele Silva Santos
+ * Autor: Marcel
  * Versão: 1.0
  *****************************************************************************/
 
@@ -18,6 +18,7 @@ const inserirNovoClassificacao = async function(classificacao, contentType){
     //Criando um clone do objeto JSON para manipular a sua estrutura local sem
     //modificar a estrutura original
     let message = JSON.parse(JSON.stringify(config_message))
+    
     try {
    
         //Validação para o tipo de dados da requisição (somente JSON)
@@ -43,14 +44,15 @@ const inserirNovoClassificacao = async function(classificacao, contentType){
                     message.DEFAULT_MESSAGE.status_code = message.SUCCESS_CREATED_ITEM.status_code
                     message.DEFAULT_MESSAGE.message = message.SUCCESS_CREATED_ITEM.message
                     message.DEFAULT_MESSAGE.response = classificacao
+
+                    return message.DEFAULT_MESSAGE
                 }else{ //500
                     return message.ERROR_INTERNAL_SERVER_MODEL //500 (model)
                 }
-                return message.DEFAULT_MESSAGE
+                
             }
         }else{
             return message.ERROR_CONTENT_TYPE //415
-            
         }
     } catch (error) {
         return message.ERROR_INTERNAL_SERVER_CONTROLLER //500 (controller)
