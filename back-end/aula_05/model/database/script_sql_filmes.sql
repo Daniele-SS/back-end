@@ -63,6 +63,18 @@ create table tbl_nacionalidade (
     nome 	varchar(100) not null
 );
 
+insert into tbl_nacionalidade (
+								nome
+							)
+                            values(
+							'americano'
+							);
+desc tbl_nacionalidade;
+select * from tbl_nacionalidade;
+SHOW COLUMNS FROM tbl_nacionalidade;
+
+DESCRIBE tbl_nacionalidade;
+
 #Inserir dados
 insert into tbl_filme (
 						nome, 
@@ -149,6 +161,7 @@ insert into tbl_classificacao (sigla, caracteristicas, nome)
                 'Filme de classificação adulta. Conteúdo sensível para menores de 18 anos',
                 '18+'
 				);
+select * from tbl_classificacao;
 
 select 	tbl_filme.nome as nome_filme, tbl_filme.sinopse, tbl_filme.data_lancamento, tbl_filme.capa,
 		tbl_classificacao.sigla, tbl_classificacao.nome as nome_classificacao
@@ -174,7 +187,7 @@ from tbl_classificacao
 
 
 
-
+desc tbl_filme;
 
 
 

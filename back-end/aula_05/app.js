@@ -15,6 +15,7 @@ const bodyParser    = require('body-parser')
 const controllerFilme   = require('./controller/filme/controller_filme.js')
 const controllerSexo    = require('./controller/sexo/controller_sexo.js')
 const controllerClassificacao = require('./controller/classificacao/controller_classificacao.js')
+const controllerNacionalidade = require('./controller/nacionalidade/controller_nacionalidade.js')
 
 
 const bodyParserJSON = bodyParser.json() //Criando um objeto para manipular dados do body da API em formato JSON
@@ -52,6 +53,17 @@ app.post('/v1/senai/locadora/sexo', bodyParserJSON, async function(request, resp
     response.json(result) //Irá retornar meu JSON que já está configurado na controller
 })
 
+
+//Inserir nacionalidade
+app.post('/v1/senai/locadora/nacionalidade', bodyParserJSON, async function(request, response){
+    let dados       = request.body //Recebe o conteúdo dentro do body da requisição
+    let contentType = request.headers['content-type']
+    
+    let result = await controllerNacionalidade.inserirNovaNacionalidade(dados, contentType)
+    response.status(result.status_code)
+    response.json(result) //Irá retornar meu JSON que já está configurado na controller
+    
+})
 
 //Atualizar filme
 app.get('/v1/senai/locadora/filme', async function(request, response) {
